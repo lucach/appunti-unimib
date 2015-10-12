@@ -1,0 +1,284 @@
+\chapter{Prima lezione (06/10/2015)}
+
+\section{Insieme $\N$}
+
+\begin{definition}
+L'insieme $\N$ è l'insieme dei numeri interi positivi, detti numeri naturali, e si indica con $\N=\{1,2,3,...\}$.
+\end{definition}
+
+Su di esso sono definite due operazioni:
+\begin{itemize}
+\item Somma: $\N + \N \to \N$, quindi $(a, b) \to a + b$
+\item Prodotto: $\N \cdot \N \to \N$, quindi $(a, b) \to a\cdot b$
+\end{itemize}
+
+Queste due proprietà sono commutative e associative:
+\begin{itemize}
+\item $a+b=b+a$
+\item $a+(b+c)=(a+b)+c$
+\item $a\cdot b = b\cdot a$
+\item $a\cdot(b\cdot c) = (a\cdot b)\cdot c$
+\end{itemize}
+
+Vale inoltre la proprietà distributiva:
+\begin{equation*}
+(a+b)\cdot c = a\cdot c + b\cdot c
+\end{equation*}
+
+Nel prodotto esiste un elemento neutro, in altri termini esiste un $e \in \N$ tale per cui, comunque scelto $a$, $a \cdot e = e \cdot a = a$. Tale $e$ risulta ovvio essere 1.
+
+Nell'insieme $\N$ esiste una relazione di ordinamento ($a \le b$) tale per cui:
+\begin{enumerate}[I.]
+\item $a \le b$ e $b \le a \implies a = b$
+\item $a \le b \le c \implies a \le c$
+\item $\forall a,b \;\; a < b$ oppure $b < a$
+\end{enumerate}
+
+
+\begin{definition}
+Un insieme S con una relazione d'ordine che soddisfa I, II, III si dice totalmente ordinato.
+\end{definition}
+
+\begin{remark}
+Ogni $S \subseteq \N$ è totalmente ordinato.
+\end{remark}
+
+Se $a \le b$ e $c \in \N \implies a+c \le b+c$
+
+Se $a \le b$ e $c \in \N \implies a \cdot c \le b \cdot c$ 
+
+L'equazione $n+x=m$ ha una soluzione (unica) se e solo se $m > n$.
+
+Anche $\set{x \in \Q | x > 0}$, l'insieme dei numeri razionali, soddisfa le condizioni sopra indicate.
+
+\begin{definition}
+Dato un insieme totalmente ordinato (scriviamo $(S, \le)$), $X$ è il minimo di $S$ se $x \in S$ e per ogni $y \in S$ vale $x \le y$.
+\end{definition}
+
+\begin{proposition}[Principio del buon ordinamento]
+Ogni sottoinsieme di $\N$ non vuoto ha un minimo.
+\end{proposition}
+
+\begin{example}
+L'inisieme $\set{x \in Q | x > 0}$ non soddisfa il principio del buon ordinamento perché, ad esempio, il suo sottoinsieme $\set{\frac{1}{n} | n > 0}$ non ha minimo.
+\end{example}
+
+\marginnote{Corretto?}[1cm]
+
+\begin{remark}
+Grazie al principio del buon ordinamento vale che $\set{x \in \N | x \subseteq S} = \{1, ..., S\}$.
+\end{remark}
+
+\begin{proposition}[Principio di induzione]
+Sia $P_n$ un enunciato che dipende da $n \in \N$ (ad esempio ``$n$ è pari'', ``$n$ è primo''), supponiamo che $P_1$ sia vero e che valga l'implicazione $P_n \implies P_{n+1}$, allora $P_n$ è vero per ogni $n$.
+\end{proposition}
+
+Nota che, ad esempio, l'enunciato ``$\forall n,\;n > 0$'' non è un enunciato che dipende da $n$!
+
+\begin{example}
+Dimostriamo per induzione che
+\begin{equation*}
+P_n : \sum\limits_{i=1}^n i = \frac{1}{2} \cdot (n+1) \cdot n
+\end{equation*}
+
+Verifichiamo $P_1$: 
+\begin{equation*}
+P_1 : \sum\limits_{i=1}^1 i = \frac{1}{2} \cdot (1+1) \cdot 1
+\end{equation*}
+che equivale a $1 = 1$ ed è quindi vero.
+
+Ora dobbiamo verificare anche che $P_n \implies P_{n+1}$.
+
+\begin{equation*}
+P_n : \sum\limits_{i=1}^n i = \frac{1}{2} \cdot (n+1) \cdot n
+\end{equation*}
+\begin{equation*}
+P_{n+1} : \sum\limits_{i=1}^{n+1} i = \frac{1}{2} \cdot (n+2) \cdot (n+1)
+\end{equation*}
+
+Per definizione vale anche che :
+
+\begin{equation*}
+P_{n+1} : \sum\limits_{i=1}^{n+1} i = \sum\limits_{i=1}^n i + (n + 1) =  \frac{1}{2} \cdot (n+1) \cdot n + (n+1)
+\end{equation*}
+
+\marginnote{Da chiarire!}
+Usando $P_n$ si avrebbe ugualmente che
+\begin{equation*}
+\sum\limits_{i=1}^{n+1} i = \frac{1}{2} \cdot (n+1) \cdot (n+2)
+\end{equation*}
+
+\end{example}
+
+\begin{proof}
+Sia $S = \set{n \in \N | P_n\;e'\;falso}$.
+Se $S = \emptyset$ non c'è niente da dimostrare.
+Altrimenti, per il principio del buon ordinamento $S$ ha un minimo $k = min\; S$. Non può essere $k = 1$ ($1 \in S$) perché $P_1$ è vero.
+
+Essendo $k>1$, $k-1 \in \N$ (ricorda l'equazione $1+k=x$) e $k-1 \in S$.
+
+Allora $P_{k-1}$ non è falso, quindi $P_{k-1}$ è vero. $P_k$ è vero per ipotesi. Ma questo contraddice l'ipotesi che $k \in S$, quindi il caso $S$ non vuoto non si verifica.
+\end{proof}
+
+\section{Insieme $\Z$}
+
+Consideriamo queste due equazioni:
+\begin{itemize}
+\item $a+x=b$, che ha soluzione in $\N$ se e solo se $b > a$.
+\item $a \cdot x = b$, che ha soluzione in $\N$ quando $a$ è un divisore di $b$ (si scrive $x = \frac{b}{a}$).
+\end{itemize}
+
+È evidente che serve quindi estendere l'insieme $\N$ arrivando all'insieme degli interi $\Z$ così definito:
+
+\begin{equation*}
+\Z = \{\dots, -1, 0, 1, \dots \}
+\end{equation*}
+
+$\Z$ è la più piccola estensione di $\N$ dove l'equazione $a+x=b$ ha soluzione per ogni $a, b$. 
+
+In $\Z$ valgono le stesse proprietà di $\N$.
+
+$\Z$ ha un elemento neutro per la somma (zero). Ovvero scriviamo:
+\begin{equation*}
+a + 0 = 0 + a = a \;\;\; \forall a
+\end{equation*}
+
+Dato $a \in \Z$ esiste $x \in \Z$ tale che $a+x=0$ (si scrive $x=-a$).
+
+Per passi:
+\begin{equation*}
+b - a = b + (-a)
+\end{equation*}
+
+
+\begin{equation*}
+a + (b-a) = b
+\end{equation*}
+
+che è la soluzione di $a+x=b$ cercata.
+
+Nota inoltre che $a \cdot x = b$ non ha soluzioni per $a=0,\;b\neq 0$ perché $0 \cdot x = 0$, che a sua volta discende da
+\begin{align*}
+1 \cdot x &= (1 + 0) \cdot x \\
+&=1 \cdot x + 0 \cdot x
+\end{align*}
+
+Sottraendo $-(1 \cdot x)$ a entrambi i membri risulta $0 = 0 \cdot x$.
+
+\section{Insieme $\Q$ e oltre}
+
+Definiamo l'insieme $\Q$, insieme dei numeri razionali, in questo modo:
+\begin{equation*}
+\Q = \set{\frac{p}{q} | p,q \in \Z,\;q \neq 0}
+\end{equation*}
+
+$\Q$ ha le stesse proprietà di $\Z$. Inoltre:
+\begin{equation*}
+\forall a \neq 0 \;\; \exists\, x \in \Q : a \cdot x = 1
+\end{equation*}
+
+$x = \frac{1}{a}$, da cui $\frac{b}{a} = b \cdot \frac{1}{a}$ che è la soluzione di $a \cdot x = b$. 
+
+Infatti:
+
+\begin{equation*}
+a \cdot \frac{b}{a} = a \cdot b \cdot \frac{1}{a} = b (a(\frac{1}{a})) = b \cdot 1 = b
+\end{equation*}
+
+È evidente che i numeri razionali non vanno bene per l'analisi numerica. Supponiamo di voler misurare un segmento in gessetti: potrebbero volerci quattro gessi ``e un pezzetto''. Potremmo dividere il gessetto a metà e scoprire che la lunghezza del segmento è 4 gessi + 1 gessetto + ``un pezzettino''. Non è detto che questo processo termini! Infatti non tutti gli intervalli si possono rappresentare con un numero razionale.  
+
+\marginnote{È dim?}[1cm]
+\begin{proof}
+Sia $x$ la diagonale di un quadrato di lato 1. Per Pitagora vale che $x^2 = 1 + 1 = 2$. Se $x$ fosse razionale, potremmo scrivere $x = \frac{p}{q}$ per un qualche $p,q \in \Z$. 
+
+Quindi varrebbe $\frac{p^2}{q^2} = 2$, ovvero $p^2 = 2\cdot q^2$.
+
+Possiamo scrivere $p = 2^k \cdot a$ per un qualche $a$ dispari e $q = 2^h \cdot b$ per un qualche $b$ dispari.
+
+Sostituendo nella prima equazione resta: $2^{2k} \cdot a^2 = 2 \cdot 2^{2h} \cdot b^2$.
+
+$a^2$ e $b^2$ sono quadrati di un numero dispari e quindi dispari anch'essi.
+
+Se uguagliamo gli esponenti risulta $2k = 2h + 1$ dove il primo è un numero pari mentre il secondo è un numero dispari, il che è assurdo.
+
+Quindi, $x^2 = 2$ non ha soluzione in $\Q$.
+\end{proof}
+
+\section{Estremo superiore e maggioranti}
+
+\begin{definition}
+Un sottoinsieme $A \subseteq \Q$ è limitato superiormente se esiste un $k \in \Q$ tale che $a \le k$ per ogni $a \in A$. 
+
+Un tale $k$ è detto maggiorante di $A$.
+\end{definition}
+
+\begin{definition}
+Dato $A \subseteq \Q$ non vuoto e limitato superiormente, si dice estremo superiore di $A$ il minimo dei maggioranti, se esiste. (Si indica $\sup A$.)
+\end{definition}
+
+Se $A$ è non vuoto ma non è limitato superiormente, allora $\sup A = + \infty$.
+
+\begin{example}
+Sia $A = \set{x \in \Q | 0 < x < 1}$.
+Esso è limitato superiormente perché se prendo $k = 2$, $k > a \;\; \forall a \in A$.
+
+$y$ è maggiornate di $A \implies y > x \; \; \forall x \in A$.
+
+Sia $y \in \Q$:
+\begin{itemize}
+\item Se $y \ge 1$ allora $y$ è un maggiorante.
+\item Se $0 < y < 1$, supponiamo $x = \frac{1}{2}(y+1)$ (ovvero $x$ punto medio tra $y$ e $1$). Vale che $0 < x < 1 \implies x \in A$. Poiché $x > y$, $y$ non è un maggiornate.
+\item Se $y < 0$ supponiamo $x = \frac{1}{2} \in A$; $x > y$ quindi $y$ non è un maggiorante.
+\end{itemize}
+
+In definitiva i maggioranti sono $\set{y \in \Q | y \ge 1}$ e $\sup A = 1$.
+\end{example}
+
+\begin{example}
+Sia $A = \set{x \in \Q | x^2 \le 2}$. $A$ è limitato superiormente.\end{example}
+
+\marginnote{Indenta!}[1cm]
+\begin{proposition}
+$2$ è maggiorante di $A$.
+\end{proposition}
+\begin{proof}
+Supponiamo che $2$ non sia maggiorante. Allora non è vero che $x \le 2 \; \; \forall x \in A$. Quindi esiste $x \in A$ tale che $x > 2$. Allora $x^2 > 2^2$, ovvero $x^2 > 4$ che è assurdo perché vale che $x^2 < 2$.
+\end{proof}
+\begin{proposition}
+$A$ non ha un estremo superiore in $\Q$.
+\end{proposition}
+\begin{proof}
+Sia $x \in \Q$ un maggiorante. Allora $x^2 \neq 2$. 
+
+\begin{itemize}
+\marginnote{Da chiarire}[1cm]
+\item 
+Se $x^2 < 2$ vale $(x+\frac{1}{n})^2$, ovvero $x^2 + \frac{2}{n} + \frac{1}{n^2}$.
+Per $n$ sufficientemente grandi $y = x + \frac{1}{n}$. Essendo $y^2 < 2$, basta che $\frac{2}{n} + \frac{1}{n^2} \le 2 - x^2$.
+
+Ovvero
+\begin{equation*}
+(2 - x^2) \cdot n^2 - 2n + 1 > 0 
+\end{equation*} 
+
+Nota che l'equazione sopra è una parabola con concavità verso l'alto. 
+
+Allora $x$ non è un maggiorante perché $x < y$ e $y \in A$.
+
+\item 
+Se $x^2 > 2$ allora $y = x - 1$ è maggiorante.
+
+\begin{align*}
+(x-\frac{1}{n})^2 &> 2 \\
+x^2 - \frac{2}{n} + \frac{1}{n^2} &> 2 \\
+n^2 \cdot (x^2 - 2) - 2n + 1 &> 0
+\end{align*}
+
+che è vera per $n$ sufficientemente grandi.
+
+\end{itemize}
+
+Quanto sopra implica che deve esistere un maggiorante della forma $y = x - \frac{1}{n}$. Ciò implica che $x$ non è il minimo dei maggioranti e a sua volta questo implica che $A$ non ha $\sup$.
+
+\end{proof}
+
