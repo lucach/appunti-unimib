@@ -1,0 +1,284 @@
+\chapter{Quarta lezione (16/10/2015)}
+
+\section{Limiti di una successione}
+
+\begin{definition}
+Si dice che $L \in \R$ è il limite di $\{x_n\}_{n \in \N}$ se per ogni $\epsilon > 0$ esiste un $N$ tale che, per ogni $n > N$, vale:
+\begin{equation*}
+L - \epsilon < x_n < L + \epsilon
+\end{equation*}
+Si scrive:
+\begin{equation*}
+\lim_{n \to +\infty} x_n = L
+\end{equation*}
+\end{definition}
+
+\begin{theorem}[Teorema di unicità del limite]
+Sia $\{x_n\}$ una successione. Se $\{x_n\}$ ha limite $L$ e $\{x_n\}$ ha limite $L'$, allora $L = L'$.
+\end{theorem}
+
+In altre parole stiamo dicendo che se il limite esiste allora è unico. Dimostriamo per assurdo il teorema.
+
+\begin{proof}
+Supponiamo per assurdo $L \neq L'$. Sia $\epsilon$ il punto medio tra $L$ e $L'$, ovvero:
+\begin{equation*}
+\epsilon = \frac{|L - L'|}{2} > 0
+\end{equation*}
+
+Per definizione di limite esiste un $N$ tale che $|x_n - L| < \epsilon$ per ogni $n > N$; quindi $x_n < L + \epsilon$ e $x_n > L - \epsilon$.
+
+Esiste un $N'$ tale che se $n > N'$ allora $|x_n - L'| < \epsilon$.
+
+Scelto $n > N$ e $n > N'$, allora devono valere entrambe le precedenti. Riassumendo, deve valere sia $|x_n - L| < \epsilon$ che $|x_n - L'| < \epsilon$.
+
+Per la disuguaglianza triangolare abbiamo che:
+\begin{equation*}
+|L - L'| \le |L - x_n| + |x_n - L'| \le 2\cdot\epsilon
+\end{equation*}
+
+Quindi $|L - L'| < |L - L'|$, che è palesemente assurdo.
+
+In altri termini, stiamo dicendo che:
+\begin{equation*}
+(L - \epsilon, L + \epsilon) \cup (L' - \epsilon, L' + \epsilon) = \varnothing
+\end{equation*}
+\end{proof}
+
+\begin{example}
+Consideriamo la successione
+\begin{equation*}
+x_n = \left(-\frac{1}{2}\right)^n
+\end{equation*}
+Il suo limite è zero.
+
+Per dimostrarlo dobbiamo far vedere che esiste per ogni $\epsilon > 0$ un $N$ tale che, se $n > N$, allora $|x_n| < \epsilon$.
+
+\begin{equation*}
+\left|\left(-\frac{1}{2}\right)^n\right| < \epsilon \iff \frac{1}{2^n} < \epsilon \iff \frac{1}{\epsilon} < 2^n \iff n > \log_2 \frac{1}{\epsilon}
+\end{equation*}
+
+Non ci resta che scegliere $N > \log_2 \frac{1}{\epsilon}$, ad esempio
+\begin{equation*}
+N = \left[\log_2 \frac{1}{\epsilon}\right] + 1
+\end{equation*}
+
+Quando $n > N$ varrà
+\begin{equation*}
+n > \log_2 \frac{1}{\epsilon} \implies \frac{1}{2^n} < \epsilon
+\end{equation*}
+\end{example}
+
+\begin{example}
+Consideriamo questa volta la successione $\{n^2\}_{n \in \N}$ che non ha limite.
+
+Supponiamo che abbia un limite $L$, allora per ogni $\epsilon > 0$ esiste $N$ tale che:
+\begin{equation*}
+L - \epsilon < n^2 < L + \epsilon	\qquad	\forall n  > N
+\end{equation*}
+
+Tale disuguaglianza deve valere anche per $\epsilon = L$.
+
+Quindi:
+\begin{equation*}
+0 = L - \epsilon < n^2 < L + \epsilon = 2L
+\end{equation*}
+Ciò implica $n < \sqrt{2L}$, che non può essere soddisfatta.
+Quindi $L > 0$ non può essere il limite.
+
+In modo ancora più semplice possiamo mostrare che il limite non può essere nemmeno negativo. Infatti se $L < 0$ dovrebbe valere per $n > N$:
+\begin{equation*}
+|n^2 - L| < \frac{1}{2} \implies |n^2| < \frac{1}{2}
+\end{equation*}
+che è assurdo perché il più piccolo quadrato di un numero naturale è 1.
+\end{example}
+
+\begin{definition}
+Si dice che $\{x_n\}$ ha limite $+\infty$ (si dice anche ``diverge a $+\infty$'') se, per ogni $M \in \R$, esiste un $N \in \N$ tale che, per ogni $n > N$, $x_n > M$.
+\end{definition}
+
+In altre parole stiamo dicendo che, da un certo punto in poi ($n > N$), il valore della successione sarà sempre maggiore di $M$, con $M$ scelto grande a piacere.
+
+In modo analogo una successione ha limite $-\infty$ se per ogni $M \in \R$ esiste un $N \in \N$ tale che, per ogni $n > N$, vale $x_n < -M$.
+
+\begin{example}
+Consideriamo il limite di questa successione:
+\begin{equation*}
+\lim_{n \to +\infty} n^2 = +\infty
+\end{equation*}
+Tale limite è corretto. Scegliamo $M$ positivo e poniamo $N = [\sqrt{M}] + 1$. In tale situazione $n > N \implies n > \sqrt{M} \implies n^2 > M$; che è esattamente la definizione precedente.
+\end{example}
+
+\begin{example}
+La successione $\{(-1)^n\}_{n \in \N}$ non converge e non diverge (cioè non ha limite).
+
+Il suo limite non può essere infinito perché $(-1)^n \in [-1; 1]$. Scelto banalmente $M > 1$ non vale mai $x_n > M$. In modo analogo non vale mai nemmeno $x_n < -M$.
+
+Mostriamo ora che non ha nemmeno un limite finito (cioè $L \in \R$). Se fosse $\lim\limits_{n \to +\infty} (-1)^n = L$ allora, posto $\epsilon = 1$ nella definizione di limite, avremmo che esiste $N$ tale che:
+\begin{equation*}
+| (-1)^n - L | < 1 \qquad \forall n > N
+\end{equation*}
+\begin{equation*}
+\implies |1 - L| < 1 \qquad \text{e} \qquad |-1 - L| < 1
+\end{equation*}
+\begin{equation*}
+\implies |1 - (-1)| \le |1 - L| + |(-1)-L| < 2
+\end{equation*}
+\begin{equation*}
+\implies |2| < 2
+\end{equation*}
+che è palesemente assurdo.
+\end{example}
+
+\begin{definition}
+Una successione $\{x_n\}$ è limitata se esiste $M \in \R$ tale che $|x_n| \le M$ per ogni $n \in \N$.
+\end{definition}
+
+\begin{example}
+Mostriamo due successioni limitate:
+\begin{equation*}
+\{(-1)^n\}_{n \in \N} \quad \text{è limitata: } M = 1 \quad |(-1)^n| = 1
+\end{equation*}
+
+\begin{equation*}
+\left\{ \frac{1}{n} \right\}_{n \in \N} \quad \text{è limitata: } M = 1 \quad \left|\frac{1}{n}\right| \le 1
+\end{equation*}
+\end{example}
+
+Enunciamo e dimostriamo ora un importante teorema sulla relazione che sussiste tra le definizioni precedenti.
+\begin{theorem}
+Ogni successione convergente è limitata. Nessuna successione divergente è limitata.
+\end{theorem}
+Dimostriamo la prima affermazione del teorema.
+\begin{proof}
+Sia:
+\begin{equation*}
+\lim_{n \to +\infty} x_n = L \qquad L \in \R
+\end{equation*}
+Per definizione di limite esiste un $N$ tale che $L - 1 < x_n < L + 1$ per ogni $n > N$ (ovvero $|x_n| < |L| + 1$).
+Scegliamo $M$:
+\begin{equation*}
+M = max\{|L|+1, |x_1|, |x_2|, \ldots, |x_n|\}
+\end{equation*}
+Allora:
+\begin{itemize}
+\item per $n = 1, \ldots, N$ vale $|x_n| \le M$ perché appartiene all'insieme
+\item per $n > N$ vale $|x_n| \le M$ perché abbiamo detto che $|x_n| < |L| + 1$.
+\end{itemize}
+Abbiamo quindi dimostrato che la successione $\{x_n\}$ è limitata.
+\end{proof}
+Dimostriamo ora la seconda affermazione del teorema.
+\begin{proof}
+Per assurdo, sia $\{x_n\}$ una successione divergente limitata. Allora deve valere:
+\begin{equation*}
+|x_n| < M \qquad \forall n \in \N
+\end{equation*}
+Se il limite della successione è $+\infty$ allora esiste un $N$ tale che per $n > N$ vale $x_n > M$. Questo è assurdo (avevamo detto che $x_n < M$).
+
+Non è neppure possibile che il limite sia $-\infty$: in quel caso dovrebbe essere $x_n < -M$ che è assurdo per $n > N$.
+\end{proof}
+
+Consideriamo con attenzione questi due esempi: 
+\begin{example}
+$\{(-1)^n\}$ è limitata ma non è convergente.
+\end{example}
+\begin{example}
+\begin{equation*}
+x_n = \begin{cases} 0 &n \mbox{ pari} \\ n &n \mbox{ dispari} \end{cases}
+\end{equation*}
+Quindi $\{x_n\} = \{1, 0, 3, 0, 5, \ldots\}$. Essa non è limitata ma non è divergente.
+\end{example}
+
+È necessario prestare quindi attenzione al fatto che il teorema precedente non indica ``se e solo se''.
+
+\begin{theorem}
+Sia
+\begin{equation*}
+\{x_n\}_{n \in \N} \quad e \quad \lim_{n \to +\infty} x_n = x
+\end{equation*}
+\begin{equation*}
+\{y_n\}_{n \in \N} \quad e \quad \lim_{n \to +\infty} y_n = y
+\end{equation*}
+Allora valgono le seguenti:
+\begin{enumerate}
+\item $\{x_n + y_n\}_{n \in \N}$ converge a $x+y$
+\item $\{x_n \cdot y_n\}_{n \in \N}$ converge a $x\cdot y$
+\item se $x_n = k$ allora $x = k$
+\item se $\alpha \in \R$, $\{\alpha \cdot x_n\}$ converge a $\alpha \cdot x$
+\item $\frac{x_n}{y_n}$ converge a $\frac{x}{y}$ se $y_n \neq 0 \; \forall n$ e $y \neq 0$
+\item se $x_n \le y_n$ per ogni $n$, allora $x \le y$
+\item $\{|x_n|\}$ converge a $|x|$
+\end{enumerate}
+\end{theorem}
+
+Dimostriamo a scopo didattico i punti uno e sei.
+\begin{proof}
+Per dimostrare il punto uno, devo far vedere che $\forall \epsilon$ esiste $N$ tale che $\forall n > N$ vale:
+\begin{equation*}
+|(x_n + y_n) - (x+y)| < \epsilon
+\end{equation*}
+Scelgo $N$ tale che $|x_n-x| < \frac{\epsilon}{2} \qquad \forall n > N$. \\
+Scelgo $N'$ tale che $|y_n-y| < \frac{\epsilon}{2} \qquad \forall n > N'$. \\
+Sia $N'' = max\{N, N'\}$.
+Quindi se $n > N''$ allora varranno anche $n > N'$ e $n > N$.
+\begin{equation*}
+\implies |x_n - x| < \frac{\epsilon}{2} \quad \text{e} \quad |y_n - y| < \frac{\epsilon}{2}
+\end{equation*}
+\begin{equation*}
+\implies |(x_n-x)+(y_n-y)| \le |x_n-x|+|y_n-y| < \frac{\epsilon}{2} + \frac{\epsilon}{2} = \epsilon
+\end{equation*}
+\begin{equation*}
+\implies |(x_n+y_n) - (x+y)| < \epsilon \qquad \forall n > N''
+\end{equation*}
+Abbiamo quindi dimostrato che $\lim(x_n+y_n) = (\lim x_n) + (\lim y_n)$.
+\end{proof}
+
+Dimostriamo ora il punto sei:
+\begin{proof}
+Fissato $\epsilon > 0$ per $n > N''$ vale $|x_n-x| < \epsilon$ e $|y_n-y| < \epsilon$.
+Quindi, preso $x < \epsilon + x_n$:
+\begin{equation*}
+\implies x \le \epsilon + y_n < \epsilon + (y + \epsilon) = y + 2\epsilon
+\end{equation*}
+\begin{equation*}
+\implies x < y + 2\epsilon \qquad \forall \epsilon > 0
+\end{equation*}
+\begin{equation*}
+\implies x - y < 2\epsilon \qquad \forall \epsilon > 0
+\end{equation*}
+\begin{equation*}
+\implies x - y \le 0 \implies x \le y
+\end{equation*}
+\end{proof}
+
+Prestiamo attenzione al fatto che non vale lo strettamente minore! Formalmente, non è vero che se $x_n < y_n$ per ogni $n$ allora $\lim x_n < \lim y_n$. Ad esempio $x_n = \frac{1}{n + 1}$ e $y_n = \frac{1}{n}$ hanno entrambi limite $0$, quindi possiamo scrivere $\lim x_n \le \lim y_n$ (con il minore uguale!).
+
+Con quanto abbiamo appreso sopra possiamo già calcolare alcuni limiti interessanti, ad esempio:
+\begin{equation*}
+\lim \frac{1}{n^2} = \lim \left(\frac{1}{n}\right)\cdot\left(\frac{1}{n}\right) = \left(\lim \frac{1}{n}\right)\cdot\left(\lim \frac{1}{n}\right) = 0 \cdot 0 = 0
+\end{equation*}
+
+Enunciamo ora un teorema sulle successioni che richiederebbe la nozione di funzione continua, non fornita per ora in questo corso. Facciamo solo alcuni esempi di funzioni continue: $f(x) = \sin x$, $f(x) = x^a$, $f(x) = a^x$, $f(x)=\log_a x$.
+\begin{theorem}
+Sia $f: [a, b] \rightarrow \R$ una funzione continua e $\{x_n\}$ una successione in $[a,b]$ il cui limite $\lim x_n = x$; allora 
+\begin{equation*}
+\lim_{n \to +\infty} F(x_n) = F(x)
+\end{equation*}
+\end{theorem}
+
+Supponiamo di voler calcolare $\lim \sqrt{\frac{2n+1}{n}}$ tramite il teorema esposto. Calcoliamo il limite senza radice:
+\begin{equation*}
+\lim \frac{2n+1}{n} = \lim \left(2 + \frac{1}{n}\right) = \lim 2 + \lim \frac{1}{n} = 2 + 0 = 2
+\end{equation*}
+Grazie al teorema possiamo affermare che $\lim \sqrt{\frac{2n+1}{n}} = \sqrt{2}$.
+
+\begin{theorem}
+Sia $\{x_n\}$ una successione il cui limite vale $+\infty$ e $\{y_n\}$ una generica successione. Allora:
+\begin{enumerate}
+\item se $\lim y_n = y$ oppure $\lim y_n = +\infty$ allora $\lim x_n + y_n = +\infty$
+\item se $\lim y_n = y > 0$ oppure $\lim y_n = +\infty$ allora $\lim x_n\cdot y_n = +\infty$
+\item se $\alpha \in \R^+$ allora $\lim \alpha \cdot x_n = +\infty$
+\item se $x_n \neq 0$ per ogni $n$ allora $\lim \frac{1}{x_n} = 0$
+\item se $x_n \le y_n$ per ogni $n$ allora $\lim y_n = +\infty$
+\item $\lim|x_n| = +\infty$
+\end{enumerate}
+\end{theorem}
