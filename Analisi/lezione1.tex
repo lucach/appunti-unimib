@@ -63,15 +63,26 @@ Ogni sottoinsieme di $\N$ non vuoto ha un minimo.
 L'inisieme $\set{x \in Q | x > 0}$ non soddisfa il principio del buon ordinamento perché, ad esempio, il suo sottoinsieme $\set{\frac{1}{n} | n > 0}$ non ha minimo.
 \end{example}
 
-\marginnote{Corretto?}[1cm]
-
 \begin{remark}
-Grazie al principio del buon ordinamento vale che $\set{x \in \N | x \subseteq S} = \{1, ..., S\}$.
+Grazie al principio del buon ordinamento vale: 
+\begin{equation*}
+\set{x \in \N | x \le s} = \{1, \ldots, s\}
+\end{equation*}
 \end{remark}
 
 \begin{proposition}[Principio di induzione]
-Sia $P_n$ un enunciato che dipende da $n \in \N$ (ad esempio ``$n$ è pari'', ``$n$ è primo''), supponiamo che $P_1$ sia vero e che valga l'implicazione $P_n \implies P_{n+1}$, allora $P_n$ è vero per ogni $n$.
+Sia $P_n$ un enunciato che dipende da $n \in \N$ (ad esempio ``$n$ è pari'', ``$n$ è primo''). Supponiamo che $P_1$ sia vero e che valga l'implicazione $P_n \implies P_{n+1}$. Allora $P_n$ è vero per ogni $n$.
 \end{proposition}
+
+\begin{proof}
+Sia $S = \set{n \in \N | P_n \text{ è falso}}$.
+Se $S = \emptyset$ non c'è niente da dimostrare.
+Altrimenti, per il principio del buon ordinamento $S$ ha un minimo $k = min\; S$. Non può essere $k = 1$ ($1 \in S$) perché $P_1$ è vero.
+
+Essendo $k>1$, $k-1 \in \N$ (ricorda l'equazione $1+k=x$) e $k-1 \in S$.
+
+Allora $P_{k-1}$ non è falso, quindi $P_{k-1}$ è vero. $P_k$ è vero per ipotesi. Ma questo contraddice l'ipotesi che $k \in S$, quindi il caso $S$ non vuoto non si verifica.
+\end{proof}
 
 Nota che, ad esempio, l'enunciato ``$\forall n,\;n > 0$'' non è un enunciato che dipende da $n$!
 
@@ -102,23 +113,11 @@ Per definizione vale anche che :
 P_{n+1} : \sum\limits_{i=1}^{n+1} i = \sum\limits_{i=1}^n i + (n + 1) =  \frac{1}{2} \cdot (n+1) \cdot n + (n+1)
 \end{equation*}
 
-\marginnote{Da chiarire!}
-Usando $P_n$ si avrebbe ugualmente che
 \begin{equation*}
-\sum\limits_{i=1}^{n+1} i = \frac{1}{2} \cdot (n+1) \cdot (n+2)
+\sum\limits_{i=1}^{n+1} i = \frac{1}{2} (n+1) (n+2)
 \end{equation*}
 
 \end{example}
-
-\begin{proof}
-Sia $S = \set{n \in \N | P_n\;e'\;falso}$.
-Se $S = \emptyset$ non c'è niente da dimostrare.
-Altrimenti, per il principio del buon ordinamento $S$ ha un minimo $k = min\; S$. Non può essere $k = 1$ ($1 \in S$) perché $P_1$ è vero.
-
-Essendo $k>1$, $k-1 \in \N$ (ricorda l'equazione $1+k=x$) e $k-1 \in S$.
-
-Allora $P_{k-1}$ non è falso, quindi $P_{k-1}$ è vero. $P_k$ è vero per ipotesi. Ma questo contraddice l'ipotesi che $k \in S$, quindi il caso $S$ non vuoto non si verifica.
-\end{proof}
 
 \section{Insieme $\Z$}
 
