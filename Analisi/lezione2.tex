@@ -69,39 +69,39 @@ Allora ogni maggiorante $y'$ deve essere $y' \ge y$. Poiché $y$ è un maggioran
 
 \begin{example}
 Proviamo a calcolare $\sup A$ di:
-\begin{equation}
+\begin{equation*}
 A = \left\{\frac{n-1}{n+1} \; \mid \; n \in \N \right\}
-\end{equation}
+\end{equation*}
 Che è l'insieme:
-\begin{equation}
+\begin{equation*}
 A = \left\{0, \frac{1}{3}, \frac{1}{2}, \frac{3}{5}, \ldots \right\}
-\end{equation}
+\end{equation*}
 Ha senso innanzitutto chiedersi se $A$ è limitato superiormente. Possiamo dire che lo è con certezza perché il numeratore è sempre inferiore al denominatore, quindi
-\begin{equation}
+\begin{equation*}
 \frac{n-1}{n+1} < 1
-\end{equation}
+\end{equation*}
 Quindi $1$ è un maggiorante. Dimostriamo che è anche il $\sup$ ($\sup A = 1$).
 
 In altri termini dobbiamo dimostrare che preso $y' < 1$ esiste $x \in A$ tale che $y' < x \le 1$, che equivale a risolvere:
-\begin{equation}
+\begin{equation*}
 y' < \frac{n-1}{n+1}
-\end{equation}
-\begin{equation}
+\end{equation*}
+\begin{equation*}
 y' (n+1) < n-1
-\end{equation}
-\begin{equation}
+\end{equation*}
+\begin{equation*}
 y'n + y' < n -1
-\end{equation}
-\begin{equation}
+\end{equation*}
+\begin{equation*}
 n(1-y')>y'+1
-\end{equation}
-\begin{equation}
+\end{equation*}
+\begin{equation*}
 n > \frac{y'+1}{1-y'}
-\end{equation}
+\end{equation*}
 Poiché $\N$ non è limitato superiormente, esiste sempre una soluzione $n \in N$. Ovvero:
-\begin{equation}
+\begin{equation*}
 \exists x = \frac{n-1}{n+1} \in A \qquad y' < x
-\end{equation}
+\end{equation*}
 Quindi $\sup A = 1$.
 \end{example}
 
@@ -114,28 +114,28 @@ L'insieme dei numeri reali soddisfa tutte le seguenti proprietà, che erano già
 \item La somma è commutativa e associativa, ha un elemento neutro che è lo zero.
 \item Il prodotto è commutativo e associativo, ha un elemento neutro che è l'uno.
 \item Di ogni elemento esiste l'opposto e l'inverso, ovvero:
-\begin{equation}
+\begin{equation*}
 \forall a \in \R \text{ esiste } b \in \R \qquad a + b = 0 \quad (b=-a)
-\end{equation}
-\begin{equation}
+\end{equation*}
+\begin{equation*}
 \forall a \in \R\backslash\{0\} \text{ esiste } b \in \R \qquad a\cdot b = 1 \quad \left(b=\frac{1}{a}\right)
-\end{equation}
+\end{equation*}
 \item È definito un ordinamento:
-\begin{equation}
+\begin{equation*}
 a \le b \text{ e } b \le a \implies a = b
-\end{equation}
-\begin{equation}
+\end{equation*}
+\begin{equation*}
 a \le b \text{ e } b \le c \implies a \le c
-\end{equation}
-\begin{equation}
+\end{equation*}
+\begin{equation*}
 \forall a, b \quad a \le b \text{ o } b \ge a
-\end{equation}
-\begin{equation}
+\end{equation*}
+\begin{equation*}
 a \le b \implies \forall c \quad a + c \le b + c
-\end{equation}
-\begin{equation}
+\end{equation*}
+\begin{equation*}
 a \le b \implies \forall c > 0 \quad a \cdot c \le b \cdot c
-\end{equation}
+\end{equation*}
 \end{itemize}
 
 In aggiunta alle proprietà comuni a $\Q$ abbiamo che se $A \subseteq \R$ è non vuoto, allora $A$ ammette un estremo superiore (eventualmente $\sup  A = +\infty$).
@@ -143,63 +143,63 @@ In aggiunta alle proprietà comuni a $\Q$ abbiamo che se $A \subseteq \R$ è non
 Dobbiamo mostrare ora che esistono i numeri reali e per fare ciò ricorriamo al modello degli \emph{allineamenti decimali}.
 
 Un \emph{allineamento decimale} è una sequenza numerabile di interi del tipo $p_0, p_1, p_2, \ldots $ dove
-\begin{equation}
+\begin{equation*}
 0 \le p_k \le 9 \qquad k \in \N
-\end{equation}
+\end{equation*}
 
 Un allineamento decimale è \emph{periodico} se si ripete da un certo punto in poi, cioè ha la forma:
-\begin{equation}
+\begin{equation*}
 p_0, p_1, \ldots, \underbrace{p_n, p_{n+1}, \ldots, p_{n+k}}_{\text{periodo}}, p_{n+1+k}, \ldots
-\end{equation}
+\end{equation*}
 
 Un allineamento periodico con periodo 0 si dice anche che è limitato (ad esempio $1,5000...$ è limitato).
 
 Dato un allineamento decimale $x$ definiamo il troncamento $k$-esimo
-\begin{equation}
+\begin{equation*}
 r_k(x) = p_0 + \frac{1}{10}p_1 + \ldots + \frac{1}{10^k} p_k
-\end{equation}
+\end{equation*}
 
 Il troncamento $r_0(x)$ è la \emph{parte intera} di $x$ e si indica $[x]$.
 
 Ad ogni $x \in \Q$ possiamo associare un allineamento decimale $T(x) = p_0, p_1, p_2, \ldots$.
-\begin{equation}
+\begin{equation*}
 p_0 = \max \set{n \in \Z | n \le x}
-\end{equation}
-\begin{equation}
+\end{equation*}
+\begin{equation*}
 p_1 = \max \set{n \in \Z | p_0 + \frac{1}{10}n \le x}
-\end{equation}
+\end{equation*}
 e così via, in modo che per ogni $k > 0$ sia
-\begin{equation}
+\begin{equation*}
 p_k = \max \set{n \in Z | \underbrace{r_{k-1}(T(x))}_{p_0+\frac{1}{10}p_1 + \ldots} + \frac{1}{10^k} n \le x}
-\end{equation}
+\end{equation*}
 
 \begin{example}
 Consideriamo $T(x)$ per $x = \frac{3}{2}$, che è $1,5000...$.
 Infatti:
-\begin{equation}
+\begin{equation*}
 p_0 = \max \set{n \in \Z | n \le \frac{3}{2}} = 1
-\end{equation}
-\begin{equation}
+\end{equation*}
+\begin{equation*}
 p_1 = \max \set{n \in \Z | 1 + \frac{1}{10}n \le \frac{3}{2}} = 5
-\end{equation}
-\begin{equation}
+\end{equation*}
+\begin{equation*}
 p_2 = \max \set{n \in \Z | 1 + \frac{5}{10}n + \frac{1}{100}n \le \frac{3}{2} } = 0
-\end{equation}
+\end{equation*}
 
 Prestiamo attenzione al fatto che il comportamento di $T(x)$ per i numeri negativi, così per come è stato definito, è diverso da come ce lo potremmo aspettare. Ad esempio:
-\begin{equation}
+\begin{equation*}
 T(-\frac{3}{2}) = -2,500...
-\end{equation}
+\end{equation*}
 \end{example}
 
 \begin{proposition}
 Per ogni $x \in \Q$, $k > 0$ vale:
-\begin{equation}
+\begin{equation*}
 0 \le x - r_k(T(x)) < \frac{1}{10^k}
-\end{equation}
+\end{equation*}
 Come conseguenza si ha che l'insieme
-\begin{equation}
+\begin{equation*}
 \set{n \in \Z | r_{k-1}((T(x)) + \frac{1}{10^k}n \le x}
-\end{equation}
+\end{equation*}
 contiene 0 e ha 9 come maggiorante.
 \end{proposition}
