@@ -1,0 +1,311 @@
+\chapter{Quinta lezione (20/10/2015)}
+
+\section{Forme di indeterminazione}
+
+In alcuni casi non possiamo stabilire univocamente quanto vale un limite. Chiamiamo tali casi particolari \emph{forme di indeterminazione}. 
+
+$\frac{\infty}{\infty}$ è una forma di indeterminazione, in quanto ho che
+\begin{equation*}
+\lim_{n \to +\infty}{x_n} = +\infty \qquad \text{e} \qquad \lim_{n \to +\infty}{y_n} + \infty
+\end{equation*}
+
+Quindi non posso dire nulla su
+\begin{equation*}
+\lim_{n \to +\infty}{\frac{x_n}{y_n}}
+\end{equation*}
+
+Mostriamo ora tre esempi di limiti che presentano questa forma di indeterminazione.
+\begin{example}
+Un limite con la forma di indeterminazione $\frac{\infty}{\infty}$ è $\lim{\frac{n+1}{n}}$, perché $\lim(n+1) = +\infty$ e $\lim n = +\infty$.
+
+In questo caso il calcolo del limite è banale:
+\begin{equation*}
+\lim_{n \to +\infty}{\frac{n+1}{n}} \quad \left[\frac{\infty}{\infty}\right] = \lim 1 + \lim{\frac{1}{n}} = 1 + 0 = 1
+\end{equation*}
+\end{example}
+
+\begin{example}
+\begin{equation*}
+\lim_{n \to +\infty}{\frac{n+1}{n^2}} \quad \left[\frac{\infty}{\infty}\right] = \lim \frac{1}{n} + \lim{\frac{1}{n^2}} = 0
+\end{equation*}
+\end{example}
+
+\begin{example}
+\begin{equation*}
+\lim_{n \to +\infty}{\frac{n+1}{\sqrt{n}}} \quad \left[\frac{\infty}{\infty}\right] = \lim \sqrt{n} + \lim{\frac{1}{\sqrt{n}}} = +\infty + 0 = +\infty
+\end{equation*}
+\end{example}
+
+Un'altra forma di indeterminazione è $\infty - \infty$. Anche per questa mostriamo tre esempi.
+\begin{example}
+\begin{equation*}
+\lim (n+1) - n \quad [\infty - \infty] = \lim 1 = 1
+\end{equation*}
+\end{example}
+
+\begin{example}
+\begin{equation*}
+\lim (n+1) - n^2 \quad [\infty - \infty] = \lim n^2\left(-1+\frac{1}{n}+\frac{1}{n^2}\right) = -\infty
+\end{equation*}
+\end{example}
+
+\begin{example}
+\begin{equation*}
+\lim (n+(-1)^n) - n \quad [\infty - \infty] = \lim (-1)^n \text{ che non esiste}
+\end{equation*}
+\end{example}
+
+Anche $\infty \cdot 0$ è una forma di indeterminazione. Come per le precedenti, mostriamo tre esempi.
+
+\begin{example}
+\begin{equation*}
+\lim n \cdot \frac{1}{n+1} \quad [\infty \cdot 0] = 1
+\end{equation*}
+\end{example}
+
+\begin{example}
+\begin{equation*}
+\lim n \cdot \frac{1}{\sqrt{n}} \quad [\infty \cdot 0] = +\infty
+\end{equation*}
+\end{example}
+
+\begin{example}
+\begin{equation*}
+\lim n \cdot \frac{1}{n^2} \quad [\infty \cdot 0] = 0
+\end{equation*}
+\end{example}
+
+\section{Teoremi su limiti di successioni}
+\begin{theorem}[Permanenza del segno]
+Sia:
+\begin{equation*}
+\lim_{n \to +\infty}{x_n} = x > 0 \qquad \text{oppure} \qquad \lim_{n \to +\infty}{x_n} = +\infty
+\end{equation*}
+Allora $x_n > 0$ \emph{definitivamente}, ovvero esiste $N \in \N$ tale che $x_n > 0 \;\; \forall n > N$.
+\end{theorem}
+
+Il concetto che abbiamo espresso di \emph{definitivamente} è importante e verrà usato anche in seguito. Dimostriamo ora il teorema.
+
+\begin{proof} \hfill
+\begin{enumerate}[I.]
+\item se $\lim x_n = x > 0$ allora per definizione di limite $\forall \epsilon > 0$ esiste $N$ tale che $x_n \in B_{\epsilon}(x)$. Scegliamo $\epsilon = x$; segue che $x_n \in (x-x, x+x)$. Quindi $x_n > 0$ per ogni $n > N$.
+\item se invece $\lim x_n = +\infty$ allora possiamo dire che $\forall M$ esiste $N$ tale che $x_n > M$ per ogni $n > M$. Scegliamo $M = 0$ e troviamo che $x_n > 0 \; \; \forall n > N$.
+\end{enumerate}
+\end{proof}
+
+\begin{theorem}
+Ogni successione monotona e limitata converge. Ogni successione monotona non limitata diverge. 
+\end{theorem}
+
+Dimostriamo separatamente le due parti del teorema.
+
+\begin{proof}
+Sia $\{x_n\}$ una successione limitata (ricordiamo che questo significa che $\exists M$ tale che $|x_n| \le M \; \forall n$) non decrescente. Imporre la non decrescenza non fa perdere di generalità la dimostrazione, sarebbe sufficiente considerare l'opposto. Non decrescente significa che $x_{n+1} \ge x_n \;\; \forall n$.
+
+Consideriamo ora $\sup \set{x_n | n \in N}$. Questo $\sup$ esiste e lo chiamiamo $\lambda$. L'insieme $\set{x_n | n \in N}$ è limitato (ovvero $\forall y \in \set{x_n | n \in N} \; |y_n| \le M$). Quindi il $\sup$ non è infinito e $\lambda \in \R$.
+
+Vogliamo far vedere, come è prevedibile, che $\lambda = \lim x_n$. Preso $\epsilon > 0$ dev'essere $x_n \in (x-\epsilon, x+\epsilon)$ definitivamente. Per definizione di $\sup$, $\lambda - \epsilon < x_n$ per qualche $N \in \N$. Se $n > N$ allora, visto che la successione è non decrescente, vale $x_n \ge x_N > \lambda - \epsilon$.
+
+Quindi $\forall \epsilon > 0$ esiste $N$ tale che $x_n \in (\lambda - \epsilon, \lambda]$ per ogni $n > N$.
+\end{proof}
+
+\begin{proof}
+Se $\{x_n\}$ è non limitata e non decrescente, allora dobbiamo dimostrare che $\lim x_n = +\infty$.
+
+Per definizione di insieme limitato $\forall M \; \exists N$ tale che $|x_N|>M$. Possiamo supporre che $x_N > M$ (a patto che $M > x_0$). Poiché $\{x_n\}$ è non decrescente, $x_n > x_N \; \forall n > N$.
+
+Quindi $x_n > M \; \forall n > N$ e $\lim x_n = +\infty$.
+\end{proof}
+
+\begin{remark}
+Le successioni che non hanno limite non sono monotone.
+\end{remark}
+Ad esempio, la successione $\{(-1)^n\}_{n \in \N}$ non ha limite (oscilla tra -1 e 1) e non è monotona. La successione $\{1, -1, 2, 3, 4, \ldots \}$ invece ha limite $+\infty$ ma non è monotona.
+
+\begin{theorem}[Confronto tra successioni]
+Siano $\{x_n\}, \{y_n\}, \{z_n\}$ successioni tali che $x_n \le y_n \le z_n$ per ogni $n$. Supponiamo che $\lim x_n = L = \lim z_n$. Allora anche $\lim y_n = L$.
+\end{theorem}
+
+\begin{proof}
+Per $\epsilon > 0$ deve esistere $N \in \N$ tale che $x_n \in (L - \epsilon, L + \epsilon) \; \forall n>N$.
+
+Sia $N'$ tale che $x_n > L - \epsilon \; \forall n > N'$. Sia $N''$ tale che $z_n < L + \epsilon \; \forall n > N''$. Sia inoltre $N = \max\{N', N''\}$.
+Allora per ogni $n > N$ vale la seguente disuguaglianza:
+\begin{equation*}
+L - \epsilon < \underbrace{x_n \le y_n \le z_n}_{\text{per ipotesi}} < L + \epsilon
+\end{equation*}
+Quindi $y_n \in (L-\epsilon, L+\epsilon) \; \forall n > N$.
+\end{proof}
+
+\begin{remark}
+Osserviamo che tale teorema vale anche per limiti infiniti. Se $\lim x_n = +\infty$, $\lim z_n = +\infty$, $x_n \le y_n \le z_n$, allora $\lim y_n = +\infty$.
+\end{remark} 
+
+\section{Coefficienti binomiali e disuguaglianza di Bernoulli}
+Per poter affrontare la \emph{disuguaglianza di Bernoulli}, dobbiamo prima conoscere alcuni cenni sul coefficiente binomiale.
+
+Vale la seguente equazione (detta binomio di Newton):
+\begin{equation*}
+(a+b)^n = \sum_{k=0}^n \binom{n}{k} a^{n-k}b^k
+\end{equation*}
+che esplicitata per i primi esponenti vale:
+\begin{align*}
+(a+b)^0 &= 1 \\
+(a+b)^1 &= a + b \\
+(a+b)^2 &= a^2 + 2ab + b^2 \\
+(a+b)^3 &= a^3 + 3a^2b + 3ab^2 + b^3
+\end{align*}
+
+Considerando solo i coefficienti, essi possono essere anche rappresentati in un triangolo di questo tipo, dove ogni numero è somma dei due numeri sopra di esso (a sinistra e a destra): 
+\begin{center}
+\begin{tabular}{ccccccccc}
+&    &    &    &    &  1\\\noalign{\smallskip\smallskip}
+&    &    &    &  1 &    &  1\\\noalign{\smallskip\smallskip}
+&    &    &  1 &    &  2 &    &  1\\\noalign{\smallskip\smallskip}
+&    &  1 &    &  3 &    &  3 &    &  1\\\noalign{\smallskip\smallskip}
+\end{tabular}
+\end{center}
+
+\begin{definition}
+\begin{equation*}
+\binom{n}{k} \text { tale che } (a+b)^n = \binom{n}{0}a^n + \binom{n}{1}a^{n-1}b + \ldots + \binom{n}{k}a^{n-k}b^k + \ldots + \binom{n}{n}b^n
+\end{equation*}
+\end{definition}
+
+Il coefficiente binomiale deve essere tale in modo che valga la seguente proprietà:
+\begin{equation*}
+\binom{n+1}{k} = \binom{n}{k-1} + \binom{n}{k}
+\end{equation*}
+
+Per far ciò poniamo:
+\begin{equation*}
+\binom{n}{k} = \frac{n!}{k! \, (n-k)!}
+\end{equation*}
+
+Valgono anche le seguenti proprietà, tutte immediatamente e facilmente verificabili a partire dalla definizione:
+\begin{align*}
+\binom{1}{0} &= 1 \\
+\binom{1}{1} &= 1 \\
+\binom{n}{0} &= 1 \\
+\binom{n}{k} &= \binom{n}{n-k} \\
+\binom{n}{1} &= n 
+\end{align*}
+
+Siamo ora pronti a enunciare e dimostrare la disuguaglianza.
+
+\begin{theorem}[Disuguaglianza di Bernoulli]
+Sia $h \ge 0$, allora:
+\begin{equation*}
+(1+h)^n \ge 1 + nh \quad \forall n
+\end{equation*}
+\end{theorem}
+
+\begin{proof}
+\begin{align*}
+(1+h)^n &= \binom{n}{0}1^n + \binom{n}{1}1^{n-1}h + \sum_{k=2}^n \binom{n}{k}h^k \\
+&=  1 + nh + \sum_{k=2}^n \binom{n}{k}h^k
+\end{align*}
+
+Osseriviamo che ogni termine $\binom{n}{k}h^k$ è non negativo. Quindi $(1+h)^n \ge 1 + nh$.
+\end{proof}
+
+\section{$\lim a^n$ e criterio del rapporto}
+
+\begin{theorem}
+Sia $a \neq 0$, allora:
+\begin{equation*}
+\lim_{n \to +\infty} a^n = 
+\begin{cases}
+1 &\mbox{se } a = 1 \\
++\infty &\mbox{se } a > 1 \\
+0 &\mbox{se} -1 < a < 1 \\
+\nexists &\mbox{altrimenti}
+\end{cases}
+\end{equation*}
+\end{theorem}
+
+\begin{proof}
+Discutiamo ciascun caso separatamente.
+\begin{itemize}
+\item se $a=1$ il limite è ovvio
+\item se $a>1$, sia $h = a - 1 > 0$. Quindi possiamo scrivere $\lim a^n = \lim (1+h)^n$. Dalla disuguaglianza di Bernoulli sappiamo che $(1+h)^n \ge 1 + hn \;\; \forall n$. Quindi la successione diverge, poiché $\lim (1 + nh) = +\infty$ (considerato ovviamente $h>0$). In definitiva $\lim a^n = +\infty$.
+
+\item se $-1 < x < 1$ valgono le seguenti:
+\begin{equation*}
+\frac{1}{|a|} = 1 + h
+\end{equation*}
+\begin{equation*}
+\left(\frac{1}{|a|}\right)^n = (1+h)^n \ge 1 + nh
+\end{equation*}
+Consideriamo il reciproco e abbiamo che:
+\begin{equation*}
+0 < |a|^n \le 1 + nh
+\end{equation*}
+Per il teorema del confronto $\lim |a^n| = 0$, cioè $\forall \epsilon \; |a|^n \in B_{\epsilon}(0)$ definitivamente. Quindi $-\epsilon < |a^n| < \epsilon \implies -\epsilon < a^n < \epsilon$. Quindi $a^n \in B_{\epsilon}(0)$ definitivamente.
+
+\item se $a \le -1$ procediamo a una dimostrazione per assurdo. Sia $L$ il limite:
+\begin{itemize}
+\item se $L > 0$ per il teorema della permanenza del segno $a^n$ è definitivamente positivo; assurdo.
+\item se $L = +\infty$ vale lo stesso ragionamento del caso precedente.
+\item se $L < 0$ per il teorema della permanenza del segno $a^n$ è definitivamente negativo; assurdo.
+\item se $L = 0$ allora $\lim |a|^n = 0$. Essendo $|a| \ge 1$, assurdo.
+\end{itemize}
+Quindi la successione non ha limite.
+\end{itemize}
+\end{proof}
+
+\begin{remark}
+Alcuni testi scrivono $\lim\limits_{n \to +\infty} a_n = \infty$ (senza segno) se $\lim\limits_{n \to +\infty} |a_n| = +\infty$. Ad esempio potrebbe esserci scritto che $\lim (-2)^n = \infty$ visto che $\lim |(-2)^n| = +\infty$.
+\end{remark}
+
+\begin{theorem}[Criterio del rapporto]
+Sia $\{x_n\}$ una successione a termini positivi e sia 
+\begin{equation*}
+L = \lim_{n \to +\infty} \frac{x_{n+1}}{x_n}
+\end{equation*}
+Allora:
+\begin{itemize}
+\item se $L > 1$ la successione è definitivamente crescente e $\lim x_n = +\infty$.
+\item se $0 \le L < 1$ la successione è definitivamente decrescente e $\lim x_n = 0$.
+\end{itemize}
+\end{theorem}
+
+\begin{proof} \hfill
+\begin{itemize}
+\item se $L > 1$ allora possiamo imporre $L = 1 + 2\epsilon$. Per definizione di limite $\exists N$ tale che 
+\begin{equation*}
+\frac{x_{n+1}}{x_n} > L - \epsilon \qquad \forall n > N
+\end{equation*}
+\begin{equation*}
+\frac{x_{n+1}}{x_n} > 1 + \epsilon \qquad \forall n > N
+\end{equation*}
+
+Quindi $x_{n+1} > x_n \cdot (1+\epsilon) > x_n$ per $n > N$. Quindi la successione è definitivamente crescente.
+
+Proseguendo otteniamo:
+\begin{align*}
+x_{N+2} &> x_{N+1} \cdot (1+\epsilon) \\
+x_{N+3} &> x_{N+2} \cdot (1+\epsilon) > x_{N+1} \cdot (1+\epsilon)^2 \quad \text { e così via\dots}
+\end{align*}
+Generalizzando:
+\begin{equation*}
+x_n > (1+\epsilon)^{n-(N+1)} \cdot x_{N+1}
+\end{equation*}
+Poiché $(1+\epsilon)^{n-(N+1)}$ diverge a $+\infty$, per il teorema del confronto anche $\lim x_n = +\infty$.
+
+\item se $0 < L < 1$ procediamo in modo analogo al caso precedente. Imponiamo $L = 1 + 2\epsilon$. Per definizione di limite $\exists N$ tale che 
+\begin{equation*}
+\frac{x_{n+1}}{x_n} < L + \epsilon \qquad \forall n > N
+\end{equation*}
+\begin{equation*}
+\frac{x_{n+1}}{x_n} < 1 - \epsilon \qquad \forall n > N
+\end{equation*}
+
+Come prima vale:
+\begin{equation*}
+0 < x_n < (1+\epsilon)^{n-(N+1)} \cdot x_{N+1} \qquad \forall n>N
+\end{equation*}
+
+Per il criterio del confronto, essendo $\lim (1+\epsilon)^{n-(N+1)} \cdot x_{N+1} = 0$, allora $\lim x_n = 0$. Inoltre, $x_{n+1} < x_n \cdot (1 - \epsilon) < x_n$; quindi la successione è definitivamente decrescente.
+\end{itemize}
+\end{proof}
