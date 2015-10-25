@@ -1,0 +1,424 @@
+\chapter{Sesta lezione (23/10/2015)}
+
+\section{Criterio del rapporto (cont.)}
+
+Abbiamo già enunciato e dimostrato il criterio del rapporto; ora ne vogliamo mostrare un'applicazione calcolando un limite particolare.
+
+\begin{example}
+Dati $\alpha, h > 1$ vogliamo calcolare
+\begin{equation*}
+\lim \frac{n^\alpha}{h^n}
+\end{equation*}
+Conoscendo la gerarchia degli infiniti potremmo subito dire che tale limite vale 0. Mostriamo formalmente che ciò è vero, usando il criterio del rapporto.
+\begin{equation*}
+\frac{x_{n+1}}{x_n} = \frac{\frac{(n+1)^\alpha}{h^{n+1}}}{\frac{n^\alpha}{h^n}} = \left(\frac{n+1}{n}\right)^\alpha \cdot \frac{1}{h} = \underbrace{\left(1+\frac{1}{n}\right)^\alpha}_{1} \cdot \, \frac{1}{h} = \frac{1}{h}
+\end{equation*}
+Quindi
+\begin{equation*}
+\lim \frac{x_{n+1}}{x_n} = \lim \left(1+\frac{1}{n}\right)^\alpha \cdot \frac{1}{h} = \frac{1}{h}
+\end{equation*}
+Possiamo dire ciò perché
+\begin{equation*}
+\lim \left(1+\frac{1}{n}\right) = 1
+\end{equation*}
+e quindi anche
+\begin{equation*}
+\lim \left(1+\frac{1}{n}\right)^\alpha = 1^\alpha = 1
+\end{equation*}
+
+Quindi ora poiché il limite è $L = \frac{1}{h}$, che è sicuramente minore di 1, per il criterio del rapporto possiamo dire che $\lim x_n = 0$.
+
+Abbiamo quindi dimostrato che $n^\alpha \ll h^n$. In altre notazioni tale fatto viene espresso come $n^\alpha = o(h^n)$.
+\end{example}
+
+\section{Successioni definite per ricorrenza}
+
+\begin{definition}
+Una successione è \emph{definita per ricorrenza} se è data nella forma
+\begin{equation*}
+\begin{cases}
+x_1 = a \\
+x_{n+1} = F(n, x_n) & \mbox{con }n > 0
+\end{cases}
+\end{equation*}
+\end{definition}
+
+La successione sarà quindi del tipo $\{a, F(1, a), F(2, F(1, a)), \ldots \}$.
+
+Mostriamo ora tre esempi di semplici successioni definite per ricorrenza. Nelle prossime tre successioni osserviamo che è semplice calcolare il termine generale $x_n$.
+\begin{example}
+\begin{equation*}
+\begin{cases}
+x_1 = 1 \\
+x_{n+1} = (n+1) \cdot x_n & \mbox{}n > 0
+\end{cases}
+\end{equation*}
+La successione è del tipo $\{1, 2 \cdot 1, 3 \cdot 2 \cdot 1, \ldots \}$ e si vede chiaramente che $x_n = n!$.
+\end{example}
+
+\begin{example}
+Siano fissati $a$ e $c$ numeri reali.
+\begin{equation*}
+\begin{cases}
+x_1 = a\\
+x_{n+1} = x_n + c& \mbox{}n > 0
+\end{cases}
+\end{equation*}
+La successione è del tipo $\{a, a + c, a + 2c, \ldots \}$ e si vede chiaramente che $x_n = a + (n-1) \cdot c$.
+\end{example}
+
+\begin{example}
+\begin{equation*}
+\begin{cases}
+x_1 = a\\
+x_{n+1} = b \cdot x_n& \mbox{}n > 0
+\end{cases}
+\end{equation*}
+La successione è del tipo $\{a, a \cdot b, a \cdot b^2, \ldots \}$ e si vede chiaramente che $x_n = a \cdot b^{n-1}$.
+\end{example}
+
+Consideriamo ora invece un esempio dove calcolare il termine generale è difficile.
+
+\begin{example}
+\begin{equation*}
+\begin{cases}
+x_1 = 1\\
+x_{n+1} = \frac{2n+1}{n+3} \cdot x_n& \mbox{}n > 0
+\end{cases}
+\end{equation*}
+Anche senza trovare il termine generale vogliamo però riuscire a calcolare il limite della successione. Osserviamo che tutti gli $x_n > 0$ sono positivi, perché $x_1 > 0$ e ogni $\frac{2n+1}{n+3}$ è un termine positivo. La successione è quindi a termini positivi e possiamo quindi applicare il criterio del rapporto.
+\begin{equation*}
+\lim \frac{x_{n+1}}{x_n} = \lim \frac{\frac{2n+1}{n+3} \cdot x_n}{x_n} = \lim \frac{2n + 1}{n + 3} = \lim \frac{2n + 6 - 5}{n + 3} = \lim 2 - \frac{5}{n + 3} = 2
+\end{equation*}
+
+Poiché 2 è maggiore di 1, per il criterio del rapporto la successione diverge a $+\infty$ (ovvero $\lim x_n = +\infty$).
+\end{example}
+
+\begin{example}
+Prendiamo la stessa successione di prima invertendo numeratore e denominatore in $x_{n+1}$.
+\begin{equation*}
+\begin{cases}
+x_1 = 1\\
+x_{n+1} = \frac{n+3}{2n+1} \cdot x_n& \mbox{}n > 0
+\end{cases}
+\end{equation*}
+Valgono tutte le osservazioni fatte nell'esempio precedente. Inoltre, con gli stessi passaggi si può trovare che 
+\begin{equation*}
+\lim \frac{x_{n+1}}{x_n} = \frac{1}{2}
+\end{equation*}
+Poiché $\frac{1}{2} < 1$, per il criterio del rapporto $\lim x_n = 0$.
+\end{example}
+
+\begin{example}
+Consideriamo quest'altro esempio in cui vogliamo calcolare il limite della successione.
+\begin{align*}
+x_n &= \sum_{k=0}^n \frac{1}{2^k} \\
+&= 1 + \frac{1}{2} + \ldots + \frac{1}{2^n}
+\end{align*}
+Si arriva a far vedere che 
+\begin{equation*}
+x_n = 2 - \frac{1}{2^n}
+\end{equation*}
+utilizzando la seguente uguaglianza:
+\begin{equation*}
+\sum_{k=0}^n a^k = \frac{1-a^{n+1}}{1-a}
+\end{equation*}
+e
+\begin{equation*}
+(1 + a + \ldots + a^n)\cdot (1-a) = 1 - a^{n+1}
+\end{equation*}
+Sostituendo ovviamente $a = \frac{1}{2}$ resta
+\begin{equation*}
+\sum_{k=0}^n a^k = \frac{1-\frac{1}{2}^{n+1}}{1-\frac{1}{2}} = 2 \cdot \left(1 - \frac{1}{2}^{n+1} \right) = 2 - \left(\frac{1}{2}\right)^n
+\end{equation*}
+In definitiva scriviamo
+\begin{equation*}
+\lim x_n = \lim 2 - \underbrace{\left(\frac{1}{2}\right)^n}_{0} = 2
+\end{equation*}
+\end{example}
+
+\begin{remark}
+Per ogni $n \ge 1$ vale $n! \ge 2^{n-1}$. Possiamo mostrare che è vero per induzione.
+
+Per $n = 1$ ho che $1! \ge 2^{1-1}$, ovvero $1 \ge 1$ che è vero. Devo ora far vedere che se vale per $n$ allora vale anche per $n + 1$. Quindi:
+\begin{equation*}
+(n+1)! = (n+1)\cdot n! \ge (n+1) \cdot 2^{n-1} \ge 2 \cdot 2^{n-1} = 2^n
+\end{equation*}
+\end{remark}
+
+\section{Numero di Nepero $e$}
+
+\begin{theorem}
+Il limite della successione $\{(1+\frac{1}{n})^n\}$ esiste ed è finito. In particolare la successione converge a un numero che chiamiamo $e$.
+
+Per ogni $k \in \N$ vale
+\begin{equation*}
+\left(1+\frac{1}{k}\right)^k < e < \sum_{h = 0}^k \frac{1}{h!} + \frac{1}{2^{k-1}}
+\end{equation*}
+\end{theorem}
+
+\begin{proof}
+Avevamo già visto l'espressione del binomio di Newton:
+\begin{equation*}
+(a+b)^n = \sum_{k=0}^n \binom{n}{k} a^{n-k} \cdot b^k
+\end{equation*}
+Possiamo applicarla a questo caso. Quindi:
+\begin{align*}
+\left(1+\frac{1}{n}\right)^n &= \sum_{k=0}^n \binom{n}{k} 1^{n-k} \cdot \left(\frac{1}{n}\right)^k \\
+&= \sum_{k=0}^n \binom{n}{k} \frac{1}{n^k}  \\
+&= \sum_{k=0}^n \frac{n!}{k! \cdot (n-k)!} \cdot \frac{1}{n^k} \\
+&= \sum_{k=0}^n \frac{n \cdot (n-1) \cdot \ldots \cdot (n-k+1)}{n! \cdot n^k} 
+\end{align*}
+Per l'ultimo passaggio abbiamo usato l'uguaglianza $n! = (n-k)! \cdot (n-k+1) \cdot \ldots \cdot n$. Possiamo procedere ulteriormente:
+\begin{align*}
+&= \sum_{k=0}^n \frac{1}{k!} \cdot 1 \cdot \frac{n-1}{n} \cdot \frac{n-2}{n} \cdot \ldots \cdot \frac{n-k+1}{n} \\
+&= \sum_{k=0}^n \frac{1}{k!} \cdot 1 \cdot \left(1-\frac{1}{n}\right) \cdot \ldots \cdot \left(1 - \frac{k-1}{n}\right) \\
+\end{align*}
+
+Il nostro scopo è mostrare che la successione è monotona. Sviluppiamo ora la successione per $n+1$ in modo analogo:
+\begin{align*}
+\left(1+\frac{1}{n+1}\right)^{n+1} &= \sum_{k=0}^{n+1} \frac{1}{k!} \cdot \left(1 - \frac{1}{n+1} \right) \cdot \ldots \cdot \left(1 - \frac{k-1}{n+1} \right)
+\end{align*}
+
+Confrontando con quello di prima (che era la somma fino a $n$, quindi con un termine in meno), ho sicuramente che questo (lo ``sviluppo'' per $n+1$) è maggiore. 
+\begin{align*}
+&> \sum_{k=0}^{n} \frac{1}{k!} \cdot \left(1 - \frac{1}{n+1} \right) \cdot \ldots \cdot \left(1 - \frac{k-1}{n+1} \right) \\
+&> \sum_{k=0}^{n} \frac{1}{k!} \cdot \left(1 - \frac{1}{n} \right) \cdot \ldots \cdot \left(1 - \frac{k-1}{n} \right)
+\end{align*}
+
+Avendo tolto un termine positivo dalla successione, sicuramente ho ottenuto qualcosa di più piccolo. Quindi la successione è crescente.
+
+Osserviamo anche che:
+\begin{equation*}
+\left(1 + \frac{1}{n}\right)^n \le \sum_{k=0}^n \frac{1}{k!} = \sum_{k=0}^{n-1} \frac{1}{k!} + \frac{1}{n!} \le \sum_{k=0}^{n-1} \frac{1}{k!} + \frac{1}{2^{n-1}}
+\end{equation*}
+L'ultima disuguaglianza è giustificata dal fatto che $n! > 2^{n-1}$ (dimostrata in precedenza).
+\end{proof}
+
+Considerando i casi particolari $n = 1$ e $n = 2$ possiamo scrivere:
+\begin{equation*}
+(1+1)^1 < e < \frac{1}{0!} + \frac{1}{1!} + \frac{1}{2!} + \frac{1}{2}
+\end{equation*}
+ovvero $2 < e < 3$.
+
+\section{Limiti che si deducono da $e$}
+
+\begin{remark}
+Data una successione $\{a_n\}$ (con $a_n \in \N$) divergente (ovvero $\lim a_n = +\infty$) allora:
+\begin{equation*}
+\lim \left(1 + \frac{1}{a^n}\right)^{a_n} = e
+\end{equation*}
+
+Infatti, fissato un intorno di $e$ sappiamo che $(1+\frac{1}{n})^n \in B_r(e)$ definitivamente. Poiché per definizione di limite $a_n > N$ definitivamente, allora $(1+\frac{1}{a^n})^{a_n} \in B_r(e)$ definitivamente.
+\end{remark}
+
+\begin{example}
+Mostriamo che 
+\begin{equation*}
+\lim_{n \to +\infty} \frac{n!}{n^n} = 0
+\end{equation*}
+
+Applichiamo il criterio del rapporto. Osserviamo innanzitutto che la successione è a termini positivi ($\frac{n!}{n^n} > 0$). Calcoliamo il rapporto:
+\begin{equation*}
+\frac{x_{n+1}}{x_n} = \frac{(n+1)!}{(n+1)^{n+1}} \cdot \frac{n^n}{n!} = (n+1) \cdot \frac{n^n}{(n+1)^{n+1}}
+\end{equation*}
+\begin{equation*}
+= \frac{n^n}{(n+1)^n} = \frac{1}{\left(\frac{n+1}{n}\right)^n} = \frac{1}{\left(1 + \frac{1}{n}\right)^n}
+\end{equation*}
+
+Quindi
+
+\begin{equation*}
+\lim \frac{x_{n+1}}{x_n} = \lim \frac{1}{\left(1 + \frac{1}{n} \right)^n} = \frac{1}{e}
+\end{equation*}
+
+Essendo $e > 1$, $\lim \frac{x_{n+1}}{x_n} < 1$. Quindi, per il criterio del rapporto, $\lim \frac{n!}{n^n} = 0$.
+\end{example}
+
+\begin{example}
+Mostriamo che (fissato $x > 0$)
+\begin{equation*}
+\lim_{n \to +\infty} \frac{x^n}{n!} = 0
+\end{equation*}
+
+Applichiamo il criterio del rapporto. Osserviamo ancora una volta che la successione è a termini positivi ($\frac{x^n}{n!} > 0$ per $x > 0$ fissato). Calcoliamo il rapporto:
+\begin{equation*}
+\lim \frac{x^{(n+1)}}{(n+1)!} \cdot \frac{n!}{x^n} = \lim \frac{x}{n + 1} = 0
+\end{equation*}
+
+Quindi, per il criterio del rapporto, $\lim \frac{x^n}{n!} = 0$.
+\end{example}
+
+\begin{example}
+Mostriamo che 
+\begin{equation*}
+\lim_{n \to +\infty} \frac{1}{(n!)^\frac{1}{n}} = 0
+\end{equation*}
+
+Dobbiamo cioè far vedere che, per $\epsilon$ fissato, $\frac{1}{(n!)^\frac{1}{n}} < \epsilon$ definitivamente.
+
+\begin{equation*}
+\frac{1}{n!} < \epsilon^n \implies \frac{(\frac{1}{\epsilon})^n}{n!} < 1
+\end{equation*}
+
+Per quest'ultimo passaggio abbiamo usato il limite mostrato nell'esempio precedente.
+
+Posto $x = \frac{1}{\epsilon}$ troviamo che, definitivamente, 
+\begin{equation*}
+\frac{(\frac{1}{\epsilon})^n}{n!} < 1
+\end{equation*}
+\end{example}
+
+\begin{example}
+Mostriamo che 
+\begin{equation*}
+\lim_{n \to +\infty} \left(1-\frac{1}{n} \right)^n = \frac{1}{e}
+\end{equation*}
+Consideriamo le due successioni
+\begin{equation*}
+x_n = \left(1-\frac{1}{n} \right)^n \qquad \text{e} \qquad y_n = \left(1+\frac{1}{n} \right)^n
+\end{equation*}
+Sappiamo che $\lim y_n = e$. Quindi ci è sufficiente, per dimostrare l'esempio, far vedere che $\lim x_n y_n = 1$. Procediamo:
+
+\begin{equation*}
+x_ny_n = \left[\left(1-\frac{1}{n}\right) \cdot \left(1+\frac{1}{n}\right) \right]^n = \left(1-\frac{1}{n^2}\right)^n
+\end{equation*}
+Per Bernoulli sappiamo che $(1+x)^n \ge 1 + nx$. Sia $x = -\frac{1}{n^2}$, allora:
+
+\begin{equation*}
+\left(1-\frac{1}{n^2}\right)^n \ge 1 - \frac{n}{n^2} = 1 - \frac{1}{n}
+\end{equation*}
+Questo implica
+\begin{equation*}
+1 - \frac{1}{n} \le x_ny_n \le 1
+\end{equation*}
+Essendo $\lim 1 - \frac{1}{n} = 1$, per il teorema del confronto si ha $\lim x_ny_n =1$. Quindi:
+
+\begin{equation*}
+\lim x_n = \frac{1}{\lim y_n} = \frac{1}{e}
+\end{equation*}
+
+\end{example}
+
+\section{Asintotico}
+\begin{definition}
+Due successioni $x_n, y_n$ sono asintotiche se $y_n \neq 0$ definitivamente e
+\begin{equation*}
+\lim \frac{x_n}{y_n} = 1
+\end{equation*}
+
+Si scrive $x_n \sim y_n$.
+\end{definition}
+
+\begin{remark}
+$x_n \sim y_n \iff y_n \sim x_n$
+\end{remark}
+
+\begin{proposition}
+Se $x_n \sim \overline{x_n}$ e $y_n \sim \overline{y_n}$  allora
+\begin{equation*}
+\lim \frac{x_n}{y_n} = \lim \frac{\overline{x_n}}{\overline{y_n}}
+\end{equation*}
+Cioè il limite di destra esiste se e solo se esiste il limite di sinistra; in tal caso i limiti coincidono.
+
+Inoltre si ha anche che
+\begin{equation*}
+\lim x_n \cdot y_n = \lim \overline{x_n} \cdot \overline{y_n}
+\end{equation*}
+\end{proposition}
+
+
+Dimostriamo didatticamente la seconda parte della proposizione (quella relativa al prodotto).
+
+\begin{proof}
+\begin{equation*}
+\overline{x_n} \cdot \overline{y_n} = \frac{\overline{x_n}}{x_n} \cdot \frac{\overline{y_n}}{y_n} \cdot x_n \cdot y_n
+\end{equation*}
+Poiché
+\begin{equation*}
+\lim \frac{\overline{x_n}}{x_n} \cdot \frac{\overline{y_n}}{y_n} = 1
+\end{equation*}
+allora segue direttamente
+\begin{equation*}
+\lim \overline{x_n} \cdot \overline{y_n} = \lim x_n \cdot y_n
+\end{equation*}
+\end{proof}
+
+Mostriamo ora la risoluzione di un limite grazie alla stima asintotica.
+
+\begin{example}
+\begin{equation*}
+\lim \frac{n + \sqrt{n}}{n + \sqrt{n-1}}
+\end{equation*}
+Sia il numeratore che il denominatore sono asintotici a $n$. Infatti:
+\begin{equation*}
+\frac{n + \sqrt{n}}{n} = 1 + \frac{1}{\sqrt{n}} \sim 1
+\end{equation*}
+\begin{equation*}
+\frac{n + \sqrt{n-1}}{n} = 1 + \sqrt{\frac{1}{n} - \frac{1}{n^2}} \sim 1
+\end{equation*}
+Quindi:
+
+\begin{equation*}
+\lim \frac{n + \sqrt{n}}{n + \sqrt{n-1}} = \lim \frac{n}{n} = 1
+\end{equation*}
+\end{example}
+
+\begin{remark}
+Attenzione al fatto che tale proprietà \emph{non} vale con la somma. Infatti, se $x_n \sim y_n$ \emph{non} posso dire che 
+\begin{equation*}
+\lim x_n + z_n  = \lim y_n + z_n
+\end{equation*}
+\end{remark}
+
+Facciamolo vedere su un esempio. Consideriamo $x_n = n + 1$, $z_n = -n$ e $y_n = n$. Calcoliamo il limite: $\lim x_n + z_n = \lim (n + 1) - n = \lim 1 = 1$. Considerato che $x_n \sim y_n$, si potrebbe essere tentati dal dire che tale limite è uguale a $\lim y_n + z_n = \lim n - n = \lim 0 = 0$. Come è evidente ($0 \neq 1$) staremmo commettendo un grave errore!
+
+\section{Infinitesimi}
+
+\begin{definition}
+Una successione $\{x_n\}$ si dice \emph{infinitesima} se $\lim x_n = 0$.
+\end{definition}
+
+\begin{proposition}
+Sia $\epsilon_n$ una successione infinitesima a termini positivi. Allora:
+\begin{enumerate}
+\item $\sin \epsilon_n \sim \epsilon_n$
+\item $1 - \cos \epsilon_n \sim \frac{1}{2} (\epsilon_n)^2$
+\item $\lim (1+\epsilon_n)^\frac{1}{\epsilon_n} = e$
+\item $\log (1 + \epsilon_n) \sim \epsilon_n$
+\item $e^\epsilon_n - 1 \sim \epsilon_n$
+\item $(1+\epsilon_n)^\alpha - 1 \sim \alpha \cdot \epsilon_n$
+\end{enumerate}
+\end{proposition}
+
+Dimostriamo le prime due implicazioni, le restanti sono lasciate come esercizio al lettore.
+
+\begin{proof}
+Dimostrare il primo punto equivale a far vedere che
+\begin{equation*}
+\lim \frac{\sin \epsilon_n}{\epsilon_n} = 1
+\end{equation*}
+Dalla circonferenza goniometrica, con qualche passaggio, possiamo ricavare che
+\begin{equation*}
+\sin \epsilon_n < \epsilon_n < \tan \epsilon_n
+\end{equation*}
+\begin{equation*}
+\frac{1}{\sin \epsilon_n} > \frac{1}{\epsilon_n} > \frac{1}{\tan \epsilon_n}
+\end{equation*}
+Moltiplichiamo per $\sin \epsilon_n$:
+\begin{equation*}
+1 > \frac{\sin \epsilon_n}{\epsilon_n} > \underbrace{\frac{\sin \epsilon_n}{\tan \epsilon_n}}_{\cos \epsilon_n}
+\end{equation*}
+Sappiamo che $\lim \cos \epsilon_n = \cos 0 = 1$. Quindi:
+\begin{equation*}
+1 > \frac{\sin \epsilon_n}{\epsilon_n} > 1
+\end{equation*}
+Per il teorema del confronto $\lim \frac{\sin \epsilon_n}{\epsilon_n} = 1$.
+\end{proof}
+
+\begin{proof}
+Riscrivamo la seconda proprietà enunciata sfruttando l'uguaglianza $\cos 2x = 1 - 2\sin^2x$ e ponendo $\epsilon_n = 2x$:
+\begin{equation*}
+\frac{1-\cos \epsilon_n}{\frac{1}{2}(\epsilon_n)^2} = \frac{1 - (1-2\sin^2 \frac{\epsilon_n}{2})}{\frac{1}{2}(\epsilon_n)^2} = \frac{2\sin^2 \frac{\epsilon_n}{2}}{\frac{1}{2}(\epsilon_n)^2} \sim \frac{2(\frac{\epsilon_n}{2})^2}{\frac{1}{2}(\epsilon_n)^2} = 1
+\end{equation*}
+\end{proof}
