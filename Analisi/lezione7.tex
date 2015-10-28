@@ -1,0 +1,341 @@
+\chapter{Settima lezione (27/10/2015)}
+
+\section{Infinitesimi e limiti notevoli}
+
+\begin{definition}
+Una successione $\{x_n\}$ si dice \emph{infinitesima} se $\lim x_n = 0$.
+\end{definition}
+
+\begin{proposition}
+Sia $\epsilon_n$ una successione infinitesima a termini positivi. Allora:
+\begin{enumerate}
+\item $\sin \epsilon_n \sim \epsilon_n$
+\item $1 - \cos \epsilon_n \sim \frac{1}{2} (\epsilon_n)^2$
+\item $\lim (1+\epsilon_n)^\frac{1}{\epsilon_n} = e$
+\item $\log (1 + \epsilon_n) \sim \epsilon_n$
+\item $e^\epsilon_n - 1 \sim \epsilon_n$
+\item $(1+\epsilon_n)^\alpha - 1 \sim \alpha \cdot \epsilon_n$
+\end{enumerate}
+\end{proposition}
+
+Dimostriamo singolarmente ciascuna implicazione.
+
+\begin{proof}
+Dimostrare il primo punto equivale a far vedere che
+\begin{equation*}
+\lim \frac{\sin \epsilon_n}{\epsilon_n} = 1
+\end{equation*}
+Dalla circonferenza goniometrica, con qualche passaggio, possiamo ricavare che
+\begin{equation*}
+\sin \epsilon_n < \epsilon_n < \tan \epsilon_n
+\end{equation*}
+\begin{equation*}
+\frac{1}{\sin \epsilon_n} > \frac{1}{\epsilon_n} > \frac{1}{\tan \epsilon_n}
+\end{equation*}
+Moltiplichiamo per $\sin \epsilon_n$:
+\begin{equation*}
+1 > \frac{\sin \epsilon_n}{\epsilon_n} > \underbrace{\frac{\sin \epsilon_n}{\tan \epsilon_n}}_{\cos \epsilon_n}
+\end{equation*}
+Sappiamo che $\lim \cos \epsilon_n = \cos 0 = 1$. Quindi:
+\begin{equation*}
+1 > \frac{\sin \epsilon_n}{\epsilon_n} > 1
+\end{equation*}
+Per il teorema del confronto $\lim \frac{\sin \epsilon_n}{\epsilon_n} = 1$.
+\end{proof}
+
+\begin{proof}
+Riscrivamo la seconda proprietà enunciata sfruttando l'uguaglianza $\cos 2x = 1 - 2\sin^2x$ e ponendo $\epsilon_n = 2x$:
+\begin{equation*}
+\frac{1-\cos \epsilon_n}{\frac{1}{2}(\epsilon_n)^2} = \frac{1 - (1-2\sin^2 \frac{\epsilon_n}{2})}{\frac{1}{2}(\epsilon_n)^2} = \frac{2\sin^2 \frac{\epsilon_n}{2}}{\frac{1}{2}(\epsilon_n)^2} \sim \frac{2(\frac{\epsilon_n}{2})^2}{\frac{1}{2}(\epsilon_n)^2} = 1
+\end{equation*}
+\end{proof}
+
+\begin{proof}
+Il terzo punto ci chiede di mostrare che 
+\begin{equation*}
+\lim (1+\epsilon_n)^\frac{1}{\epsilon_n} = e
+\end{equation*}
+Osserviamo che qualora $\epsilon_n = \frac{1}{n}$, allora tale limite può essere riscritto come $(1+\frac{1}{n})^n$ e vale $e$ per definizione di $e$ stesso.
+
+Dimostriamo ora il caso generale. Poniamo $x_n$ uguale alla parte intera di $\frac{1}{\epsilon_n}$ (si scrive $x_n = [\frac{1}{\epsilon_n}]$). Quindi $x_n \in \Z$ e $x_n \le \frac{1}{\epsilon_n} < x_n + 1$. Quindi
+\begin{equation*}
+\left(1+\frac{1}{x_n+1}\right)^{x_n} \le (1+\epsilon_n)^{x_n} \le (1+\epsilon_n)^\frac{1}{\epsilon_n} \le \left(1+\frac{1}{x_n} \right)^\frac{1}{\epsilon_n} \le \left(1+\frac{1}{x_n} \right)^{x_n+1}
+\end{equation*}
+Proviamo ad applicare il criterio del confronto. Consideriamo
+\begin{equation*}
+\lim \left(1+\frac{1}{x_n+1}\right)^{x_n+1} = e
+\end{equation*}
+poiché $\lim x_n+1 = +\infty$. Quindi:
+\begin{equation*}
+\lim \left(1+\frac{1}{x_n+1}\right)^{x_n} = \frac{\lim \left(1+\frac{1}{x_n+1}\right)^{x_n+1}}{\lim 1+\frac{1}{x_n+1}} = \frac{e}{1} = e
+\end{equation*}
+\begin{equation*}
+\lim \left(1+\frac{1}{x_n}\right)^{x_n+1} = \lim \left(1+\frac{1}{x_n}\right)^{x_n} \cdot \lim \left(1+\frac{1}{x_n}\right) = e \cdot 1 = e
+\end{equation*}
+Quindi per il criterio del confronto anche $\lim(1+\epsilon_n)^\frac{1}{\epsilon_n} = e$.
+\end{proof}
+
+\begin{proof}
+Dire che $\log(1+\epsilon_n) \sim \epsilon_n$ significa dire che
+\begin{equation*}
+\lim \frac{\log(1+\epsilon_n)}{\epsilon_n} = 1
+\end{equation*}
+Procediamo con semplici passaggi:
+\begin{equation*}
+\lim \frac{\log(1+\epsilon_n)}{\epsilon_n} = \lim \log(1+\epsilon_n)^\frac{1}{\epsilon_n} = \log(\lim (1+\epsilon_n)^\frac{1}{\epsilon_n}) = \log e = 1
+\end{equation*}
+\end{proof}
+
+\begin{proof}
+Il quinto punto ci chiede di far vedere che $e^{\epsilon_n}-1 \sim \epsilon_n$. Chiamiamo $\delta_n = e^{\epsilon_n}-1$; tale $\delta_n$ è una successione infinitesima a termini positivi. Quindi possiamo scrivere:
+\begin{equation*}
+\lim \frac{e^{\epsilon_n}-1}{\epsilon_n} = \lim \frac{\delta_n}{\log(1+\delta_n)} = \frac{1}{\lim \frac{\log(1+\delta_n)}{\delta_n}} = \frac{1}{1} = 1
+\end{equation*}
+\end{proof}
+
+\begin{proof}
+In ultimo dobbiamo dimostrare che $(1+\epsilon_n)^\alpha - 1 \sim \alpha \cdot \epsilon_n$. Procediamo:
+\begin{equation*}
+e^{\alpha \log(1+\epsilon_n)} - 1 = \frac{e^{\alpha \log(1+\epsilon_n)} - 1}{\alpha \log(1+\epsilon_n)} \cdot \alpha \log(1+\epsilon_n)
+\end{equation*}
+La frazione è del tipo $\frac{e^{\delta_n}-1}{\delta_n}$ ed è quindi asintotica a 1. Quindi il tutto è asintotico a $\alpha \log(1+\epsilon_n)$ che è a sua volta asintotico a $\alpha \cdot \epsilon_n$.
+\end{proof}
+
+Mostriamo ora un limite che si può calcolare con quanto abbiamo visto finora.
+\begin{example}
+\begin{equation*}
+\lim \frac{\left(\cos \frac{1}{n} - 1\right) \cdot \sin \frac{1}{n}}{\log \left(1+\frac{1}{n}\right)}
+\end{equation*}
+Studiamo separatamente i tre termini. Il primo è $1-\cos \frac{1}{n} \sim \frac{1}{2} \frac{1}{n^2}$, il secondo $\sin \frac{1}{n} \sim \frac{1}{n}$, il terzo $\log(1+\frac{1}{n}) \sim \frac{1}{n}$. Riscriviamo il limite iniziale:
+\begin{equation*}
+\lim \frac{-\frac{1}{2} \frac{1}{n^2} \cdot \frac{1}{n}}{\frac{1}{n}} = \lim -\frac{1}{2} \cdot \frac{1}{n^2} = 0
+\end{equation*}
+\end{example}
+
+Dai limiti studiati se ne possono dedurre facilmente altri:
+\begin{itemize}
+\item Sulla tangente:
+\begin{equation*} 
+\lim \frac{\tan \epsilon_n}{\epsilon_n} = \lim \frac{\sin \epsilon_n}{\cos \epsilon_n} \cdot \frac{1}{\epsilon_n} = \lim \frac{\sin \epsilon_n}{\epsilon_n} \cdot \frac{1}{\cos \epsilon_n} = 1 \cdot 1 = 1
+\end{equation*}
+Quindi $\tan \epsilon_n \sim \epsilon_n$.
+\item Sull'$\arcsin$: $\arcsin \epsilon_n \sim \epsilon_n$. Infatti, sia $\delta_n = \arcsin \epsilon_n$; $\delta_n$ è infinitesima perché $\arcsin$ è continua. Quindi
+\begin{equation*}
+\lim \frac{\delta_n}{\sin \delta_n} = 1 = \lim \frac{\arcsin \epsilon_n}{\epsilon_n}
+\end{equation*}
+\end{itemize}
+
+\begin{remark}
+\begin{equation*}
+\lim (1+h\epsilon_n)^\frac{1}{\epsilon_n} = e^h
+\end{equation*}
+Sappiamo infatti che, considerando $h\epsilon_n$ come $\delta_n$, 
+\begin{equation*}
+\lim (1+h\epsilon_n)^\frac{1}{h\cdot\epsilon_n} = e
+\end{equation*}
+Elevando alla $h$ entrambi i membri si verifica l'uguaglianza iniziale.
+\end{remark}
+
+\section{Scala degli infiniti}
+Scriviamo $a \ll b$ se $\lim \frac{a_n}{b_n} = 0$; vale la seguente \emph{scala di infiniti}:
+\begin{equation*}
+(\log n)^\beta \ll n^\alpha \ll A^n \ll n! \ll n^n
+\end{equation*}
+Si può scrivere anche $a_n = o(b_n)$. È necessario comunque prestare attenzione al fatto che se $a_n = o(b_n)$ e $c_n = o(b_n)$, non è comunque detto che $a_n = c_n$. 
+
+Ad esempio consideriamo le due successioni $\frac{1}{n^2}$ e $\frac{1}{n^3}$ che sono entrambe $=o(\frac{1}{n})$. Infatti il limite del rapporto di entrambe per $\frac{1}{n}$ vale 0, ma questo non implica in alcun modo che $\frac{1}{n^2} = \frac{1}{n^3}$.
+
+\begin{proposition}
+Sia $\{a_n\}$ una successione a termini positivi divergente (quindi a $+\infty$), allora:
+\begin{enumerate}
+\item se $a_n \in \N \; \forall n$ e $A > 1$, $A^{a_n} \ll a_n!$
+\item se $A > 1$, ${a_n}^\alpha \ll A^{\alpha_n}$ con $\alpha$ reale
+\item se $\alpha > 0$, $(\log a_n)^\beta \ll {a_n}^\alpha$
+\end{enumerate}
+\end{proposition}
+
+Dimostriamo la prima implicazione.
+
+\begin{proof}
+Sappiamo che
+\begin{equation*}
+\lim_{j \to +\infty} \frac{A^j}{j!} = 0
+\end{equation*}
+Per definizione di limite $\forall \epsilon \; \exists N$ tale che $\frac{A^j}{j!} < \epsilon$ per $j > N$. Essendo $\lim a_n = +\infty$, esiste $M$ tale che $a_n > N$ per ogni $n > M$.
+
+Quindi $n > M \implies a_n > N \implies \frac{A^{a_n}}{a_n!} < \epsilon$. Quindi il limite $\lim \frac{A^{a_n}}{a_n!} = 0$.
+\end{proof}
+
+\begin{example}
+Esistono dei limiti che non possiamo calcolare con la sostituzione asintotica. Ad esempio 
+\begin{equation*}
+\lim_{n \to +\infty} n^2 \cdot \left(\sin \frac{1}{n} - \frac{1}{n}\right)
+\end{equation*}
+pur essendo $\sin \frac{1}{n} \sim \frac{1}{n}$, il limite non è calcolabile con i metodi visti finora.
+\end{example}
+
+\section{Serie}
+Proviamo a formalizzare l'idea di ``somma infinita''. Abbiamo già visto la notazione
+\begin{equation*}
+\sum_{j=1}^k x_j = x_1 + \ldots + x_k
+\end{equation*}
+con cui intendiamo la somma dei primi $k$ termini. 
+
+\begin{definition}
+Data una successione $x_j$ si definisce \emph{serie} l'espressione simbolica
+\begin{equation*}
+\sum_{j=1}^\infty x_j
+\end{equation*}
+\end{definition}
+
+Data una serie $\sum_{j=1}^\infty x_j$, si definisce la \emph{successione delle somme parziali} $\{s_n\}_{n \in \N}$:
+\begin{equation*}
+\{s_n\} = \sum_{j=1}^n x_j
+\end{equation*}
+
+Si dice che la serie \emph{converge} se $\{s_n\}$ converge. In tal caso $\lim s_n$ è detto \emph{somma della serie}. In modo analogo si dice che la serie \emph{diverge} se $\{s_n\}$ diverge.
+
+Il \emph{carattere} di una serie è la sua proprietà di essere convergente, divergente o indeterminata.
+
+\begin{remark}
+Se due serie differiscono per un numero finito di termini; allora hanno lo stesso carattere.
+\end{remark}
+Date
+\begin{equation*}
+\sum_{j=1}^\infty a_j \quad \text{e} \quad \sum_{j=1}^\infty b_j
+\end{equation*}
+supponiamo $a_n = b_n$ per ogni $n > N$. Chiamiamo:
+\begin{equation*}
+s_n = \sum_{j=1}^n a_j \quad \text{e} \quad t_n = \sum_{j=1}^n b_j
+\end{equation*}
+
+Se $n > N$ la differenza $s_n - t_n$ non dipende da $n$. Considerando l'elemento successivo vedo che $s_{n+1} - t_{n+1} = s_n + a_{n+1} - (t_n + b_{n+1}) = s_n - t_n$.
+
+Quindi $\{s_n\}$ converge se e solo se $\{t_n\}$ converge. Allo stesso modo $\{s_n\}$ diverge se e solo se $\{t_n\}$ diverge.
+
+\begin{remark}
+Se $\sum_{j=1}^\infty x_j$ converge a $L$ e $\sum_{j=1}^\infty y_j$ converge a $M$, allora $\sum_{j=1}^\infty (x_j + y_j)$ converge a $L+M$.
+\end{remark}
+
+Sia $\{s_n\}$ la successione delle somme parziali di $\sum_{j=1}^\infty x_j$ e $\{t_n\}$ la successione delle somme parziali di $\sum_{j=1}^\infty y_j$. La successione delle somme parziali di $\sum_{j=1}^\infty (x_j + y_j)$ sia $\{z_j\}$.
+
+Per definizione
+\begin{equation*}
+z_n = \sum_{j=1}^n (x_j+y_j) = \sum_{j=1}^n x_j + \sum_{j=1}^n y_j = s_n + t_n
+\end{equation*}
+Poiché $\lim s_n = L$ e $\lim t_n = M$, allora $\lim (s_n+t_n) = L + M$.
+
+\begin{remark}
+Se $\sum_{j=1}^\infty x_j$ converge a $L$, allora $\sum_{j=1}^\infty \alpha x_j$ converge a $\alpha L$. Questo perché $\lim (\alpha s_n) = \alpha \lim s_n$.
+\end{remark}
+
+\begin{example}[Serie di Mengoli]
+Consideriamo la serie di Mengoli:
+\begin{equation*}
+\sum_{j=1}^\infty \frac{1}{j(j+1)}
+\end{equation*}
+Con qualche passaggio si mostra che $\frac{1}{j(j+1)}$ è uguale a $\frac{1}{j} - \frac{1}{j+1}$. Esplicitiamo $s_n$ e traiamo vantagggio da quanto abbiamo appena scritto:
+\begin{equation*}
+s_n = \frac{1}{2} + \frac{1}{6} + \ldots + \frac{1}{n(n+1)}
+\end{equation*}
+\begin{equation*}
+s_n = \left(\frac{1}{1} - \frac{1}{2}\right) + \left(\frac{1}{2}-\frac{1}{3}\right) + \ldots + \left(\frac{1}{n} - \frac{1}{n-1} \right)
+\end{equation*}
+Semplificando i termini opposti restano solo il primo e l'ultimo. Quindi $s_n = 1 - \frac{1}{n+1}$. Quindi $\lim s_n = \lim (1-\frac{1}{n+1}) = 1$. Possiamo quindi dire che la serie converge e ha somma 1.
+
+\end{example}
+
+\begin{example}[Serie geometrica]
+Fissato un $x$ reale, consideriamo la serie geometrica di ragione $x$, che per convenzione facciamo partire da 0:
+\begin{equation*}
+\sum_{j=0}^\infty x^j
+\end{equation*}
+In questo caso
+\begin{equation*}
+s_n = \sum_{j=0}^n x^j = \frac{1-x^{n+1}}{1+x}
+\end{equation*}
+L'ultima uguaglianza è giustificata dalla formula, già vista, $(1+x+\ldots+x^n)(1-x) = 1 + x + \ldots + x^n - x - \ldots - x^n - x^{n+1}$ in cui si semplificano a due a due tutti i termini tranne 1 e $x^{n+1}$.
+\end{example}
+Possiamo quindi scrivere
+\begin{equation*}
+\lim s_n = \lim \frac{1-x^{n+1}}{1-x}
+\end{equation*}
+
+Osserviamo che (ricordando $\lim x^n$ già studiato in precedenza):
+\begin{equation*}
+\lim_{n \to +\infty}x^{n+1} = \lim_{n \to +\infty}x^n = 
+\begin{cases}
+0 & \mbox{se } |x| < 1 \\
+1 & \mbox{se } x = 1 \\
++\infty & \mbox{se } x > 1 \\
+\nexists & \mbox{se } x < 1 \\
+\end{cases}
+\end{equation*}
+
+In definitiva:
+\begin{itemize}
+\item se $|x| < 1$ allora $\lim s_n = \frac{1}{1-x}$ e quindi la serie converge.
+\item se $x > 1$ allora $\lim s_n = \frac{x^{n-1}-1}{x-1} = +\infty$ e quindi la serie diverge
+\item se $x = 1$ allora $\sum_{j=0}^n 1^j = \sum_{j=0}^n 1 = 1 + 1 + \ldots = +\infty$. In altre parole $s_n=n+1$ e quindi $\lim s_n = +\infty$ e la serie diverge.
+\end{itemize}
+
+\begin{proposition}
+Una serie a termini non negativi
+\begin{equation*}
+\sum_{j=1}^\infty x_j \qquad x_j \ge 0
+\end{equation*}
+o converge o diverge a $+\infty$.
+\end{proposition}
+\begin{proof}
+La dimostrazione è semplice. Consideriamo $s_n = x_1 + \ldots + x_n$ e $s_{n+1} = x_1 + \ldots + x_{n+1} = s_n + x_{n+1}$. Possiamo dire con certezza che $s_{n+1} \ge s_n$ (perché $x_{n+1} \ge 0$). Quindi $\{s_n\}$  è non decrescente. Quindi o converge o diverge a $+\infty$.
+\end{proof}
+
+\begin{proposition}[Criterio del confronto per le serie]
+Siano $\sum_{j=1}^\infty x_j$ e $\sum_{j=1}^\infty y_j$ serie a termini non negativi e sia $x_j \le y_j$ per ogni $j$. Allora:
+\begin{enumerate}
+\item se $\sum_{j=1}^\infty y_j$ converge $\implies \sum_{j=1}^\infty x_j$ converge
+\item se $\sum_{j=1}^\infty x_j$ diverge $\implies \sum_{j=1}^\infty y_j$ diverge
+\end{enumerate}
+\end{proposition}
+
+\begin{proof}
+Sia $\{s_n\}$ la successione delle somme parziali di $\sum_{j=1}^\infty x_j$ e $\{t_n\}$ la successione delle somme parziali di $\sum_{j=1}^\infty y_j$. Allora vale $s_n \le t_n$, inoltre $0 \le s_n \le t_n$.
+
+Nel primo caso $\{t_n\}$ converge e quindi è limitata. Allora anche $\{s_n\}$ è limitata. Essendo monotona, converge.
+
+Nel secondo caso $\{s_n\}$ diverge. Quindi anche $\{t_n\}$ diverge per il criterio del confronto.
+\end{proof}
+
+\begin{example}
+Consideriamo la serie 
+\begin{equation*}
+\sum_{j=1}^\infty \frac{1}{j^2}
+\end{equation*}
+Possiamo confrontare questa serie a quella di Mengoli. Quindi possiamo dire, ad esempio, che:
+\begin{equation*}
+\frac{1}{j^2} \le \frac{2}{j(j+1)} \implies \frac{1}{j} \le \frac{2}{j+1} \implies j+1 \le 2j
+\end{equation*}
+Poiché sappiamo che $\sum_{j=1}^\infty \frac{2}{j(j+1)}$ converge, allora anche $\sum_{j=1}^\infty \frac{1}{j^2}$ converge.
+\end{example}
+
+\begin{proposition}[Condizione necessaria di Cauchy per la convergenza delle serie]
+Se la serie $\sum_{j=1}^\infty x_j$ converge, allora $\lim\limits_{j \to +\infty} x_j = 0$.
+\end{proposition}
+
+\begin{proof}
+Sia $\{s_n\}$ la successione delle somme parziali. Consideriamo $s_{n+1} = s_n + x_{n+1}$. A questo punto:
+\begin{equation*}
+\lim_{n \to +\infty} x_n+1 = \lim (s_{n+1} - s_n) = \lim s_{n+1} - \lim s_n = L - L = 0
+\end{equation*}
+Nel penultimo passaggio, posso fare ciò perché abbiamo supposto la convergenza.
+\end{proof}
+
+\begin{example}
+Possiamo chiederci se la seguente serie converge.
+\begin{equation*}
+\sum_{j=1}^\infty \left(1 + \frac{1}{j}\right)
+\end{equation*}
+La risposta è no, perché $\lim 1+\frac{1}{j} = 1$ che è diverso da 0. Inoltre, notando che la serie è a termini positivi, possiamo dire che diverge a $+\infty$.
+\end{example}
+
+Ricordiamo inoltre che la condizione necessaria di Cauchy non è sufficiente: ad esempio, la serie $\sum_{j=1}^\infty \frac{1}{j}$ soddisfa tale condizione ma diverge.
