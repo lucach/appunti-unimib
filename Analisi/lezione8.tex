@@ -1,0 +1,283 @@
+\chapter{Ottava lezione (30/10/2015)}
+
+\section{Serie armonica generalizzata}
+
+Introduciamo una notazione comoda. Se $\sum_{j=0}^\infty x_j$ converge a $s$, cioè la successione delle somme parziali $\{s_n\}$ converge a $s$ (ovvero $s_n = \sum_{j=0}^n x_j$), allora scriviamo:
+\begin{equation*}
+\sum_{j=0}^\infty x_j = s
+\end{equation*}
+
+Al termine della lezione precedente avevamo visto la condizione di Cauchy. Ribadiamo ancora una volta che non vale il viceversa, mostrando un esempio.
+
+\begin{example}[Serie armonica]
+La serie
+\begin{equation*}
+\sum_{j=1}^\infty \frac{1}{j}
+\end{equation*}
+soddisfa $\lim \frac{1}{j} = 0$ ma non converge. Tale serie viene chiamata ``serie armonica'' e possiamo considerare anche quella generalizzata (con $\alpha$ reale):
+\begin{equation*}
+\sum_{j=1}^\infty \frac{1}{j^\alpha}
+\end{equation*}
+\end{example}
+
+\begin{theorem}
+La serie armonica diverge; la serie armonica generalizzata converge per $\alpha > 1$ e diverge per $\alpha < 1$.
+\end{theorem}
+
+\begin{proof}
+La serie armonica è una serie a termini positivi, quindi o converge o diverge. Confrontiamo i primi termini una successione che chiamiamo $\{z_j\}$ costruita in modo che ogni termine sia maggiore di quello della serie armonica. Scriviamo nella prima riga i termini della serie armonica e nella seconda quelli di $\{z_j\}$:
+\begin{equation*}
+x_1 = \frac{1}{1} \quad x_2 = \frac{1}{2} \quad x_3 = \frac{1}{3} \quad x_4 = \frac{1}{4} \quad x_5 = \frac{1}{5} \quad \ldots 
+\end{equation*}
+\begin{equation*}
+x_1 = \frac{1}{1} \quad x_2 = \frac{1}{2} \quad x_3 = \frac{1}{4} \quad x_4 = \frac{1}{4} \quad x_5 = \frac{1}{8} \quad \ldots 
+\end{equation*}
+
+Formalmente $z_j = \frac{1}{2^k}$ dove $2^{k-1} < j \le 2^k$. Analizziamo ora $\{s_n\}$, che definiamo come la successione delle somme parziali di $\{z_j\}$.
+
+\begin{align*}
+s_1 &= z_1 = 1 \\
+s_2 &= 1 + \frac{1}{2} \\
+s_4 &= 1 + \frac{1}{2} + 2 \cdot \left(\frac{1}{4}\right) \\
+s_8 &= 1 + \frac{1}{2} + 2 \cdot \left(\frac{1}{4}\right) + 4 \cdot \left(\frac{1}{8}\right)\\
+\end{align*}
+
+Si vede abbastanza facilmente che
+\begin{align*}
+s_{2^k} &= s_{2^{k-1}} + 2^{k-1} \cdot \frac{1}{2^k} \\
+s_{2^k} &= s_{2^{k-1}} + \frac{1}{2} \\
+s_{2^k} &= 1 + \frac{k}{2}
+\end{align*}
+
+A questo punto possiamo calcolare 
+\begin{equation*}
+\lim_{k \to +\infty} s_{2^k} = +\infty
+\end{equation*}
+Quindi $\{s_n\}$ non è limitata e quindi non può convergere. Allora $\sum z_j$ non converge, quindi diverge (essendo a termini positivi).
+
+Osservando che $z_j \le \frac{1}{j}$ per ogni $j$ e che $\sum_{j=1}^\infty z_j$ diverge; allora $\sum_{j=1}^\infty \frac{1}{j}$ diverge.
+
+\end{proof}
+
+Per $\alpha < 1$ il teorema ci dice che $\sum_{j=1}^\infty \frac{1}{j^\alpha}$ diverge. Infatti se $\alpha < 1$ allora $j^\alpha < j$ e quindi $\frac{1}{j^\alpha} > \frac{1}{j}$. Quindi posso confrontare questa serie con $\frac{1}{j}$. Per il criterio del confronto diverge anch'essa.
+
+Non dimostreremo il caso $\alpha > 1$, ma ci limitiamo ad osservare che se $\alpha = 2$ allora la serie è $\sum_{j=1}^\infty \frac{1}{j^2}$; abbiamo già visto che converge per confronto con quella di Mengoli.
+
+\section{Criterio del rapporto per le serie}
+
+\begin{theorem}[Criterio del rapporto per le serie]
+Sia $\sum_{j=1}^\infty x_j$ una serie a termini positivi. Se esiste il limite
+\begin{equation*}
+L = \lim_{j \to +\infty} \frac{x_{j+1}}{x_j}
+\end{equation*}
+allora:
+\begin{enumerate}
+\item se $L < 1$ la serie è convergente
+\item se $L > 1$ la serie è divergente
+\end{enumerate}
+\end{theorem}
+
+Mostriamo alcuni esempi di applicazione del teorema.
+\begin{example}
+La serie
+\begin{equation*}
+\sum_{n=0}^\infty \frac{x^n}{n!}
+\end{equation*}
+converge per ogni $x$. Infatti, applicando il criterio del rapporto
+\begin{equation*}
+\frac{x^{n+1}}{(n+1)!} \cdot \frac{n!}{x^n} = \frac{x}{n+1}
+\end{equation*}
+e $\lim \frac{x}{n+1} = 0$. Poiché il limite è minore di 1, la serie è convergente.
+
+È interessante inoltre notare che per $x = 1$ la serie $\sum_{n=0}^\infty \frac{1^n}{n!}$ vale esattamente $e$.
+\end{example}
+
+\begin{example}
+Studiamo la serie
+\begin{equation*}
+\sum_{n=0}^\infty nx^n \qquad x \in (0,1)
+\end{equation*}
+applicando il criterio del rapporto. Quindi:
+\begin{equation*}
+\frac{(n+1)x^{n+1}}{nx^n} = x \cdot \frac{n+1}{n}
+\end{equation*}
+
+Il limite di $x \cdot \frac{n+1}{n}$ vale $x$ e quindi per $0 < x < 1$ la serie converge.
+\end{example}
+
+Rimarchiamo il concetto che se $L = \lim \frac{x_{n+1}}{x_n} = 1$ non possiamo concludere né che la serie converge né che diverge. Infatti:
+\begin{example}
+$\sum_{j=1}^\infty \frac{1}{j}$ diverge e il suo limite è 1:
+\begin{equation*}
+\lim_{j \to +\infty} \frac{\frac{1}{j+1}}{\frac{1}{j}} = \frac{j}{j+1} = 1
+\end{equation*}
+\end{example}
+\begin{example}
+$\sum_{j=1}^\infty \frac{1}{j^2}$ converge e il suo limite è 1:
+\begin{equation*}
+\lim_{j \to +\infty} \frac{\frac{1}{(j+1)^2}}{\frac{1}{j^2}} = \frac{j^2}{(j+1)^2} = 1
+\end{equation*}
+\end{example}
+
+Dimostriamo il teorema.
+\begin{proof} \hfill
+\begin{enumerate}
+\item 
+Se $L < 1$ scelgo $h$ in modo che $L < h < 1$. Allora so che $\frac{x_{j+1}}{x_j}$ è definitivamente minore di $h$.
+
+Quindi esiste $N$ tale che $\frac{x_{j+1}}{x_j} < h$ per ogni $j > N$. Sviluppando i termini successivi:
+\begin{align*}
+x_{N+2} &< hx_{N+1} \\
+x_{N+3} &< hx_{N+2} < h^2x_{N+1} \\
+x_{N+K+1} &< h^kx_{N+1}
+\end{align*} 
+
+Quindi $\sum_{j=N+1}^\infty x_j$ converge perché $\sum h^kx_{N+1}$ converge (quest'ultima converge perché è una serie geometrica di ragione $h < 1$). Se converge a partire da $N+1$ in poi, allora tutta la serie converge. Quindi $\sum_{j=0}^\infty x_j$ converge.
+
+\item
+Se $L > 1$ procediamo in modo analogo al caso precedente. Prendiamo $1 < h < L$, quindi $\frac{x_{j+1}}{x_j} > h$ definitivamente. Come prima, osservando i passaggi, arriviamo a dire che $x_{N+k+1} > h^kx_{N+1}$.
+
+Osserviamo che $\sum_{k=0}^\infty h^kx_{N+1} = x_{N+1}\sum_{k=0}^\infty h^k$ che diverge perché è una serie geometrica di ragione maggiore di 1. Quindi per confronto anche $\sum_{j=N+1}^\infty x_j$ diverge e quindi diverge anche $\sum_{j=0}^\infty x_j$.
+\end{enumerate}
+\end{proof}
+
+\section{Criterio della radice}
+\begin{theorem}[Criterio della radice]
+Sia $\sum_{j=1}^\infty x_j$ una serie a termini positivi tale che il limite
+\begin{equation*}
+L = \lim_{j \to +\infty} \sqrt[j]{x}
+\end{equation*}
+esiste ed è finito. Allora:
+\begin{enumerate}
+\item se $L < 1$ la serie converge
+\item se $L > 1$ la serie diverge
+\end{enumerate}
+\end{theorem}
+
+Al solito mostriamo alcuni esempi prima della dimostrazione.
+\begin{example}
+\begin{equation*}
+\sum_{j=1}^\infty \left(\frac{1}{j!}\right)^j = \sum x_j
+\end{equation*}
+Applicando il criterio della radice:
+\begin{equation*}
+\sqrt[j]{x_j} = \sqrt[j]{\left(\frac{1}{j!}\right)^j} = \frac{1}{j!}
+\end{equation*}
+Quindi:
+\begin{equation*}
+\lim \sqrt[j]{x_j} = \lim \frac{1}{j!} = 0
+\end{equation*}
+Poiché 0 è minore di 1, la serie converge.
+\end{example}
+
+\begin{example}
+\begin{equation*}
+\sum_{j=2}^\infty \left(\frac{1}{\log j}\right)^j = \sum x_j
+\end{equation*}
+Applicando il criterio della radice:
+\begin{equation*}
+\sqrt[j]{x_j} = \sqrt[j]{\left(\frac{1}{\log j}\right)^j} = \frac{1}{\log j}
+\end{equation*}
+Quindi:
+\begin{equation*}
+\lim \sqrt[j]{x_j} = \lim \frac{1}{\log j} = 0
+\end{equation*}
+Poiché 0 è minore di 1, la serie converge.
+\end{example}
+
+Non ha a che fare con il criterio della radice, ma osserviamo che l'esempio appena fatto privo dell'elevamento a $j$ (quindi $\sum_{j=2}^\infty \frac{1}{\log j}$) diverge perché $\frac{1}{\log j}$ lo posso confrontare con $\frac{1}{j}$.
+
+Poiché $\log j = o(j)$, allora $\frac{1}{\log j} > \frac{1}{j}$ definitivamente. Poiché $\sum \frac{1}{j}$ diverge, allora anche $\frac{1}{\log j}$ diverge.
+
+\begin{proof}
+Studiamo le due affermazioni:
+\begin{enumerate}
+\item 
+Se $L < 1$, sia $L < h < 1$. Allora so che $\sqrt[j]{x_j} < h$ definitivamente. Elevando alla $j$ entrambi i membri si trova che $x_j < h^j$ definitivamente.
+
+Essendo $h < 1$ allora $\sum_{j=0}^\infty$ converge. Allora per confronto converge anche $\sum_{j=0}^\infty x_j$.
+
+\item Se $L > 1$ allora posso dire direttamente che  $\sqrt[j]{x_j} > 1$ definitivamente. Elevando alla $j$ entrambi i membri si trova che $x_j < 1$ definitivamente.
+
+Osserviamo che $\sum x_j > \sum 1$. Poiché $\sum 1$ diverge ($\lim 1 \neq 0$ e $1 + 1 + \ldots = +\infty$), allora anche $\sum x_j$ diverge.
+
+Alternativamente possiamo dire che $\lim x_j$ non può essere 0 perché $x_j$ da un certo punto in poi è 1. Non è quindi soddisfatta la condizione di Cauchy e quindi la serie diverge.
+\end{enumerate}
+\end{proof}
+
+\section{Confronto asintotico tra serie}
+\begin{definition}
+Date due serie a termini positivi $\sum_{j=0}^\infty x_j$ e $\sum_{j=0}^\infty y_j$, diciamo che sono \emph{asintoticamente equivalenti} se $x_j \sim y_j$, cioè $\lim \frac{x_j}{y_j} = 1$.
+\end{definition}
+
+\begin{theorem}[Criterio del confronto asintotico]
+Due serie a termini positivi asintoticamente equivalenti posso essere o entrambe convergenti o entrambe divergenti.
+\end{theorem}
+
+\begin{example}
+Studiamo la serie 
+\begin{equation*}
+\sum_{n=1}^\infty \frac{n^2 + 3\sqrt{n}-4}{2n^3\sqrt{n+1}}
+\end{equation*}
+
+Osserviamo che il numeratore è asintotico a $n^2$ e il denominatore a $2n^3\sqrt{n}$. Il termine generale della serie è quindi:
+\begin{equation*}
+\frac{n^2 + 3\sqrt{n}-4}{2n^3\sqrt{n+1}} \sim \frac{n^2}{2n^3\sqrt{n}} = \frac{1}{2n\sqrt{n}} = \frac{1}{2n^{\frac{3}{2}}}
+\end{equation*}
+
+La serie di partenza è quindi asintoticamente equivalente a $\sum_{n=1}^\infty \frac{1}{2n^{\frac{3}{2}}}$. Siccome questa è una serie armonica generalizzata con $\alpha = \frac{3}{2}$, che è maggiore di 1, essa converge. Quindi, per il teorema del confronto asintotico, anche la serie di partenza converge.
+\end{example}
+
+\begin{example}
+Studiamo la serie 
+\begin{equation*}
+\sum_{n=1}^\infty \frac{\cos n^2 + \sqrt{n}}{n}
+\end{equation*}
+
+Osserviamo che $-1 \le \cos n^2 \le 1$, quindi $\cos n^2 + \sqrt{n} \sim \sqrt{n}$.
+
+La serie di partenza è quindi asintoticamente equivalente a $\sum_{n=1}^\infty \frac{\sqrt{n}}{n} = \frac{1}{n^\frac{1}{2}}$. Poiché $\frac{1}{2}$ è minore di 1, la serie diverge.
+\end{example}
+
+\begin{proof}
+Siano $\sum x_j$ e $\sum y_j$ due serie a termini positivi asintoticamente equivalenti. Sappiamo quindi che $\lim \frac{x_j}{y_j} = 1$.
+
+Possiamo considerare un intorno di 1, ad esempio $(\frac{1}{2}, \frac{3}{2})$. Dev'essere $\frac{1}{2} < \frac{x_j}{y_j} < \frac{3}{2}$ definitivamente. Moltiplicando tutti i termini per $y_j$ otteniamo:
+\begin{equation*}
+\frac{1}{2} \cdot y_j < x_j < \frac{3}{2} \cdot y_j
+\end{equation*}
+Ora:
+\begin{enumerate}
+\item se $\sum y_j$ diverge, allora $\sum \frac{1}{2} y_j$ diverge. Quindi $\sum x_j$ diverge per confronto.
+\item se $\sum y_j$ converge, allora $\sum \frac{3}{2} y_j$ converge. Quindi $\sum x_j$ converge per confronto.
+\end{enumerate}
+\end{proof}
+
+\section{Serie assolutamente convergenti}
+\begin{definition}
+Una serie $\sum_{j=0}^\infty x_j$ si dice \emph{assolutamente convergente} se converge $\sum_{j=0}^\infty |x_j|$.
+\end{definition}
+
+\begin{theorem}
+Se una serie è assolutamente convergente allora è anche convergente.
+\end{theorem}
+
+\begin{example}
+Consideriamo la serie
+\begin{equation*}
+\sum_{j=1}^\infty \frac{\sin j}{j^2}
+\end{equation*}
+e notiamo che \emph{non} è a termini positivi. Tuttavia possiamo studiare 
+\begin{equation*}
+\sum_{j=1}^\infty \left\lvert \frac{\sin j}{j^2} \right\rvert = \sum_{j=1}^\infty \frac{|\sin j|}{j^2}
+\end{equation*}
+che è una serie a termini positivi. Osserviamo che $|\sin j| \le 1$, quindi
+\begin{equation*}
+\frac{|\sin j|}{j^2} \le \frac{1}{j^2}
+\end{equation*}
+Sappiamo che $\frac{1}{j^2}$ converge (è una serie armonica generalizzata con $\alpha = 2$). Quindi per confronto anche $\sum \frac{|\sin j|}{j^2}$ converge.
+
+Quindi $\sum \frac{\sin j}{j^2}$ è assolutamente convergente. Applicando il teorema, possiamo dire che è anche convergente.
+\end{example}
+
+Prestiamo attenzione: non vale il viceversa.
