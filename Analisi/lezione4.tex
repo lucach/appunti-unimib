@@ -1,6 +1,6 @@
 \chapter{Quarta lezione (16/10/2015)}
 
-\section{Limiti di una successione}
+\section{Limite di una successione}
 
 \begin{definition}
 Si dice che $L \in \R$ è il limite di $\{x_n\}_{n \in \N}$ se per ogni $\epsilon > 0$ esiste un $N$ tale che, per ogni $n > N$, vale:
@@ -13,7 +13,7 @@ Si scrive:
 \end{equation*}
 \end{definition}
 
-\begin{theorem}[Teorema di unicità del limite]
+\begin{theorem}[\bfseries Teorema di unicità del limite]
 Sia $\{x_n\}$ una successione. Se $\{x_n\}$ ha limite $L$ e $\{x_n\}$ ha limite $L'$, allora $L = L'$.
 \end{theorem}
 
@@ -132,7 +132,7 @@ che è palesemente assurdo.
 \end{example}
 
 \begin{definition}
-Una successione $\{x_n\}$ è limitata se esiste $M \in \R$ tale che $|x_n| \le M$ per ogni $n \in \N$.
+Una successione $\{x_n\}$ è \emph{limitata} se esiste $M \in \R$ tale che $|x_n| \le M$ per ogni $n \in \N$.
 \end{definition}
 
 \begin{example}
@@ -159,7 +159,7 @@ Sia:
 Per definizione di limite esiste un $N$ tale che $L - 1 < x_n < L + 1$ per ogni $n > N$ (ovvero $|x_n| < |L| + 1$).
 Scegliamo $M$:
 \begin{equation*}
-M = max\{|L|+1, |x_1|, |x_2|, \ldots, |x_n|\}
+M = \max\{|L|+1, |x_1|, |x_2|, \ldots, |x_n|\}
 \end{equation*}
 Allora:
 \begin{itemize}
@@ -239,7 +239,7 @@ Dimostriamo ora il punto sei:
 Fissato $\epsilon > 0$ per $n > N''$ vale $|x_n-x| < \epsilon$ e $|y_n-y| < \epsilon$.
 Quindi, preso $x < \epsilon + x_n$:
 \begin{equation*}
-\implies x \le \epsilon + y_n < \epsilon + (y + \epsilon) = y + 2\epsilon
+x \le \epsilon + y_n < \epsilon + (y + \epsilon) = y + 2\epsilon
 \end{equation*}
 \begin{equation*}
 \implies x < y + 2\epsilon \qquad \forall \epsilon > 0

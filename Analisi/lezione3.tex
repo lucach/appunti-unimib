@@ -46,7 +46,7 @@ Sia $\mathcal{A}$ l'insieme degli allineamenti decimali ammissibili. Definiamo $
 T : \Q \rightarrow \mathcal{A}
 \end{equation*}
 
-Poniamo $\R = \mathcal{A}$. L'ordinamento su $\mathcal{A}$ è definito nel seguente modo: $p_0, p_1, \dots, p_k < q_0, q_1, \dots, q_k$ se e solo se, detto $k = min = \set{i | p_i \neq q_i}$, si ha $p_k < q_k$. 
+Poniamo $\R = \mathcal{A}$. L'ordinamento su $\mathcal{A}$ è definito nel seguente modo: $p_0, p_1, \dots, p_k < q_0, q_1, \dots, q_k$ se e solo se, detto $k = \min \set{i | p_i \neq q_i}$, si ha $p_k < q_k$. 
 
 \begin{example}
 Consideriamo il banale ordinamento tra le seguenti coppie di allineamenti:
@@ -66,16 +66,15 @@ L'insieme $\mathcal{A}$ è totalmente ordinato.
 Ogni $X \subset \mathcal{A}$ non vuoto ha un estremo superiore.
 \end{proposition}
 
-\marginnote{TODO \\ esempio}[1cm]
 \begin{proof}
 Se $X$ non è limitato superiormente, allora $\sup X = +\infty$.
 
 Se $X$ è limitato superiormente, allora esiste sicuramente un maggiorante $M$. \\
 Per ogni $k \in \Z$ con $k \ge 0$ definiamo la funzione $a_k : \mathcal{A} \rightarrow \Z$ (che estrae la $k$-esima cifra); ovvero: $a_k(p_0, p_1, \dots, p_k) = p_k$.
 
-Osserviamo che $\set{a_0(z) | z \in X}$ è limitato superiormente perché $M$ è un suo maggiorante.
+Osserviamo che $\set{a_0(z) | z \in X}$ è limitato superiormente perché $M$ è un suo maggiorante. Ad esempio se $X = \{1.2, 2.3, 3.4 \}$ allora $\set{a_0(z) | z \in X} = \{1, 2, 3\}$ e quindi $M = 4$.
 
-Sia $q_0 = max \set{a_p(z) | z \in X}$.
+Sia $q_0 = max \set{a_p(z) | z \in X}$. Considerando ancora l'esempio sopra, in questo caso $q_0 = 3$.
 
 Se $k > 0$: $\set{a_k(z) | z \in X} \subseteq \{0, \dots, 9\}$.
 
@@ -87,9 +86,9 @@ Sia $z = p_0, \dots, p_k$ di X; sia $j = min \set{p_j \neq q_j}$ con $z \neq y$.
 q_j = max \underbrace{\set{a_j(z) | z \in X a_0(z) = q_0, \dots, a_{j-1}(z) = q_{j-1}}}_{C}
 \end{equation*}
 
-Notiamo che $C$ contiene $z$. Ciò implica che $\underbrace{a_j(z)}_{p_j} \le q_j$, ma per la definizione precedente $p_j \neq q_j$. \\
-$\implies p_j < q_j$ \\
-$\implies z < y$, quindi $y$ è effettivamente un maggiorante. \\
+Notiamo che $C$ contiene $z$. Ciò implica che $\underbrace{a_j(z)}_{p_j} \le q_j$, ma per la definizione precedente $p_j \neq q_j$. 
+
+Ciò implica $p_j < q_j$, che a sua volta implica $z < y$. Quindi $y$ è effettivamente un maggiorante. \\
 
 Preso $y' \le y$ devo dimostrare che $\exists z \in X$ tale che $y' < z$. \\
 $y' = p_0, p_1, \dots$ \\
@@ -97,7 +96,7 @@ $y = q_0, q_1, \dots$.\\
 Supponiamo che $p_i = q_i$ e $p_k < q_k$ per ogni $i < k$. Per definizione di $q_k$ esiste $z \in X$ tale che $a_i(z) = q_i$ per $i \le k$. Per costruzione questo implica $y' < z$. Abbiamo quindi dimostrato che $y = \sup X$.
 \end{proof}
 
-Per ora abbiamo definito $(\mathcal{A}, \le)$. Dobbiamo però ancora definire la somma in $\mathcal{A}$, si pone: $x + y = \sup \set{T(r_k(x)+r_k(y)) | k \in \N}$ dove $x, y$ sono allineamenti. 
+Per ora abbiamo definito $(\mathcal{A}, \le)$. Dobbiamo però ancora definire la somma in $\mathcal{A}$. Si pone: $x + y = \sup \set{T(r_k(x)+r_k(y)) | k \in \N}$ dove $x, y$ sono allineamenti. 
 
 Possiamo inoltre definire in modo analogo il prodotto.
 
@@ -134,7 +133,7 @@ Valgono le solite proprietà:
 \item $T(1) = 1$.
 \end{itemize}
 
-\begin{proposition}[Proprietà di Archimede]
+\begin{proposition}[\bfseries Proprietà di Archimede]
 Dati $a, b$ reali positivi esiste un $n \in \N$ tale che $n \cdot a > b$.
 \end{proposition}
 
@@ -158,11 +157,11 @@ Dato $x \in \R$ positivo e $n \in \N$ esiste un unico reale positivo, $y$, tale 
 \end{theorem}
 
 \begin{definition}
-Dato $x$ reale positivo e $\frac{p}{q} \in \Q$ (assumendo senza perdita di generalità che $q > 0$), si pone $x^{\frac{p}{q}} = (\sqrt[q]{x})^p$.
+Dato $x$ reale positivo e $\frac{p}{q} \in \Q$ (assumendo senza perdita di generalità $q > 0$), si pone $x^{\frac{p}{q}} = (\sqrt[q]{x})^p$.
 
 Se $x \ge 1$ reale e $y \in \R$ definiamo $x^y = \sup \set{x^\frac{p}{q} | \frac{p}{q} \le y}$.
 
-Se $x < 1$ possiamo invertire: $x^y = (\frac{1}{x})^{-y})$.
+Se $x < 1$ possiamo invertire: $x^y = (\frac{1}{x})^{-y}$.
 
 Valgono le solite proprietà.
 \end{definition}
@@ -183,7 +182,7 @@ Dati $a, b \in \R$ sono definiti i seguenti intervalli (riportati solo nelle for
 \end{align*}
 
 \begin{definition}
-Dati $x \in \R$ e $r \in R$ (con $r > 0$), si dice intorno circolare di $x$ di raggio $r$ l'intervallo $B_r(x) = (x-r, x+r) = \set{y \in \R | |x-y| < r}$.
+Dati $x \in \R$ e $r \in \R$ (con $r > 0$), si dice intorno circolare di $x$ di raggio $r$ l'intervallo $B_r(x) = (x-r, x+r) = \set{y \in \R | |x-y| < r}$.
 
 
 Definiamo inoltre $B_r'(x) = B_r(x)\backslash\{x\} = (x-r, x) \cup (x, x+r)$.
@@ -199,7 +198,7 @@ Inoltre osserviamo che $|x+y| \le |x| + |y|$.
 
 \section{Successioni}
 
-Una successione è una funzione $x:\N \rightarrow \R$ ($n \rightarrow x_n$).
+Una \emph{successione} è una funzione $x:\N \rightarrow \R$ ($n \rightarrow x_n$).
 
 Tale funzione viene rappresentata con la notazione $\{x_1, x_2, x_3, \dots\}$ oppure $\{x_n\}_{n \in \N}$.
 
@@ -243,7 +242,10 @@ Si dice che $L \in \R$ è il limite di $\{ x_n \}$ se per ogni intorno $B_r(L)$ 
 
 Analogamente per ogni $r > 0$ esiste $N \in \N$ tale che $L-r < x_n < L+r$ per ogni $n > N$.
 
-Si scrive $\lim\limits_{n \to +\infty}{x_n} = L$.
+Si scrive
+\begin{equation*}
+\lim_{n \to +\infty}{x_n} = L
+\end{equation*}
 \end{definition}
 
 \begin{example}

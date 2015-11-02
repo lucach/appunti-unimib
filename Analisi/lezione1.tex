@@ -31,7 +31,7 @@ Nell'insieme $\N$ esiste una relazione di ordinamento ($a \le b$) tale per cui:
 \begin{enumerate}[I.]
 \item $a \le b$ e $b \le a \implies a = b$
 \item $a \le b \le c \implies a \le c$
-\item $\forall a,b \;\; a < b$ oppure $b < a$
+\item $\forall a,b \;\; a \le b$ oppure $b \le a$
 \end{enumerate}
 
 
@@ -55,7 +55,7 @@ Anche $\set{x \in \Q | x > 0}$, l'insieme dei numeri razionali, soddisfa le cond
 Dato un insieme totalmente ordinato (scriviamo $(S, \le)$), $X$ è il minimo di $S$ se $x \in S$ e per ogni $y \in S$ vale $x \le y$.
 \end{definition}
 
-\begin{proposition}[Principio del buon ordinamento]
+\begin{proposition}[\bfseries Principio del buon ordinamento]
 Ogni sottoinsieme di $\N$ non vuoto ha un minimo.
 \end{proposition}
 
@@ -70,7 +70,7 @@ Grazie al principio del buon ordinamento vale:
 \end{equation*}
 \end{remark}
 
-\begin{proposition}[Principio di induzione]
+\begin{proposition}[\bfseries Principio di induzione]
 Sia $P_n$ un enunciato che dipende da $n \in \N$ (ad esempio ``$n$ è pari'', ``$n$ è primo''). Supponiamo che $P_1$ sia vero e che valga l'implicazione $P_n \implies P_{n+1}$. Allora $P_n$ è vero per ogni $n$.
 \end{proposition}
 
@@ -145,14 +145,10 @@ a + 0 = 0 + a = a \;\;\; \forall a
 Dato $a \in \Z$ esiste $x \in \Z$ tale che $a+x=0$ (si scrive $x=-a$).
 
 Per passi:
-\begin{equation*}
-b - a = b + (-a)
-\end{equation*}
-
-
-\begin{equation*}
+\begin{align*}
+b - a = b + (-a) \\
 a + (b-a) = b
-\end{equation*}
+\end{align*}
 
 che è la soluzione di $a+x=b$ cercata.
 
@@ -162,7 +158,7 @@ Nota inoltre che $a \cdot x = b$ non ha soluzioni per $a=0,\;b\neq 0$ perché $0
 &=1 \cdot x + 0 \cdot x
 \end{align*}
 
-Sottraendo $-(1 \cdot x)$ a entrambi i membri risulta $0 = 0 \cdot x$.
+Sottraendo $(1 \cdot x)$ a entrambi i membri risulta $0 = 0 \cdot x$.
 
 \section{Insieme $\Q$ e oltre}
 
@@ -181,7 +177,7 @@ $x = \frac{1}{a}$, da cui $\frac{b}{a} = b \cdot \frac{1}{a}$ che è la soluzion
 Infatti:
 
 \begin{equation*}
-a \cdot \frac{b}{a} = a \cdot b \cdot \frac{1}{a} = b (a(\frac{1}{a})) = b \cdot 1 = b
+a \cdot \frac{b}{a} = a \cdot b \cdot \frac{1}{a} = b \left(a\left(\frac{1}{a}\right)\right) = b \cdot 1 = b
 \end{equation*}
 
 È evidente che i numeri razionali non vanno bene per l'analisi numerica. Supponiamo di voler misurare un segmento in gessetti: potrebbero volerci quattro gessi ``e un pezzetto''. Potremmo dividere il gessetto a metà e scoprire che la lunghezza del segmento è 4 gessi + 1 gessetto + ``un pezzettino''. Non è detto che questo processo termini! Infatti non tutti gli intervalli si possono rappresentare con un numero razionale.  
@@ -205,13 +201,13 @@ Quindi, $x^2 = 2$ non ha soluzione in $\Q$.
 \section{Estremo superiore e maggioranti}
 
 \begin{definition}
-Un sottoinsieme $A \subseteq \Q$ è limitato superiormente se esiste un $k \in \Q$ tale che $a \le k$ per ogni $a \in A$. 
+Un sottoinsieme $A \subseteq \Q$ è \emph{limitato superiormente} se esiste un $k \in \Q$ tale che $a \le k$ per ogni $a \in A$. 
 
-Un tale $k$ è detto maggiorante di $A$.
+Un tale $k$ è detto \emph{maggiorante} di $A$.
 \end{definition}
 
 \begin{definition}
-Dato $A \subseteq \Q$ non vuoto e limitato superiormente, si dice estremo superiore di $A$ il minimo dei maggioranti, se esiste. (Si indica $\sup A$.)
+Dato $A \subseteq \Q$ non vuoto e limitato superiormente, si dice \emph{estremo superiore} di $A$ il minimo dei maggioranti, se esiste. (Si indica $\sup A$.)
 \end{definition}
 
 Se $A$ è non vuoto ma non è limitato superiormente, allora $\sup A = + \infty$.
@@ -248,10 +244,9 @@ $A$ non ha un estremo superiore in $\Q$.
 Sia $x \in \Q$ un maggiorante. Allora $x^2 \neq 2$. 
 
 \begin{itemize}
-\marginnote{Da chiarire}[1cm]
 \item 
-Se $x^2 < 2$ vale $(x+\frac{1}{n})^2$, ovvero $x^2 + \frac{2}{n} + \frac{1}{n^2}$.
-Per $n$ sufficientemente grandi $y = x + \frac{1}{n}$. Essendo $y^2 < 2$, basta che $\frac{2}{n} + \frac{1}{n^2} \le 2 - x^2$.
+Se $x^2 < 2$, consideriamo l'insieme $(x+\frac{1}{n})^2$ al variare di $n$ (sviluppando: $x^2 + \frac{2}{n} + \frac{1}{n^2}$).
+Per $n$ sufficientemente grande $y = x + \frac{1}{n}$. Essendo $y^2 < 2$, basta che $\frac{2}{n} + \frac{1}{n^2} \le 2 - x^2$.
 
 Ovvero
 \begin{equation*}
@@ -271,7 +266,7 @@ x^2 - \frac{2}{n} + \frac{1}{n^2} &> 2 \\
 n^2 \cdot (x^2 - 2) - 2n + 1 &> 0
 \end{align*}
 
-che è vera per $n$ sufficientemente grandi.
+che è vera per $n$ sufficientemente grande.
 
 \end{itemize}
 

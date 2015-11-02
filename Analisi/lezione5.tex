@@ -76,7 +76,7 @@ Anche $\infty \cdot 0$ è una forma di indeterminazione. Come per le precedenti,
 \end{example}
 
 \section{Teoremi su limiti di successioni}
-\begin{theorem}[Permanenza del segno]
+\begin{theorem}[\bfseries Permanenza del segno]
 Sia:
 \begin{equation*}
 \lim_{n \to +\infty}{x_n} = x > 0 \qquad \text{oppure} \qquad \lim_{n \to +\infty}{x_n} = +\infty
@@ -102,7 +102,7 @@ Dimostriamo separatamente le due parti del teorema.
 \begin{proof}
 Sia $\{x_n\}$ una successione limitata (ricordiamo che questo significa che $\exists M$ tale che $|x_n| \le M \; \forall n$) non decrescente. Imporre la non decrescenza non fa perdere di generalità la dimostrazione, sarebbe sufficiente considerare l'opposto. Non decrescente significa che $x_{n+1} \ge x_n \;\; \forall n$.
 
-Consideriamo ora $\sup \set{x_n | n \in N}$. Questo $\sup$ esiste e lo chiamiamo $\lambda$. L'insieme $\set{x_n | n \in N}$ è limitato (ovvero $\forall y \in \set{x_n | n \in N} \; |y_n| \le M$). Quindi il $\sup$ non è infinito e $\lambda \in \R$.
+Consideriamo ora $\sup \set{x_n | n \in \N}$. Questo $\sup$ esiste e lo chiamiamo $\lambda$. L'insieme $\set{x_n | n \in \N}$ è limitato (ovvero $\forall y \in \set{x_n | n \in \N} \; |y_n| \le M$). Quindi il $\sup$ non è infinito e $\lambda \in \R$.
 
 Vogliamo far vedere, come è prevedibile, che $\lambda = \lim x_n$. Preso $\epsilon > 0$ dev'essere $x_n \in (x-\epsilon, x+\epsilon)$ definitivamente. Per definizione di $\sup$, $\lambda - \epsilon < x_n$ per qualche $N \in \N$. Se $n > N$ allora, visto che la successione è non decrescente, vale $x_n \ge x_N > \lambda - \epsilon$.
 
@@ -122,7 +122,7 @@ Le successioni che non hanno limite non sono monotone.
 \end{remark}
 Ad esempio, la successione $\{(-1)^n\}_{n \in \N}$ non ha limite (oscilla tra -1 e 1) e non è monotona. La successione $\{1, -1, 2, 3, 4, \ldots \}$ invece ha limite $+\infty$ ma non è monotona.
 
-\begin{theorem}[Confronto tra successioni]
+\begin{theorem}[\bfseries Confronto tra successioni]
 Siano $\{x_n\}, \{y_n\}, \{z_n\}$ successioni tali che $x_n \le y_n \le z_n$ per ogni $n$. Supponiamo che $\lim x_n = L = \lim z_n$. Allora anche $\lim y_n = L$.
 \end{theorem}
 
@@ -193,7 +193,7 @@ Valgono anche le seguenti proprietà, tutte immediatamente e facilmente verifica
 
 Siamo ora pronti a enunciare e dimostrare la disuguaglianza.
 
-\begin{theorem}[Disuguaglianza di Bernoulli]
+\begin{theorem}[\bfseries Disuguaglianza di Bernoulli]
 Sia $h \ge 0$, allora:
 \begin{equation*}
 (1+h)^n \ge 1 + nh \quad \forall n
@@ -230,7 +230,7 @@ Discutiamo ciascun caso separatamente.
 \item se $a=1$ il limite è ovvio
 \item se $a>1$, sia $h = a - 1 > 0$. Quindi possiamo scrivere $\lim a^n = \lim (1+h)^n$. Dalla disuguaglianza di Bernoulli sappiamo che $(1+h)^n \ge 1 + hn \;\; \forall n$. Quindi la successione diverge, poiché $\lim (1 + nh) = +\infty$ (considerato ovviamente $h>0$). In definitiva $\lim a^n = +\infty$.
 
-\item se $-1 < x < 1$ valgono le seguenti:
+\item se $-1 < x < 1$ vale che:
 \begin{equation*}
 \frac{1}{|a|} = 1 + h
 \end{equation*}
@@ -258,7 +258,7 @@ Quindi la successione non ha limite.
 Alcuni testi scrivono $\lim\limits_{n \to +\infty} a_n = \infty$ (senza segno) se $\lim\limits_{n \to +\infty} |a_n| = +\infty$. Ad esempio potrebbe esserci scritto che $\lim (-2)^n = \infty$ visto che $\lim |(-2)^n| = +\infty$.
 \end{remark}
 
-\begin{theorem}[Criterio del rapporto]
+\begin{theorem}[\bfseries Criterio del rapporto]
 Sia $\{x_n\}$ una successione a termini positivi e sia 
 \begin{equation*}
 L = \lim_{n \to +\infty} \frac{x_{n+1}}{x_n}
