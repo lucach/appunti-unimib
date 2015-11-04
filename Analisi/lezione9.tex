@@ -1,0 +1,281 @@
+\chapter{Nona lezione (03/11/2015)}
+
+\section{Serie assolutamente convergenti}
+\begin{definition}
+Una serie $\sum_{j=0}^\infty x_j$ si dice \emph{assolutamente convergente} se converge $\sum_{j=0}^\infty |x_j|$.
+\end{definition}
+
+\begin{theorem}
+Se una serie è assolutamente convergente allora è anche convergente.
+\end{theorem}
+
+\begin{example}
+Consideriamo la serie
+\begin{equation*}
+\sum_{j=1}^\infty \frac{\sin j}{j^2}
+\end{equation*}
+e notiamo che \emph{non} è a termini positivi. Tuttavia possiamo studiare 
+\begin{equation*}
+\sum_{j=1}^\infty \left\lvert \frac{\sin j}{j^2} \right\rvert = \sum_{j=1}^\infty \frac{|\sin j|}{j^2}
+\end{equation*}
+che è una serie a termini positivi. Osserviamo che $|\sin j| \le 1$, quindi
+\begin{equation*}
+\frac{|\sin j|}{j^2} \le \frac{1}{j^2}
+\end{equation*}
+Sappiamo che $\frac{1}{j^2}$ converge (è una serie armonica generalizzata con $\alpha = 2$). Quindi per confronto anche $\sum \frac{|\sin j|}{j^2}$ converge.
+
+Quindi $\sum \frac{\sin j}{j^2}$ è assolutamente convergente. Applicando il teorema, possiamo dire che è anche convergente.
+\end{example}
+
+Prestiamo attenzione: non vale il viceversa.
+
+\begin{proof}
+Supponiamo che $\sum_{j=1}^\infty x_j$ sia assolutamente convergente. Scriviamo $x_j = a_j - b_j$ dove:
+\begin{itemize}
+\item se $x \ge 0$, $a_j = x_j$ e $b_j = 0$;
+\item se $x < 0$, $a_j = 0$ e $b_j = -x_j$.
+\end{itemize}
+In questo modo $a_j$ e $b_j$ sono sempre non negativi. A questo punto $\sum x_j = \sum a_j - \sum b_j$ è una serie differenza di serie a termini non negativi.
+
+Osserviamo anche che:
+\begin{itemize}
+\item $0 \le a_j \le |x_j|$. Siccome $\sum |x_j|$ converge per ipotesi, per il criterio del confronto converge anche $\sum a_j$.
+\item $0 \le b_j \le |x_j|$. Siccome $\sum |x_j|$ converge per ipotesi, per il criterio del confronto converge anche $\sum b_j$.
+\end{itemize}
+
+Quindi $\sum (a_j-b_j) = \sum x_j$ converge. Infatti se $\sum a_j$ converge ad $A$ e $\sum b_j$ converge a $B$, allora $\sum (a_j - b_j)$ converge ad $A-B$.
+\end{proof}
+
+\begin{example}
+Studiamo questa serie (che chiameremo $\sum y_j$):
+\begin{equation*}
+\sum_{j=0}^\infty (-1)^j \cdot \frac{x^{2j+1}}{(2j+1)!} = \frac{x}{1!} - \frac{x^3}{3!} + \frac{x^5}{5!} - \ldots
+\end{equation*}
+Vogliamo stabilire se è convergente. Verifichiamo prima se è assolutamente convergente, studiando $\sum y_j$ che è
+\begin{equation*}
+\sum_{j=0}^\infty \frac{|x|^{2j+1}}{(2j+1)!}
+\end{equation*}
+Applichiamo il criterio del rapporto:
+\begin{equation*}
+\lim \frac{|y_{j+1}|}{|y_j|} = \lim \frac{\frac{|x|^{2(j+1)+1}}{(2(j+1)+1)!}}{\frac{|x|^{2j+1}}{(2j+1)!}} = \lim \frac{|x|^2}{(2j+3)!} \cdot (2j+1)! = \lim_{j \to +\infty} \frac{|x|^2}{(2j+3)(2j+2)} = 0
+\end{equation*}
+Per il criterio del rapporto abbiamo che $\sum_{j=0}^\infty |y_j|$ converge, quindi $\sum_{j=0}^\infty y_j$ è assolutamente convergente e quindi converge.
+\end{example}
+
+\begin{example}
+Dato $0<x<1$, vogliamo studiare la serie
+\begin{equation*}
+\sum_{j=1}^\infty y_j = \sum_{j=1}^\infty (-1)^{j-1} \cdot \frac{x^j}{j}
+\end{equation*}
+Essa converge assolutamente quando converge $\sum |y_j|$ che è $\sum \frac{x^j}{j}$. Applichiamo il criterio del rapporto:
+\begin{equation*}
+\lim \frac{|y_{j+1}|}{|y_j|} = \lim \frac{x^{j+1}}{j+1} \cdot \frac{j}{x^j} = \lim_{j \to +\infty} x \cdot \frac{j}{j+1} = x
+\end{equation*}
+Avendo posto $0<x<1$, per il criterio del rapporto la serie $\sum |y_j|$ converge. Quindi $\sum y_j$ è assolutamente convergente e quindi converge.
+\end{example}
+
+\section{Criterio di Leibniz}
+
+\begin{theorem}[\bfseries Criterio di Leibniz]
+Sia $\{x_j\}$ una successione a termini positivi, infinitesima e non crescente. Allora la serie
+\begin{equation*}
+\sum_{j=1}^\infty (-1)^{j-1} x_j
+\end{equation*}
+converge.
+\end{theorem}
+
+\begin{example}
+La serie
+\begin{equation*}
+\sum_{j=1}^\infty (-1)^{j-1} \frac{1}{j}
+\end{equation*}
+soddisfa le ipotesi del criterio con $x_j = \frac{1}{j}$ e quindi converge. Infatti $\frac{1}{j}$ è sempre positivo; $\frac{1}{j+1} < \frac{1}{j}$ quindi la successione è non crescente; $\lim \frac{1}{j} = 0$ quindi la successione è infinitesima.
+\end{example}
+
+\begin{proof}
+Sia $\{s_n\}$ la successione delle somme parziali di $\sum (-1)^{j-1} x_j$. Sia $y_j = x_{2j-1} - x_{2j}$, quindi $y_1 = x1 - x2$, $y_2 = x3 - x4$ e così via.
+
+Essendo $\{x_j\}$ non crescente per ipotesi, per tutti i termini $y_j \ge 0$. Inoltre, le somme parziali di questa serie $\sum_{j=1}^\infty y_j$ sono $y_1 = s_2$, $y_2 = (x_1-x_2)+(x_3-x_4) = s_4$ e così via.
+
+Scriviamo $s_{2n}$ e raggruppiamo opportunamente:
+\begin{align*}
+s_{2n} &= x_1 - x_2 + x_3 - x_4 + x_5 - \ldots - x_{2n} \\
+&= x_1 - (x_2 - x_3) - (x_4 - x_5) - \ldots - x_{2n}
+\end{align*}
+
+Osserviamo che tutte le parentesi sono positive ($x_2 > x_3$ e così via). Quindi $s_{2n} \le x_1$ per ogni $n$. In conclusione la successione $s_{2n}$ è monotona e limitata, quindi converge. Quindi $\sum_{j=1}^\infty y_j$ converge a $S$.
+
+Per definizione di limite, dato $\epsilon > 0$ esiste $N$ tale che, per $n > N$,
+\begin{equation*}
+S - \epsilon < s_{2n} < S + \epsilon
+\end{equation*}
+Sappiamo che $s_{2n}$ è non decrescente, quindi può tendere al limite solo arrivando da sinistra. Possiamo allora scrivere
+\begin{equation*}
+S - \epsilon < s_{2n} \le S
+\end{equation*}
+
+Definitivamente vale $x_j < \epsilon$ che implica
+\begin{equation*}
+s_{2n+1} = s_{2n}+x_{2n+1} \le S + x_{2n+1} < S + \epsilon
+\end{equation*}
+definitivamente. Quindi definitivamente
+\begin{equation*}
+S - \epsilon < s_{2n} \le s_{2n+1} < S + \epsilon
+\end{equation*}
+
+Quindi $\lim s_j = S$. Allora $\sum (-1)^{j-1} x_j$ converge, perché converge la successione delle somme parziali.
+\end{proof}
+
+\section{Serie con termini riordinati}
+
+\begin{theorem}[\bfseries Teorema di Dirichlet] 
+Se $\sum_{j=1}^\infty x_j$ è una serie assolutamente convergente, ogni serie ottenuta riordinando i termini di $\sum_{j=1}^\infty x_j$ è convergente alla stessa somma.
+\end{theorem} 
+
+Diamo solo un'idea della dimostrazione. Chiariamo in termini rigorosi cosa si intende per riordinare: si definisce una funzione $\sigma:  \N \rightarrow \N$ biunivoca (quindi suriettiva e iniettiva). Si considera $y_j = x_{\sigma(j)}$, allora deve essere $\sum y_j = \sum x_j$.
+
+Nella dimostrazione si usa il fatto che
+\begin{equation*}
+s_n = x_{\sigma(1)} + x_{\sigma(2)} + \ldots + x_{\sigma(n)} \le \sum_{j=1}^N x_j \le \sum_{j=1}^\infty x_j
+\end{equation*}
+dove $N = \max \{ \sigma(1), \ldots, \sigma(n)\}$.
+Si fa quindi vedere che $\sum x_j \le \sum y_j$.
+
+In ogni caso, lasciamo il teorema senza dimostrazione completa.
+
+\begin{remark}
+Data una serie convergente ma non assolutamente convergente e dato $S \in \R$, esiste una serie ottenuta riordinando i termini che converge a $S$.
+\end{remark}
+
+\begin{example}
+Consideriamo
+\begin{equation*}
+\sum_{n=1}^\infty a_n = \sum_{n=1}^\infty (-1)^{n-1} \cdot \frac{1}{n} \qquad \qquad [ = \log2]
+\end{equation*}
+Sappiamo che non è assolutamente convergente perché $\sum \frac{1}{n}$ diverge (è la serie armonica). Consideriamo ora questa serie:
+\begin{equation*}
+b_n = \begin{cases}
+\frac{1}{2} a_{\frac{n}{2}} & n\mbox{ pari} \\
+0 & n \mbox{ dispari}
+\end{cases}
+\end{equation*}
+Esplcitiamo le due serie:
+\begin{align*}
+\sum a_n &= 1 - \frac{1}{2} + \frac{1}{3} - \frac{1}{4} + \frac{1}{5} - \ldots \\
+\sum b_n &= 0 + \frac{1}{2} + 0 - \frac{1}{2} \cdot \frac{1}{2} + \ldots
+\end{align*}
+Si vede che $\sum b_n = \frac{1}{2} \sum a_n$. 
+
+La serie somma è $\sum (a_n+b_n) = \frac{3}{2} \sum a_n = \frac{3}{2} \log 2$. Esplicitiamola:
+\begin{equation*}
+a_n + b_n = \begin{cases}
+\frac{1}{n} & n\mbox{ dispari} \\
+-\frac{1}{n} - (-1)^{\frac{n}{2}} \cdot \frac{1}{n} & n \mbox{ pari}
+\end{cases}
+\end{equation*}
+
+Quindi:
+
+\begin{align*}
+\sum (a_n+b_n) &= \underbrace{1}_{a_1+b_1} \underbrace{-\frac{1}{2} + \frac{1}{2}}_{a_2+b_2} + \underbrace{\frac{1}{3}}_{a_3+b_3} + \ldots \\
+&= 1 + \frac{1}{3} - \frac{1}{2} + \frac{1}{5} + \frac{1}{7} - \frac{1}{4} + \ldots
+\end{align*}
+
+Questa è una serie ottenuta riordinando $\sum a_n$ ma ha somma $\frac{3}{2} \log 2$.
+\end{example}
+
+\section{$\lim \sqrt[n]{n}$}
+
+\begin{example}
+Mostriamo in due modi diversi che
+\begin{equation*}
+\lim_{n \to +\infty} \sqrt[n]{n} = 1
+\end{equation*}
+
+Procediamo con il primo modo. Possiamo scrivere $\sqrt[n]{n} = 1 + x_n$ con $x_n > 0$. Dallo sviluppo di Newton sappiamo che
+\begin{equation*}
+(1+x_n)^n = 1 + \binom{n}{1}x_n + \binom{n}{2} {x_n}^2 + \ldots
+\end{equation*}
+I termini sono tutti positivi, quindi sicuramente:
+\begin{align*}
+(1+x_n)^n &\ge 1 + \binom{n}{1}x_n + \binom{n}{2} {x_n}^2 \\
+&\ge 1 + nx_n + \frac{n(n-1)}{2} {x_n}^2
+\end{align*}
+Elevando entrambi i membri della relazione iniziale alla $n$ possiamo scrivere:
+\begin{equation*}
+n = (1+x_n)^n \ge 1 + nx_n + \frac{n(n-1)}{2} {x_n}^2 \ge \frac{n(n-1)}{2} {x_n}^2
+\end{equation*}
+Quindi:
+\begin{align*}
+1 &\ge \frac{n(n-1)}{2} {x_n}^2 \\
+{x_n}^2 &\le \frac{2}{n-1}
+\end{align*}
+
+Poiché $\lim \frac{2}{n-1} = 0$, per confronto allora anche $\lim x_n = 0$.
+
+Nel secondo modo, procediamo semplicemente come segue:
+\begin{equation*}
+\sqrt[n]{n} = e^{\log n^{\frac{1}{n}}} = e^{\frac{1}{n} \cdot \log n}
+\end{equation*}
+
+Sappiamo che $\lim \frac{\log n}{n} = 0$ per la gerarchia degli infiniti. Per continuità della funzione esponenziale, $\lim e^\frac{\log n}{n} = e^0 = 1$.
+\end{example}
+
+\section{Ancora sulle successioni}
+\begin{remark}
+Se $a_n \sim b_n$ sono successioni che tendono a $+\infty$, allora $\log a_n \sim \log b_n$.
+\end{remark}
+
+Attenzione che questa proprietà non vale per tutte le funzioni! Ad esempio, non vale $e^{a_n} \sim e^{b_n}$ in generale. Infatti $e^{n+1}$ non è asintotico a $e^n$ poiché $\lim \frac{e^{n+1}}{e^n} = e$, che è diverso da 1.
+
+Mostriamo che questo è vero per quanto riguarda la funzione logaritmo. Se $a_n \sim b_n$, allora il loro rapporto deve stare in un intorno di uno.
+
+Quindi definitivamente vale:
+\begin{gather*}
+\frac{1}{2} < \frac{a_n}{b_n} < \frac{3}{2} \\
+\frac{1}{2}a_n < b_n < \frac{3}{2}a_n \\
+\log \frac{1}{2}a_n < \log b_n < \log \frac{3}{2}a_n \\
+\log \frac{1}{2} + \log a_n < \log b_n < \log \frac{3}{2} + \log a_n \\
+\frac{\log \frac{1}{2}}{\log a_n} + 1 < \frac{\log b_n}{\log a_n} < \frac{\log \frac{3}{2}}{\log a_n} + 1
+\end{gather*}
+
+Poiché il primo e il terzo termine valgono entrambi 1, per il teorema del confronto anche $\lim \frac{\log b_n}{\log a_n} = 1$.
+
+\begin{remark}
+Se $a_n \sim b_n$ e $\lim a_n$ è finito, non è vero in generale che $\lim \frac{\log a_n}{\log b_n} = 1$.
+\end{remark}
+
+\begin{example}
+Consideriamo ad esempio $a_n = 1 + \frac{1}{n}$ e $b_n = 1 + \frac{1}{n^2}$, che sono due successioni tra loro asintotiche. Effettivamente il limite del loro rapporto vale 1:
+\begin{equation*}
+\lim \frac{a_n}{b_n} = \lim \frac{1 + \frac{1}{n}}{1 + \frac{1}{n^2}} = 1
+\end{equation*}
+Ma ad esempio:
+\begin{equation*}
+\lim \frac{\log (1 + \frac{1}{n})}{\log (1 + \frac{1}{n^2})} = \lim \frac{\frac{1}{n}}{\frac{1}{n^2}} = \lim n = +\infty
+\end{equation*}
+Per risolvere il limite abbiamo sfruttato il fatto che $\log(1+\epsilon_n) \sim \epsilon_n$.
+\end{example}
+
+\begin{example}
+Consideriamo la successione definita per ricorrenza
+\begin{equation*}
+\begin{cases}
+x_1 = \alpha \\
+x_{n+1} = \frac{2 + \cos n}{\sqrt{n}} \cdot x_n
+\end{cases}
+\end{equation*}
+Vogliamo calcolarne il limite e determinare se è definitivamente monotona. Distinguiamo due casi:
+\begin{itemize}
+\item se $\alpha = 0$ allora $x_n = 0$ per ogni $n$
+\item se $\alpha > 0$ osserviamo innanzitutto che la successione è a termini positivi perchè $\frac{2+\cos n}{\sqrt{n}} > 0 \; \forall n$. Possiamo quindi applicare il criterio del rapporto:
+\begin{equation*}
+\lim \frac{x_{n+1}}{x_n} = \lim \frac{\frac{2 + \cos n}{\sqrt{n}} \cdot x_n}{x_n} = \lim \frac{2 + \cos n}{\sqrt{n}}
+\end{equation*}
+Sappiamo che $1 \le 2 + \cos n \le 3$, quindi
+\begin{equation*}
+\frac{1}{\sqrt{n}} < \frac{2+\cos n}{\sqrt{n}} < \frac{3}{\sqrt{n}}
+\end{equation*}
+Poiché il primo e il terzo termine tendono a 0, per confronto anche $\lim \frac{2+\cos n}{\sqrt{n}} = 0$. Essendo il limite minore di 1, la successione è definitivamente decrescente e tende a 0.
+\end{itemize}
+\end{example}
