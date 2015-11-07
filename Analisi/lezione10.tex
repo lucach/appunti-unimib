@@ -1,0 +1,238 @@
+\chapter{Decima lezione (06/11/2015)}
+
+\section{Esempi di successioni}
+\begin{example}
+Consideriamo la successione definita per ricorrenza
+\begin{equation*}
+\begin{cases}
+x_1 = \alpha & \mbox{con } \alpha \in \R \\
+x_{n+1} = 1 - x_n + (x_n)^2
+\end{cases}
+\end{equation*}
+Vogliamo studiare il suo limite, la monotonia e determinare il valore massimo e minimo, qualora esistano.
+
+Iniziamo verificando la monotonia: vediamo se $x_{n+1} - x_n \ge 0$. Sostituendo abbiamo $1 - x_n + (x_n)^2 - x_n \ge 0$, che è un quadrato di binomio: $(1-x_n)^2 \ge 0$. Questa disuguaglianza è sempre verificata. L'ipotesi iniziale, $x_{n+1} - x_n \ge 0$, è vera per ogni $n$. La successione è quindi non decrescente.
+
+Partendo da $\alpha$ e crescendo (o al più restando costante), sappiamo che il valore minimo è sempre $\alpha$.
+
+Essendo $\{x_n\}$ una successione monotona, essa ha sicuramente un limite. Supponiamo che questo limite sia finito, quindi che $\lim x_n = L$.
+Il limite della successione $x_{n+1}$ è uguale al limite della successione $x_n$, quindi possiamo dire che:
+\begin{gather*}
+\lim_{n \to +\infty} x_{n+1} = \lim_{n \to +\infty} x_n \\
+\lim_{n \to +\infty} x_{n+1} = \lim_{n \to +\infty} (1 - x_n + {x_n}^2) = \lim_{n \to +\infty} x_n = L 
+\end{gather*}
+Quindi se il limite è finito vale:
+\begin{gather*}
+1 - L + L^2 = L \\
+L^2 - 2L + 1 = 0 \\
+(L-1)^2 = 0
+\end{gather*}
+Quindi se il limite è finito, $L = 1$.
+
+Se $\alpha > 1$, il limite della successione non può essere 1 (ricordiamo che la successione è non decrescente) e quindi non può essere finito (se lo fosse, dovrebbe essere per forza 1 come abbiamo appena visto). Quindi, poiché la successione essendo monotona deve avere un limite, esso sarà infinito. Ovvero $\lim x_n = +\infty$. Ovviamente in questo caso non esiste il valore massimo.
+
+Consideriamo ora il caso in cui $x_{n+1} > 1$. Questo è verificato se e solo se
+\begin{gather*}
+1 - x_n + (x_n)^2 > 1 \\
+x_n(x_n-1) > 0
+\end{gather*}
+Quindi $x_n < 0 \vee x_n > 1$. Se per qualche $n$ vale che $x_n < 0$ oppure $x_n > 1$ allora in quei casi il limite è $+\infty$.
+
+Se $\alpha = 0$ la condizione è verificata ($x_1 < 0$) e quindi il limite  è $+\infty$.
+
+Ci resta da analizzare il caso in cui $0 \le \alpha \le 1$. Osserviamo che $0 \le x_n \le 1 \iff 1 - x_n + (x_n)^2 < 1$. Questo equivale al sistema
+\begin{equation*}
+\begin{cases}
+{x_n}^2 - x_n + 1 \ge 0 \\
+{x_n}^2 - x_n \le 0
+\end{cases}
+\end{equation*}
+La prima equazione ha $\Delta < 0$ e quindi è sempre verificata, mentre la seconda lo è per $0 \le x_n \le 1$.
+
+Se $0 \le x_n \le 1$, allora anche $0 \le x_{n+1} \le 1$. Quindi se $0 \le \alpha \le 1$ allora per ogni $x_n$ vale $0 \le x_n \le 1$ (per induzione).
+
+Quindi la successione $\{x_n\}$ è limitata e il suo limite è $L$. Per quanto abbiamo già fatto vedere prima, dev'essere $L = 1$.
+
+Non abbiamo ancora detto nulla a riguardo del massimo quando $0 \le \alpha \le 1$. Poiché la successione è non decrescente, sappiamo che $\sup \set{x_n | n \in \N} = 1$. Quindi esiste il massimo se e solo se esiste un $n$ tale che $x_n = 1$.
+
+Se $\alpha = 1$ allora vediamo subito che $x_1 = 1$ e quindi 1 è il massimo. In caso contrario, per $\alpha \neq 1$, dev'essere $x_{n+1} = 1$. Quindi:
+\begin{gather*}
+1 - x_n + {x_n}^2 = 1 \\
+x_n(x_n-1) = 0
+\end{gather*}
+Quindi $x_n = 1 \vee x_n = 0$. Se $\alpha = 0$ allora $x_2 = 1$ e 1 è il massimo. Se invece $0 < \alpha < 1$ allora $x_n > 0$ per ogni $n$ (essendo la successione non decrescente. Quindi $x_{n+1} \neq 1$ per ogni $n$ e quindi non c'è il massimo.
+\end{example}
+
+\begin{example}
+Consideriamo la successione definita per ricorrenza
+\begin{equation*}
+\begin{cases}
+x_1 = \alpha \\
+x_{n+1} = \frac{2 + \cos n}{\sqrt{n}} \cdot x_n
+\end{cases}
+\end{equation*}
+Vogliamo studiare il suo limite, la monotonia e determinare il valore massimo e minimo, qualora esistano.
+
+Distinguiamo due casi:
+\begin{itemize}
+\item se $\alpha = 0$ allora $x_n = 0$ per ogni $n$
+\item se $\alpha > 0$ osserviamo innanzitutto che la successione è a termini positivi perchè $\frac{2+\cos n}{\sqrt{n}} > 0 \; \forall n$. Possiamo quindi applicare il criterio del rapporto:
+\begin{equation*}
+\lim \frac{x_{n+1}}{x_n} = \lim \frac{\frac{2 + \cos n}{\sqrt{n}} \cdot x_n}{x_n} = \lim \frac{2 + \cos n}{\sqrt{n}}
+\end{equation*}
+Sappiamo che $1 \le 2 + \cos n \le 3$, quindi
+\begin{equation*}
+\frac{1}{\sqrt{n}} < \frac{2+\cos n}{\sqrt{n}} < \frac{3}{\sqrt{n}}
+\end{equation*}
+Poiché il primo e il terzo termine tendono a 0, per confronto anche $\lim \frac{2+\cos n}{\sqrt{n}} = 0$. Essendo il limite minore di 1, la successione è definitivamente decrescente e tende a 0.
+
+Per la monotonia, possiamo chiederci se è crescente ($x_{n+1} \ge x_n$).
+\begin{gather*}
+\frac{x_{n+1}}{x_n} \ge 1 \\
+\frac{2 + \cos n}{\sqrt{n}} \ge 1 \\
+2 + \cos n \ge \sqrt{n}
+\end{gather*}
+
+Poiché $\cos n \in [-1, 1]$ sappiamo che $2 + \cos n \le 3 = \sqrt{9}$. Quindi sicuramente $2 + \cos n < \sqrt{n}$ se $n > 9$. Quindi la successione è decrescente da $x_10$ in poi.
+
+Il massimo $\max \{x_n\}$ dev'essere quindi un elemento tra $\{x_1, \ldots, x_9\}$. Non è particolarmente interessante capire qual è, sarebbe comunque sufficiente calcolare tutti i termini della successione fino a nove e cercare il maggiore tra questi.
+\end{itemize}
+\end{example}
+
+\begin{example}
+Consideriamo la successione definita per ricorrenza
+\begin{equation*}
+\begin{cases}
+x_1 = \alpha & \mbox{con } 0 \le \alpha \le 1 \\
+x_{n+1} = x_n - {x_n}^3
+\end{cases}
+\end{equation*}
+Vogliamo studiare il suo limite, la monotonia e determinare il valore massimo e minimo, qualora esistano.
+
+Possiamo riscrivere $x_n - {x_n}^3$ come $x_n(1-{x_n}^2)$. Se $0 \le x_n \le 1$ allora $0 \le x_n(1-{x_n}^2) \le 1$. Quindi per induzione $0 \le x_n \le 1$ per ogni $n$.
+
+Ci chiediamo se la successione è crescente. Consideriamo la differenza dei due termini consecutivi della successione:
+\begin{equation*}
+x_{n+1}-x_n = x_n - {x_n}^3 - x_n = -{x_n}^3
+\end{equation*}
+Tale differenza è quindi minore di zero. In altri termini, $x_{n+1} \le x_n$ per ogni $n$ e quindi la successione è non crescente.
+
+Essendo la successione monotona e limitata, sappiamo che esiste $\lim x_n = L$. Procediamo in modo analogo all'esempio 10.1:
+\begin{gather*}
+L = \lim x_n = \lim x_{n+1} = \lim (x_n-{x_n}^3) = L - L^3 \\
+L = L - L^3
+L^3 = 0
+\end{gather*}
+Abbiamo che $L = 0$, quindi $\lim x_n = 0$.
+\end{example}
+
+\begin{example}
+Consideriamo la successione
+\begin{equation*}
+\lim_{n \to +\infty} \frac{n^n}{(2n)!}
+\end{equation*}
+Vogliamo studiarne il limite. Osserviamo innanzitutto che la successione è a termini positivi. Avendo la presenza del fattoriale, può essere una buona idea applicare il criterio del rapporto.
+\begin{align*}
+\lim \frac{x_{n+1}}{x_n} &= \lim \frac{(n+1)^{n+1}}{(2(n+1))!} \cdot \frac{(2n)!}{n^n} \\
+&= \lim \frac{(n+1)^{n+1}}{n^n} \cdot \frac{(2n)!}{(2n+2)!} \\
+&= \lim \frac{(n+1)^n \cdot (n+1)}{n^n} \cdot \frac{(2n)!}{(2n+2)(2n+1)(2n)!} \\
+&= \lim \left(1 + \frac{1}{n}\right)^n \cdot {\frac{n+1}{(2n+2)(2n+1)}}
+\end{align*}
+Il primo termine tende a $e$, mentre il secondo tende a 0 (è asintotico a $\frac{n}{4n^2}$). Quindi $\lim e \cdot 0 = 0$ e quindi il limite della successione vale 0 per il criterio del rapporto.
+\end{example}
+
+\section{Esempi di serie}
+
+\begin{example}
+Determinare il carattere della serie
+\begin{equation*}
+\sum a_n = \sum \frac{\left(1 - \cos \frac{3}{n}\right)\cdot \left(1 + \frac{2}{\sqrt{n}} \right)^n}{2^{n+\log n}}
+\end{equation*}
+
+Osseriviamo che la serie è a termini positivi, possiamo quindi usare il criterio del confronto asintotico. Prima verifichiamo però che la serie soddisfi la condizione necessaria di Cauchy, ovvero che il suo limite sia zero. Se così non fosse, potremmo subito dire che la serie non converge.
+
+\begin{equation*}
+\lim a_n = \lim \frac{\left(1 - \cos \frac{3}{n}\right)\cdot \left(1 + \frac{2}{\sqrt{n}} \right)^n}{2^{n+\log n}}
+\end{equation*}
+
+Consideriamo ciascun termine:
+\begin{itemize}
+\item Usando il fatto che $1 - \cos \epsilon_n \sim \frac{1}{2} {\epsilon_n}^2$, possiamo dire che $(1-\cos \frac{3}{n}) \sim \frac{1}{2} (\frac{3}{n})^2$.
+\item Per il secondo termine ci riconduciamo a $e$:
+\begin{equation*}
+\left(1 + \frac{2}{\sqrt{n}} \right)^n = \left[\left(1 + \frac{2}{\sqrt{n}} \right)^{\frac{\sqrt{n}}{2}} \right]^{2\sqrt{n}} \sim e^{2 \sqrt{n}}
+\end{equation*}
+\item Per il terzo termine invece procediamo con qualche passaggio:
+\begin{equation*}
+2^{n+\log n} = e^{\log(2^{n+\log n})} = e^{(n+\log n)(\log 2)} = (e^{n+\log n})^{\log 2} = (e^n \cdot e^{\log n})^{\log 2} = (n \cdot e^n)^{\log 2}
+\end{equation*}
+\end{itemize}
+
+Riprendiamo il limite iniziale e sostituiamo con le stime asintotiche:
+\begin{align*}
+a_n &\sim \frac{\frac{1}{2}\left(\frac{3}{n} \right)^2 \cdot e^{2\sqrt{n}}}{(n \cdot e^n)^{\log 2}} = \frac{\frac{9}{2n^2} \cdot e^{2\sqrt{n}}}{n^{\log 2} \cdot e^{n \log 2}} = \frac{9}{2}n^{-2 - \log 2} \cdot e^{2\sqrt{n} - n\log 2}
+\end{align*}
+
+Poiché $\sqrt{n} \ll n \log 2$ sappiamo che $2\sqrt{n} - n \log 2 = -\infty$; quindi $\lim e^{2\sqrt{n} - n \log 2} = 0$. Il primo termine tende evidentemente a zero e qundi resta $0 \cdot 0 = 0$.
+
+Quindi $\lim a_n = 0$ e quindi la serie soddisfa la condizione necessaria di Cauchy.
+
+Usiamo il criterio del confronto asintotico. Sappiamo già che $\sum \frac{1}{n^{2 + \log 2}}$ converge perché è la serie armonica generalizzata. Consideriamo
+\begin{equation*}
+b_n = \frac{9}{2} \cdot \frac{1}{n^{2 + \log 2}} \cdot e^{2\sqrt{n} - n\log 2}
+\end{equation*}
+Osserivamo che $e^{2\sqrt{n} - n\log 2}$ è definitivamente minore di 1 perché il suo limite è 0. Quindi segue che 
+\begin{equation*}
+b_n < \frac{9}{2} \cdot \frac{1}{n^{2 + \log 2}}
+\end{equation*}
+Quindi $b_n$ converge per confronto con la serie armonica generalizzata. Poiché $a_n$ è asintoticamente equivalente a $b_n$ e quest'ultima converge, allora anche $a_n$ converge.
+\end{example}
+
+\begin{example}
+Determinare il carattere della serie
+\begin{equation*}
+\sum_{n=1}^\infty a_n = \sum_{n=1}^\infty \frac{2^n \cdot x^n}{\sqrt[n]{n}} \qquad \qquad \text{con } x > 0
+\end{equation*}
+
+La serie è a termini positivi e quindi possiamo ridurci a studiarne una asintoticamente equivalente. Poiché $\lim \sqrt[n]{n} = 1$, $a_n \sim 2^n \cdot x^n = (2x)^n$. 
+
+Quindi $\sum a_n$ è asintoticamente equivalente a $\sum (2x)^n$ che è la serie geometrica di ragione $2x$. Essa converge se e solo se $|2x| < 1$, quindi per $2x < 1$ (avevamo supposto $x$ positivo) e quindi per $x < \frac{1}{2}$.
+
+Quindi la serie proposta converge per $0 < x < \frac{1}{2}$ e diverge per $x \ge \frac{1}{2}$.
+\end{example}
+
+\section{Esempi di serie a segni alterni}
+
+\begin{example}
+Determinare il carattere della serie
+\begin{equation*}
+\sum_{n=1}^\infty \frac{n + 1 + (-1)^n \cdot n^2}{n^3}
+\end{equation*}
+
+È evidente che la serie non è a termini positivi. Scomponiamo la serie in due parti: la prima è $\frac{n+1}{n^3}$, mentre la seconda è $(-1)^n \cdot \frac{1}{n}$.
+
+La serie $\frac{n+1}{n^3}$ è asintoticamente equivalente a $\sum \frac{1}{n^2}$ che converge perché è la serie armonica con $\alpha > 1$.
+
+La serie $\sum (-1)^n \cdot \frac{1}{n}$ è a segni alterni. Non converge assolutamente, ma possiamo applicare il criterio di Leibniz. Infatti verificare le ipotesi è banale: $\frac{1}{n} \ge 0$, $\lim \frac{1}{n} = 0$ e $\{\frac{1}{n}\}$ è non crescente. Quindi la serie $\sum (-1)^n \cdot \frac{1}{n}$ converge.
+
+In conclusione sappiamo che $\sum a_n$ è somma di due serie convergenti e quindi converge anch'essa.
+\end{example}
+
+\begin{example}
+Determinare il carattere della serie
+\begin{equation*}
+\sum_{n=1}^\infty (-1)^n \cdot \frac{\sqrt{n} + (-1)^n}{n}
+\end{equation*}
+
+Il termine $\frac{\sqrt{n} + (-1)^n}{n}$ è infinitesimo, non negativo ma non è crescente e quindi non posso applicare il criterio di Leibniz. 
+
+Possiamo però scrivere la serie come somma di due serie, come nell'esempio precedente.
+
+\begin{equation*}
+x_n = \frac{(-1)^n \cdot \sqrt{n}}{n} + \frac{1}{n} = (-1)^n \cdot \frac{1}{\sqrt{n}} + \frac{1}{n}
+\end{equation*}
+
+Adesso il primo termine, $\sum (-1)^n \cdot \frac{1}{\sqrt{n}}$ soddisfa le ipotesi del criterio di Leibniz (è positivo, ha limite zero ed è decrescente) e quindi converge. Tuttavia, il secondo termine ($\sum \frac{1}{n}$) diverge perché è la serie armonica.
+
+Quindi la serie di partenza è somma di una serie convergente e di una divergente. Quindi la serie somma diverge. 
+\end{example}

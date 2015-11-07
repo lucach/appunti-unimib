@@ -256,26 +256,3 @@ Ma ad esempio:
 \end{equation*}
 Per risolvere il limite abbiamo sfruttato il fatto che $\log(1+\epsilon_n) \sim \epsilon_n$.
 \end{example}
-
-\begin{example}
-Consideriamo la successione definita per ricorrenza
-\begin{equation*}
-\begin{cases}
-x_1 = \alpha \\
-x_{n+1} = \frac{2 + \cos n}{\sqrt{n}} \cdot x_n
-\end{cases}
-\end{equation*}
-Vogliamo calcolarne il limite e determinare se è definitivamente monotona. Distinguiamo due casi:
-\begin{itemize}
-\item se $\alpha = 0$ allora $x_n = 0$ per ogni $n$
-\item se $\alpha > 0$ osserviamo innanzitutto che la successione è a termini positivi perchè $\frac{2+\cos n}{\sqrt{n}} > 0 \; \forall n$. Possiamo quindi applicare il criterio del rapporto:
-\begin{equation*}
-\lim \frac{x_{n+1}}{x_n} = \lim \frac{\frac{2 + \cos n}{\sqrt{n}} \cdot x_n}{x_n} = \lim \frac{2 + \cos n}{\sqrt{n}}
-\end{equation*}
-Sappiamo che $1 \le 2 + \cos n \le 3$, quindi
-\begin{equation*}
-\frac{1}{\sqrt{n}} < \frac{2+\cos n}{\sqrt{n}} < \frac{3}{\sqrt{n}}
-\end{equation*}
-Poiché il primo e il terzo termine tendono a 0, per confronto anche $\lim \frac{2+\cos n}{\sqrt{n}} = 0$. Essendo il limite minore di 1, la successione è definitivamente decrescente e tende a 0.
-\end{itemize}
-\end{example}
