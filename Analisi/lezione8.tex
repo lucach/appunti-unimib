@@ -252,32 +252,3 @@ Ora:
 \item se $\sum y_j$ converge, allora $\sum \frac{3}{2} y_j$ converge. Quindi $\sum x_j$ converge per confronto.
 \end{enumerate}
 \end{proof}
-
-\section{Serie assolutamente convergenti}
-\begin{definition}
-Una serie $\sum_{j=0}^\infty x_j$ si dice \emph{assolutamente convergente} se converge $\sum_{j=0}^\infty |x_j|$.
-\end{definition}
-
-\begin{theorem}
-Se una serie è assolutamente convergente allora è anche convergente.
-\end{theorem}
-
-\begin{example}
-Consideriamo la serie
-\begin{equation*}
-\sum_{j=1}^\infty \frac{\sin j}{j^2}
-\end{equation*}
-e notiamo che \emph{non} è a termini positivi. Tuttavia possiamo studiare 
-\begin{equation*}
-\sum_{j=1}^\infty \left\lvert \frac{\sin j}{j^2} \right\rvert = \sum_{j=1}^\infty \frac{|\sin j|}{j^2}
-\end{equation*}
-che è una serie a termini positivi. Osserviamo che $|\sin j| \le 1$, quindi
-\begin{equation*}
-\frac{|\sin j|}{j^2} \le \frac{1}{j^2}
-\end{equation*}
-Sappiamo che $\frac{1}{j^2}$ converge (è una serie armonica generalizzata con $\alpha = 2$). Quindi per confronto anche $\sum \frac{|\sin j|}{j^2}$ converge.
-
-Quindi $\sum \frac{\sin j}{j^2}$ è assolutamente convergente. Applicando il teorema, possiamo dire che è anche convergente.
-\end{example}
-
-Prestiamo attenzione: non vale il viceversa.
