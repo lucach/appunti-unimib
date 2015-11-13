@@ -1,0 +1,190 @@
+\chapter{Dodicesima lezione (13/11/2015)}
+
+\section{Limite di successioni e limite di funzione}
+
+Nella lezione precedente abbiamo introdotto il concetto di limite di funzione. Vediamo ora un teorema a riguardo del nesso che esiste tra il concetto di limite di successione e quello di limite di funzione.
+
+\begin{theorem}[\bfseries Teorema di collegamento]
+Sia $A$ un intervallo reale aperto, $x_0 \in A$ e $f: A \to \R$. Allora
+\begin{equation*}
+\lim_{x \to x_0} f(x) = L \iff (*)
+\end{equation*}
+$(*)$ esprime la seguente condizione: per ogni successione $\{x_n\}$ in $A\backslash\{x_0\}$ (ovvero $x_n \in A$ e $x_n \neq x_0 \; \forall n$) convergente a $x_0$ vale che
+\begin{equation*}
+\lim_{n \to +\infty} f(x_n) = L
+\end{equation*}
+\end{theorem}
+
+Poiché il teorema indica ``se e solo se'', per dimostrarlo dobbiamo far vedere che vale l'implicazione in entrambi i sensi.
+
+\begin{proof}
+Dimostriamo la prima parte, ovvero che il limite $L$ implica $(*)$. Sia $
+\lim_{x \to x_0} f(x) = L$.
+
+
+Per definizione di limite, per ogni intorno $U = B_\epsilon (L)$ di $L$, esiste $\delta > 0$ tale che per ogni $x \in B'_\delta (x_0)$ vale $f(x) \in U$.
+
+Sia $\{x_n\}$ una successione tale che $x_n \in A\backslash \{x_0\}$, allora $\lim_{n \to +\infty} x_n = x_0$. Devo dimostrare allora che $\lim_{n \to +\infty} f(x) = L$.
+
+Per $\epsilon > 0$ dev'essere $f(x_n) \in B_\epsilon (L)$ definitivamente, che discende da $x_n \in B'_\delta (x_0)$ definitivamente.
+\end{proof}
+
+\begin{proof}
+Dimostriamo ora il viceversa: supponiamo che valga $(*)$ e dimostriamo che allora $\lim_{x \to x_0} f(x) = L$.
+
+Per assurdo, supponiamo che $L$ non sia il limite. Stiamo quindi dicendo che $\forall U$ intorno di $L$ esiste $\delta > 0$ tale che se $x \in B'_\delta (x_0) \implies f(x) \in U$.
+
+Quindi esiste $U$ intorno di $L$ tale che per ogni $\delta > 0$ esiste $x_\delta \in B'_\delta (x_0)$ e tuttavia $f(x_\delta) \notin U$ (osserviamo che $x$ dipende da $\delta$).
+
+Scegliamo $\delta = \frac{1}{n}$ e troviamo la successione $\{x_n\}$ tale che $x_n \in B'_{\frac{1}{n}} (x_0) \implies f (x_n) \notin U$. Ovvero $0 < |x_0 - x_n| < \frac{1}{n}$.
+
+Per confronto di successioni, $\lim_{n \to +\infty} x_n = x_0$ con $x_n \neq x_0$ vale $\lim_{n \to +\infty} f(x_n) = L$ (per $(*)$).
+
+Quindi $f(x_n) \in U$ definitivamente, che è assurdo.
+\end{proof}
+
+\section{Limite destro e sinistro}
+
+\begin{example}
+Consideriamo la funzione così definita e tracciamo il suo grafico:
+\begin{equation*}
+f(x) = \begin{cases}
+\frac{x}{|x|} & x \neq 0 \\
+0 & x = 0
+\end{cases}
+\end{equation*}
+
+\begin{center}
+\begin{tikzpicture}[scale=0.75]
+\draw[->] (-3,0) -- (4.2,0) node[right] {$x$};
+\draw[->] (0,-2) -- (0,2.5) node[above] {$y$};
+\draw [smooth,domain=-2.75:0] plot({\x}, {-1});
+\draw [smooth,domain=0.01:2.75] plot({\x}, {1});
+\node at (0,0) {\tiny\textbullet};
+\end{tikzpicture}
+\end{center}
+
+Osserviamo che $f(x)$ non ha limite per $x$ che tende a 0. Infatti, in ogni intorno di 0, $f(x)$ assume sia il valore 1 che il valore -1.
+\end{example}
+
+\begin{definition}
+Sia $f: (x_0, b) \to \R$. Si dice che $L$ è il \emph{limite destro} di $f(x)$ in $x_0$ e si scrive
+\begin{equation*}
+L = \lim_{x \to x_0^+} f(x)
+\end{equation*}
+se per ongi $\epsilon > 0$ esiste $\delta > 0$ tale che
+\begin{equation*}
+x_0 < x < x_0 + \delta \implies f(x) \in B_\epsilon (L)
+\end{equation*}
+\end{definition}
+
+\begin{definition}
+Sia $f: (a, x_0) \to \R$. Si dice che $L$ è il \emph{limite sinistro} di $f(x)$ in $x_0$ e si scrive
+\begin{equation*}
+L = \lim_{x \to x_0^-} f(x)
+\end{equation*}
+se per ongi $\epsilon > 0$ esiste $\delta > 0$ tale che
+\begin{equation*}
+x_0 - \delta < x < x_0 \implies f(x) \in B_\epsilon (L)
+\end{equation*}
+\end{definition}
+
+\begin{remark}
+Se esiste il limite $L$ in $x_0$, $L$ è anche il limite destro e il limite sinistro.
+\end{remark}
+\begin{remark}
+Se il limite destro e sinistro esistono entrambi e coincidono, allora esiste il limite.
+\end{remark}
+
+Infatti:
+\begin{itemize}
+\item dato il limite destro $\lim_{x \to x_0^+} f(x) = L$, fissato $\epsilon > 0$ esiste $\delta_1$ tale che $x_0 < x < x_0 + \delta_1 \implies f(x) \in B_\epsilon (L)$.
+\item dato il limite sinistro $\lim_{x \to x_0^-} f(x) = L$, fissato $\epsilon > 0$ esiste $\delta_2$ tale che $x_0 - \delta_2 < x < x_0 \implies f(x) \in B_\epsilon (L)$.
+\end{itemize}
+
+Ciò che a noi serve è $\delta > 0$ tale che $x_0 - \delta < x < x_0 + \delta$ e $x \neq x_0 \implies f(x) \in B_\epsilon (L)$.
+
+Se prendiamo $\delta = \min\{\delta_1, \delta_2\}$, allora entrambe le implicazioni sono soddisfatte e quindi vale la definizione di limite.
+
+\section{Teorema di permanenza del segno}
+
+\begin{theorem}[\bfseries Teorema di permanenza del segno]
+Se 
+\begin{equation*}
+\lim_{x \to x_0} f(x) = L > 0
+\end{equation*}
+allora $\exists \delta > 0$ tale che $f(x) > 0$ per ogni $x \in B'_\delta (x_0)$.
+\end{theorem}
+
+\begin{proof}
+Scegliamo $\epsilon = L$. Per definizione di limite $\exists \delta > 0$ tale che $x \in B'_\epsilon (x_0) \implies f(x) \in B_\epsilon (L)$. Possiamo quindi dire che:
+\begin{gather*}
+|f(x) - L| < \epsilon \\
+|f(x) - L| < L \\
+L - f(x) < L \\
+f(x) > 0
+\end{gather*}
+\end{proof}
+
+\section{Algebra dei limiti}
+
+\begin{theorem}[\bfseries Algebra dei limiti]
+Siano $f, g : A \to \R$ dove
+\begin{equation*}
+\lim_{x \to x_0} f(x) = L \qquad \text{e} \qquad \lim_{x \to x_0} f(x) = M
+\end{equation*}
+Allora:
+\begin{enumerate}
+\item $\lim\limits_{x \to x_0} (f(x) + g(x)) = L + M$
+\item $\lim\limits_{x \to x_0} (f(x) \cdot g(x)) = L \cdot M$
+\item se $f(x) = k$ costante allora $\lim\limits_{x \to x_0} f(x) = k$
+\item se $\alpha \in \R$ allora $\lim\limits_{x \to x_0} \alpha f(x) = \alpha L$
+\item se $y(x) \neq 0$ per $x \in A$ e $M \neq 0$ allora
+$\lim\limits_{x \to x_0} \frac{f(x)}{g(x)} = \frac{L}{M}$
+\item se $f(x) \le g(x) \forall x$ allora $L \le M$
+\item $\lim\limits_{x \to x_0} |f(x)| = |L|$
+\end{enumerate}
+\end{theorem}
+
+Le dimostrazioni di queste implicazioni sono del tutto analoghe a quelle già enunciate per le successioni (teorema 4.13), grazie al teorema del collegamento (teorema 12.1). Dimostriamo comunque la prima implicazione a scopo didattico.
+
+\begin{proof}
+Sia $\{x_n\}$ una successione in $A\backslash\{x_0\}$ tale che
+\begin{equation*}
+\lim_{n \to +\infty} = x_0
+\end{equation*}
+Allora per il teorema del collegamento:
+\begin{equation*}
+\lim_{n \to +\infty} f(x_n) = L \qquad \text{e} \qquad lim_{n \to +\infty} g(x_n) = M
+\end{equation*}
+Consideriamo
+\begin{equation*}
+\lim_{n \to +\infty} f(x_n) + g(x_n) = L + M
+\end{equation*}
+Quindi $\forall \{x_n\}$ in $A\backslash\{x_0\}$ che converge a $x_0$ si ha
+\begin{equation*}
+\lim_{n \to +\infty} (f(x_n) + g(x_n)) = L + M
+\end{equation*}
+Per il teorema del collegamento allora anche
+\begin{equation*}
+\lim_{x \to x_0} (f(x) + g(x)) = L + M
+\end{equation*}
+\end{proof}
+
+\begin{example}
+Calcoliamo a titolo di esempio un limite grazie all'algebra dei limiti.
+\begin{equation*}
+\lim_{x \to 2} \frac{x^2+2x}{1+x}
+\end{equation*}
+Possiamo applicare la quinta implicazione perché $1 + x \neq 0$ in un intorno di 2 (ad esempio $(-1, \infty) = A$). Inoltre:
+\begin{equation*}
+\lim_{x \to 2} (1+x) = \lim_{x \to 2} 1 + \lim_{x \to 2} x = 1 + 2 = 3
+\end{equation*}
+\begin{equation*}
+\lim_{x \to 2} (x^2+2x) = \lim_{x \to 2} x^2 + \lim_{x \to 2} 2x = \lim_{x \to 2} x \cdot \lim_{x \to 2} x + \lim_{x \to 2} 2 \cdot \lim_{x \to 2} x = 2 \cdot 2 + 2 \cdot 2 = 8
+\end{equation*}
+In conclusione
+\begin{equation*}
+\lim_{x \to 2} \frac{x^2+2x}{1+x} = \frac{8}{3}
+\end{equation*}
+\end{example}
