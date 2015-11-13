@@ -23,6 +23,11 @@
 \frenchspacing
 \pagestyle{plain}
 
+% This is to suppress the 'Chapter N' title at the beginning of every
+% chapter while keeping chapter numbers.
+\usepackage[pagestyles]{titlesec}
+\titleformat{\chapter}[display]{\normalfont\bfseries}{}{0pt}{\Huge}
+
 \title{Appunti di analisi matematica}
 \author{Luca Chiodini \\
 luca@chiodini.org}
