@@ -1,0 +1,247 @@
+\chapter{Quattordicesima lezione (27/11/2015)}
+
+\begin{remark}
+Data una funzione $f: (a, b) \to \R$ monotona, allora tutti i punti di discontinuità sono di prima specie; cioè $\lim_{x \to {x_0}^-} f(x)$ e $\lim_{x \to {x_0}^+} f(x)$ esistono finiti ma non coincidono.
+\end{remark}
+Infatti, se $f$ è non decrescente:
+\begin{itemize}
+\item $\lim_{x \to {x_0}^-} f(x) = \sup \set{f(x) | x < x_0}$
+\item $\lim_{x \to {x_0}^+} f(x) = \inf \set{f(x) | x > x_0}$
+\end{itemize}
+\begin{center}
+\begin{tikzpicture}[scale=0.75]
+\draw[->] (-1.5,0) -- (2.2,0) node[right] {$x$};
+\draw[->] (0,-1.5) -- (0,2.2) node[above] {$y$};
+\draw [domain=-1:0.5] plot (\x, \x);
+\draw [domain=0.5:2] plot (\x, \x/2+1);
+\end{tikzpicture}
+\end{center}
+
+\begin{example}
+Consideriamo la funzione
+\begin{equation*}
+f(x) = \begin{cases}
+1 & x \in \Q \\
+0 & x \notin \Q
+\end{cases}
+\end{equation*}
+\begin{center}
+\begin{tikzpicture}[scale=1.5]
+\draw[->] (-0.5,0) -- (0.8,0) node[right] {$x$};
+\draw[->] (0,-0.5) -- (0,1.2) node[above] {$y$};
+\draw [line width=2pt, domain=0:0.1] plot (\x, 1);
+\draw [line width=2pt, domain=0.2:0.3] plot (\x, 1);
+\draw [line width=2pt, domain=0.4:0.5] plot (\x, 1);
+\draw [line width=2pt, domain=-0.2:-0.1] plot (\x, 1);
+\end{tikzpicture}
+\end{center}
+La funzione non è continua in nessun punto. Infatti $\lim_{x \to {x_0}^-} f(x)$ non esiste, perché in ogni $(x_0 - \delta, x_0)$ la funzione assume sia il valore 0 che il valore 1. Quindi ogni punto è di discontinuità di seconda specie.
+\end{example}
+
+\section{Limiti notevoli}
+
+\begin{theorem}[Limiti notevoli]
+Valgono i seguenti limiti notevoli:
+\openup 2ex
+\begin{gather*}
+\lim_{x \to 0} \frac{\sin x }{x} = 1 \\
+\lim_{x \to 0} (1+x)^\frac{1}{x} = e \\
+\lim_{x \to 0} \frac{e^x-1}{x} = 1 \\
+\lim_{x \to 0} \frac{1-\cos x}{x^2} = \frac{1}{2} \\
+\lim_{x \to 0} \frac{\log (1+x)}{x} = 1
+\end{gather*}
+\end{theorem}
+
+Dimostriamo a scopo didattico i primi due limiti.
+
+\begin{proof}
+Abbiamo $\lim_{x \to 0} \frac{\sin x}{x}$. Per il teorema del collegamento sappiamo che $\lim_{x \to 0} \frac{\sin x}{x} = 1$ se e solo se per ogni successione $\{x_n\}$ infinitesima (quindi $\lim x_n = 0$), con $x_n \neq 0 \; \forall n$, vale $\lim_{x \to +\infty} \frac{\sin x_n}{x_n} = 1$.
+
+Poiché $\sin x_n \sim x_n$ se la successione è infinitesima, la dimostrazione vale.
+\end{proof}
+
+\begin{proof}
+Dobbiamo dimostrare che $\lim_{x \to 0} (1+x)^\frac{1}{x} = e$. Prendiamo una successione $\{x_n\}$ infinitesima e con $x_n \neq 0$. Allora sappiamo che $\lim_{n \to +\infty} (1 + \epsilon_n)^\frac{1}{\epsilon_n} = e$.
+\end{proof}
+
+\section{Composizione di funzioni}
+\begin{proposition}
+Se $g: A \to B \subseteq \R$ è continua in un punto $x_0$ e $f: B \to \R$ è continua in $y_0 = f(x_0)$, allora $f \circ g: A \to \R$ è continua in $x_0$ e $f \circ g: x \to f(g(x))$.
+\end{proposition}
+
+\begin{proof}
+Devo dimostrare che per ogni intorno $U$ di $f(g(x_0))$ esiste un intorno $V$ di $x_0$ tale che se $x \in V$ allora $f(g(x)) \in U$.
+
+Per la continuità di $f$ esiste un intorno $W$ di $y_0 = g(x_0)$ tale che $y \in W \implies f(y) \in U$. Se consideriamo $V$, intorno di $x_0$ tale che $x \in V \implies g(x) \in W$, per la continuità di $g$, per ogni $x \in V$, si ha $g(x) \in W \implies f(g(x)) \in U$. Quindi $f \circ g$ è continua in $x_0$.
+\end{proof}
+
+\begin{example}
+Consideriamo questo limite
+\begin{equation*}
+\lim_{x \to x_0} e^{x^2+1} 
+\end{equation*}
+Possiamo considerare $e^{x^2+1}$ come $f(g(x))$ dove $g(x) = x^2+1$ e $f(y)=e^y$. Sappiamo che $g$ è continua perché è un polinomio e anche $f$ è continua perché la funzione esponenziale è continua. 
+
+Per quanto abbiamo appena detto, anche $f \circ g$ è continua. Quindi:
+\begin{equation*}
+\lim_{x \to x_0} e^{x^2+1} = \lim_{x \to x_0} f(g(x)) = f(g(x_0)) = e^{{x_0}^2 + 1}
+\end{equation*}
+\end{example}
+
+\begin{example}
+Consideriamo questo limite
+\begin{equation*}
+\lim_{x \to 1} \frac{1}{x^2-1} \cdot \sin (x^2-1)
+\end{equation*}
+È evidente che questo è un limite del tipo $\frac{\sin y}{y}$ con $y=x^2-1$.
+
+Sia $g(x) = x^2-1$. Quindi:
+\begin{equation*}
+\frac{1}{x^2-1} \cdot \sin (x^2-1) = \frac{\sin (g(x))}{g(x)} = f(g(x))
+\end{equation*}
+dove per $f$ intendiamo una funzione così definita:
+\begin{equation*}
+f(y) = \begin{cases}
+\frac{\sin y}{y} = 1 & y \neq 0 \\
+1 & y = 0
+\end{cases}
+\end{equation*}
+Osserviamo che $f$ è continua in 0, quindi $f \circ g$ è continua in 1. Quindi:
+\begin{equation*}
+\lim_{x \to 1} f(g(x)) = f(g(1)) = f(0) = 1
+\end{equation*}
+\end{example}
+
+\begin{example}
+Consideriamo $f(x) = a^x$ con $a > 0$ che è continua. Consideriamo la funzione composta $\exp \circ y$, $e^x = e^{x \log a}$. In questo scenario $g(x) = x \log a$ e $\exp (y) = e^y$. Essendo sia $\exp$ che $g$ funzioni continue, allora $\exp \circ g$ è continua.
+\end{example}
+
+\begin{theorem}
+Se $f : I \to R$ è una funzione continua e $I$ è un intervallo, allora $f(I) = \set{f(x) | x \in I}$ è l'intervallo.
+\end{theorem}
+
+\begin{example}
+\begin{equation*}
+f(x) = \begin{cases}
+1 & x \in \Q \\
+0 & x \notin \Q
+\end{cases}
+\end{equation*}
+In questo esempio $f([0,1]) = \{0, 1\}$.
+\end{example}
+
+\begin{proof}
+Dobbiamo dimostrare che se $y_1, y_2 \in f(I)$ allora $[y_1, y_2] \subseteq f(I)$. 
+
+Prendiamo i valori $y_1 = f(x_1)$ e $y_2 = f(x_2)$; possiamo suppore che $x_1$ sia minore di $x_2$. Sia $z \in [y_1, y_2]$ e sia $S = \set{x \in [x_1, x_2] | f(x) < z}$ con $z \neq y_1, y_2$.
+
+L'insieme $S$ è non vuoto, infatti $f(x_1) = y_1 < z \implies x_1 \in S$. Inoltre, l'insieme $S$ è limitato perché è contenuto in $[x_1, x_2]$ e quindi esiste il $\sup$. Supponiamo $s = \sup S$, dove $s \in [x_1, x_2] \subseteq I$.
+
+\begin{itemize}
+\item Se $f(s) > z$ allora $s > x_1$. Per il teorema di permanenza del segno esiste un intorno $\epsilon > 0$ tale che $f(s) > z$ per ogni $x \in (s - \epsilon, s)$.
+
+Quindi $(s-\epsilon, s)$ non interseca $S = \set{x \in [x_1, x_2] | f(x) < z}$, quindi $s \neq \sup S$, che è assurdo.
+
+\item Se $f(s) < z$ allora $s < x_2$. Con ragionamento analogo al precedente, sappiamo che $f(x_2) = y_2 > z$. Esiste $\epsilon > 0$ tale che se $x \in (s, s+\epsilon)$ allora $f(x) < z$. Questo implicherebbe che $x \in S$, quindi $s$ non sia maggiorante di $S$. Assurdo.
+\end{itemize}
+
+Essendo i due casi precedenti assurdi, dev'essere $f(s) = z$; cioè dato un qualunque $z \in (y_1, y_2)$ essite $s \in I$ tale che $f(s) = z$ implica $z \in f(I)$.
+
+\end{proof}
+
+\section{Teorema degli zeri}
+\begin{theorem}[\bfseries Teorema degli zeri]
+Sia $f [a,b] \to \R$ una funzione continua, $f(a) < 0$ e $f(b) > 0$; allora esiste $x \in (a, b)$ tale che $f(x) = 0$.
+\end{theorem}
+
+\begin{proof}
+Consideriamo l'intervallo $I = [a, b]$. Poiché la funzione è continua, $f(I)$ è un intervallo che contiene sia $f(a)$ che $f(b)$, quindi contiene anche lo 0.
+\end{proof}
+
+Possiamo procedere anche a una dimostrazione alternativa.
+
+\begin{proof}
+Sappiamo per ipotesi che $f(a) < 0$ e $f(b) > 0$. Definiamo per ricorrenza due successioni $\{a_n\}$ e $\{b_n\}$ tali che $a_1 = a$, $b_1 = b$ per ogni $n > 0$.
+
+Sia $c_n = \frac{1}{2} (a_n + b_n)$. Se $f(c_n) \le 0$ si pone $a_{n+1} = c_n$ e $b_{n+1} = b_n$. In caso contrario (se $f(c_n) > 0$) si pone $b_{n+1} = a_{n+1} = a_n$. Quindi $f(a_n) \le 0$ per ogni $n$ e $f(b_n) \ge 0$.
+
+La successione $\{a_n\}$ è non decrescente mentre $\{b_n\}$ è non crescente; quindi $a_n < b_n$. Si possono quindi presentare tre casi:
+\begin{enumerate}
+\item $a_{n+1} \ge a_n$
+\item $b_{n+1} \le b_n$
+\item $a_{n+1} < b_{n+1}$
+\end{enumerate}
+Sappiamo che la successione $\{a_n\}$ è monotona e limitata, quindi esiste $\lim_{n \to +\infty} a_n = x$. Anche la successione $\{b_n\}$ è monotona e limitata, quindi esiste $\lim_{n \to +\infty} b_n = y$.
+
+Per la continuità di $f$, dev'essere $f(x) \le 0$ e $f(y) \ge 0$.
+
+\begin{equation*}
+b_n - a_n = \frac{b-a}{2^{n-1}} \implies \lim (b_n - a_n) = 0 = x - y
+\end{equation*}
+Quindi dev'essere $x = y$ e $f(x) = 0$.
+\end{proof}
+
+Come esempio possiamo prendere $f(x) = e^x + x$ negli estremi -1 e 0: $f(-1) = \frac{1}{e} - 1$, negativo, e $f(0)=1$, positivo. Quindi $a_1 = -1$ e $b_1 = 0$. 
+
+Procediamo e calcoliamo il valore della funzione nel punto $-\frac{1}{2}$: $\frac{1}{\sqrt{e}} - \frac{1}{2}$, negativo. Quindi $a_2 = -\frac{1}{2}$ e $b_2 = 0$. E così via.
+
+\begin{example}
+Sia $f(x) = x^n + a_{n-1} \cdot x^{n-1} + \ldots + a_0$ una funzione espressa come polinomio di grado dispari. Se $\lim_{x \to +\infty} f(x) = +\infty$ e $\lim_{x \to -\infty} = -\infty$; allora per il teorema degli zeri esiste $x$ tale che $f(x) = 0$.
+\end{example}
+
+\section{Teorema di Weierstrass}
+\begin{definition}
+Data una funzione $f: A \to \R$ si dice che $y$ è il \emph{massimo} (assoluto) di $f$ se $y = \max \set{f(x) | x \in A}$. Inoltre $x$ è il \emph{punto di massimo} se $f(x)$ è il massimo.
+\end{definition}
+
+\begin{remark}
+Il massimo, se esiste, è unico. Al contrario, i punti di massimo possono non essere unici.
+\end{remark}
+
+\begin{example}
+Consideriamo la funzione $\sin x$: il suo massimo è 1 e i suoi punti di massimo sono tutti i punti $\frac{\pi}{2} + 2\pi x$.
+\end{example}
+
+\begin{theorem}[\bfseries Teorema di Weierstrass]
+Sia $f [a, b] \to \R$ una funzione continua; allora $f$ ha un minimo e un massimo. Ovvero, $f([a, b])$ è un intervallo chiuso.
+\end{theorem}
+
+Sappiamo che $f([a, b])$ è un intervallo; se contiene $\min f$ e $\max f$ allora $f([a, b]) = [\min f, \max f]$.
+
+\section{Ancora sulle funzioni}
+
+\begin{definition}
+La funzione $f: A \to B$ si dice \emph{iniettiva} se $f(x) = f(y)$ implica $x = y$. 
+\end{definition}
+
+\begin{definition}
+La funzione $f: A \to B$ si dice \emph{suriettiva} se $f(A) = B$, cioè $\forall y \in B$ $\exists x \in A$ tale che $f(x) = y$.
+\end{definition}
+
+\begin{definition}
+La funzione $f: A \to B$ si dice \emph{biunivoca} se è iniettiva e suriettiva. In tal caso ammette \emph{inversa}, ovvero $f^{-1} : B \to A$, $f^{-1} (y) = x$ (dove ovviamente $f(x) = y$).
+\end{definition}
+
+\begin{example}
+Consideriamo la funzione $f(x) = \sin x$ definita su $[-\frac{\pi}{2} ; \frac{\pi}{2}] \to [-1, 1]$. La funzione è biunivoca, è continua ed è crescente. Infatti:
+\begin{equation*}
+\sin (x+h) - \sin x  = 2 \sin \frac{h}{2} \cos \frac{h}{2}
+\end{equation*}
+Inoltre $-\frac{\pi}{2} \le x < x + h \le \frac{\pi}{2}$. Quindi è crescente, quindi iniettiva, e continua, quindi suriettiva.
+
+L'inversa $f^{-1}$ si indica con $\arcsin: [-1, 1] \to [-\frac{\pi}{2}; \frac{\pi}{2}]$. Il grafico si ottiene mediante simmetria ($x \to y$ e $y \to x$, quindi $\sin x = y$ e $\arcsin y = x$).
+\end{example}
+
+\begin{example}
+Consideriamo la funzione $f(x) = \cos x : [0; \pi] \to [-1, 1]$ che è decrescente e continua, quindi è biunivoca e quindi invertibile. La sua funzione inversa è $\arccos [-1, 1] \to [0, \pi]$.
+\end{example}
+
+\begin{example}
+Consideriamo la funzione $f(x) = \tan x : [-\frac{\pi}{2}; \frac{\pi}{2}] \to \R$ che è biunivoca e quindi invertibile. La sua funzione inversa è $\arctan : \R \to [-\frac{\pi}{2}, \frac{\pi}{2}]$.
+\end{example}
+
+\begin{theorem}
+Se $f: [a, b] \to R$ è una funzione crescente e continua, allora anche $f^{-1}$ è continua. Se $f$ è una funzione crescente invertibile, allora anche $f^{-1}$ è crescente.
+\end{theorem}
+
+Infatti se $x_1 < x_2 \implies f(x_1) < f(x_2)$; allora scelti $y_1 < y_2$, ovviamente ponendo $y_1 = f(x_1)$ e $y_2 = f(x_2)$, $\implies x_1 < x_2$.
