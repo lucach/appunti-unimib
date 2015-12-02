@@ -1,0 +1,382 @@
+\chapter{Quindicesima lezione (01/12/2015)}
+
+\section{Funzioni inverse (cont.)}
+
+Al termine della lezione precedente abbiamo visto rapidamente un teorema sulla continuità delle funzioni inverse. Diamone orauna dimostrazione rigorosa.
+\begin{theorem}
+Data una funzione $f: [a, b] \to \R$ crescente e continua, allora $f^{-1}$ è continua.
+\end{theorem}
+\begin{proof}
+L'immagine di $f$ è $[f(a), f(b)]$. Osserviamo che la funzione $f: [a, b] \to [f(a), f(b)]$ è suriettiva. Inoltre, essendo crescente è anche iniettiva.
+
+Quindi la funzione è biunivoca e quindi esiste l'inversa $f^{-1}:[c,d] \to [a, b]$ (per semplicità $f(a)$ e $f(b)$ sono stati rinominati rispettivamente $c$ e $d$).
+
+Anche $f^{-1}$ è crescente. Supponiamo per assurdo che non lo sia: in tal caso dev'essere che scelti
+\begin{equation*}
+c \le x < y \le d \implies f^{-1}(x) \ge f^{-1}(y)
+\end{equation*}
+Possiamo applicare $f$ a $f^{-1}$, senza invertire il verso della disuguaglianza, visto che la funzione $f$ è crescente. Quindi
+\begin{equation*}
+\implies f(f^{-1}(x)) \ge f(f^{-1}(y)) \implies x \ge y
+\end{equation*}
+Siamo arrivati all'assurdo, perché $x < y$ per ipotesi. Quindi anche $f^{-1}$ è crescente.
+
+Dobbiamo ora dimostrare che è continua. Per semplicità, facciamolo prima considerando l'intervallo aperto $(c, d)$. 
+
+Scegliamo $y_0 \in (c,d)$ e chiamiamo $x_0 = f^{-1} (y_0)$. Preso $\epsilon > 0$ deve esistere un intorno $U$ di $y_0$ tale che
+\begin{equation*}
+y \in U \implies f^{-1} (y) \in (x_0 - \epsilon, x_0 + \epsilon)
+\end{equation*}
+Sappiamo che $f(x_0 - \epsilon) < f(x_0 + \epsilon)$ perché la funzione è crescente.
+
+Dato $y$ un punto nell'intorno ($f(x_0 - \epsilon) < y < f(x_0 + \epsilon)$), applichiamo $f^{-1}$ (che è crescente):
+\begin{equation*}
+x_0 - \epsilon < f^{-1} (y) < x_0 + \epsilon
+\end{equation*}
+
+Se scelgo $U$ intorno di $y_0$ tale che $U \subset (f(x_0 - \epsilon), f(x_0 + \epsilon))$ si ha che
+\begin{equation*}
+f(x_0 - \epsilon) < f(x_0) = y_0 < f(x_0 + \epsilon)
+\end{equation*}
+
+Quindi abbiamo dimostrato la continuità in $y_0$.
+\end{proof}
+
+\begin{proof}
+Resta da mostrare che non vale solo sull'intervallo aperto $(c, d)$, ma anche negli estremi. Supponiamo $y_0 = c$ ed esprimiamo la condizione di continuità in $y_0$. Per ogni $\epsilon > 0$ cerchiamo un intorno $U$ di $y_0 = c$ tale che $\forall y \in U$ dev'essere $f^{-1} (y) \in B_\epsilon (x_0)$.
+
+Dev'essere per forza $f^{-1} (c) = a$ perché $c$ è il minimo e $a$ è un punto di minimo (infatti $f$ è crescente).
+
+Se $c \le y < f(a + \epsilon)$ allora:
+\begin{gather*}
+f^{-1} (c) \le f^{-1} (y) \le a + \epsilon \\
+a \le f^{-1} (y) \le a + \epsilon \\
+\end{gather*}
+
+Quindi possiamo prendere $U$ intorno di $c$ tale che $U \cap [c,d] \subseteq [c, f(a+\epsilon)]$.
+
+Analogo ragionamento può essere fatto sull'altro estremo.
+\end{proof}
+
+\begin{example}
+La funzione $f(x) = \log x$ è continua. Infatti $\exp : [a, b] \to \R$ tale che $x \to e^x$ è continua e crescente. Essendo la funzione logaritmo inversa della funzione esponenziale, grazie al teorema possiamo affermare che $\log : [e^a, e^b] \to [a, b]$ è continua.
+\end{example}
+
+\begin{example}
+Consideriamo la funzione $f(x) = x^a$ con $a \in \R, x > 0$. Tramite semplici passaggi:
+\begin{equation*}
+x^a = e^{\log {x^a}} = e^{a \cdot \log x} = \exp \circ g
+\end{equation*}
+dove $g(x) = a \cdot \log x$.
+Abbiamo scritto $x^a$ come composizione di funzioni continue, quindi è continua.
+\end{example}
+
+\section{Asintoti di una funzione}
+\begin{definition}
+La retta $y = mx + q$ è un \emph{asintoto} della funzione $f$ per $x \to +\infty$ se
+\begin{equation*}
+\lim_{x \to +\infty} f(x) - (mx + q) = 0
+\end{equation*}
+\begin{itemize}
+\item Se $m \neq 0$ l'asintoto si dice \emph{obliquo}.
+\item Se $m = 0$ l'asintoto si dice \emph{orizzontale}.
+\end{itemize}
+\end{definition}
+
+\begin{definition}
+La retta $x = x_0$ è un \emph{asintoto verticale} della funzione $f$ per $x \to x_{0^+}$ se
+\begin{equation*}
+\lim_{x \to x_{0^+}} f(x) = +\infty \qquad \text{oppure} \qquad \lim_{x \to x_{0^+}} f(x) = -\infty
+\end{equation*}
+\end{definition}
+
+\begin{example}
+Consideriamo la funzione $f(x) = \log x$.
+
+\begin{center}
+\begin{tikzpicture}[scale=0.5]
+\draw[->] (-2.5,0) -- (3.2,0) node[right] {$x$};
+\draw[->] (0,-2.5) -- (0,2.2) node[above] {$y$};
+\draw [domain=0.1:3] plot (\x, ln{\x});
+\end{tikzpicture}
+\end{center}
+
+
+Essa presenta un asintoto verticale per $x \to 0^+$, poiché $\lim_{x \to 0^+} \log x = -\infty$.
+
+La funzione invece non ha asintoto per $x \to +\infty$ perché $\lim \frac{\log x}{x} = 0$ e $\lim (\log x - 0) = +\infty$.
+\end{example}
+
+\begin{example}
+La funzione $f(x) = \frac{1}{x} \sin x$ ha asintoto per $x \to +\infty$.
+
+\begin{center}
+\begin{tikzpicture}[scale=0.5]
+\draw[->] (-2.5,0) -- (11.2,0) node[right] {$x$};
+\draw[->] (0,-2.5) -- (0,2.2) node[above] {$y$};
+\draw [domain=0.1:10] plot (\x, sin{deg(\x)}/\x );
+\end{tikzpicture}
+\end{center}
+
+Calcoliamo $m$ e $q$:
+\begin{align*}
+m &= \lim_{x \to +\infty} \frac{f(x)}{x} = \frac{\sin x}{x^2} = 0 \\
+q &= \lim_{x \to +\infty} \frac{\sin x}{x} - 0 = 0
+\end{align*}
+\end{example}
+
+\begin{example}
+Studiamo un eventuale asintoto obliquo per la funzione $f(x) = \log x - \sqrt{x^2-4}$ (definita per $x>2$).
+
+\begin{equation*}
+m = \lim_{x \to +\infty} \frac{\log x - \sqrt{x^2-4}}{x} = \lim_{x \to +\infty} \frac{\log x}{x} - \sqrt{\frac{x^2-4}{x^2}} = -1
+\end{equation*}
+\begin{equation*}
+q = \lim_{x \to +\infty} f(x) - (-x) = \log x - \sqrt{x^2-4} + x
+\end{equation*}
+Studiamo il limite escludendo per il momento il logaritmo:
+\begin{equation*}
+\lim_{x \to +\infty} x - \sqrt{x^2 - 4} = \lim_{x \to +\infty} x - \sqrt{x^2 - 4} \cdot \frac{x + \sqrt{x^2 - 4}}{x + \sqrt{x^2 - 4}} = \lim_{x \to +\infty} \frac{x^2 - x^2 - 4}{x + \sqrt{x^2 + 4}} = 0
+\end{equation*}
+
+Quindi $\lim_{x \to +\infty} \log x + 0 = +\infty$, quindi la funzione non ha asintoto.
+
+\end{example}
+
+\section{Derivate}
+Sia $f: [a,b] \to \R$ e $x_0 \in (a,b)$. Sia $P = (x_0, f(x_0))$ un punto preso sulla funzione e $Q = (x_0 + h, f(x_0+h))$ un altro punto della funzione.
+
+\begin{center}
+\begin{tikzpicture}[scale=1]
+\draw[->] (-1,0) -- (2.2,0) node[right] {$x$};
+\draw[->] (0,-0.5) -- (0,2.2) node[above] {$y$};
+\draw [smooth,domain=-0.5:2] plot({\x}, {cos(\x r)});
+\node at (0.35,0.75) {\footnotesize $Q$};
+\node at (0.8,0.5) {\footnotesize $P$};
+\end{tikzpicture}
+\end{center}
+
+Scriviamo l'equazione della retta passante per $P$ e $Q$:
+\begin{equation*}
+y = f(x_0) + \frac{f(x_0+h)-f(x_0)}{x_0 + h - x_0} \cdot (x-x_0)
+\end{equation*}
+
+Il coefficiente angolare di questa retta è (semplificando)
+\begin{equation*}
+\frac{f(x_0+h)-f(x_0)}{h}
+\end{equation*}
+Esso è detto anche \emph{rapporto incrementale} di $f$ in $x_0$.
+
+\begin{definition}
+Sia $f: [a, b] \to \R$ e $x_0 \in (a, b)$. Chiamiamo \emph{derivata} di $f$ in $x_0$ il limite
+\begin{equation*}
+\lim_{h \to 0} \frac{f(x_0+h)-f(x_0)}{h}
+\end{equation*}
+purché tale limite esista finito. Si indica $f'(x_0)$.
+\end{definition}
+
+Il ``limite'' delle rette $PQ$, per $Q \to P$ è:
+\begin{equation*}
+y = f(x_0) + f'(x_0) \cdot (x-x_0)
+\end{equation*}
+Questa è l'espressione analitica della retta tangente al grafico di $f$ in $x_0$.
+
+\begin{definition}
+Si dice che $f$ è \emph{derivabile} nell'intervallo se esiste la derivata in ogni punto.
+\end{definition}
+
+\begin{example}
+Consideriamo ad esempio la funzione $f(x) = ax + b$.
+
+\begin{center}
+\begin{tikzpicture}[scale=0.75]
+\draw[->] (-1.5,0) -- (2.2,0) node[right] {$x$};
+\draw[->] (0,-1) -- (0,2.2) node[above] {$y$};
+\draw [smooth,domain=-1:2] plot({\x}, {\x + 0.5});
+\end{tikzpicture}
+\end{center}
+
+Se quanto abbiamo espresso sopra ha un senso, la tangente in questo caso dev'essere evidentemente la retta stessa. Applichiamo la definizione.
+\begin{equation*}
+\lim_{h \to 0} \frac{f(x+h)-f(x)}{h} = \lim_{h \to 0} \frac{a(x+h) + b  - (ax+b)}{h} = \lim_{h \to 0} \frac{ah}{h} = a
+\end{equation*}
+Quindi $f'(x) = a$ per ogni $x$. L'equazione della retta tangente è
+\begin{align*}
+y &= f(x_0) + f'(x)(x-x_0) \\
+&= a(x_0) + b + a(x-x_0) \\
+&= ax + b
+\end{align*}
+Che è esattamente coincidente all'equazione della retta iniziale.
+\end{example}
+
+\begin{example}
+Consideriamo il polinomio $f(x) = x^n$ con $n > 0$ e calcoliamo la sua derivata applicando la definizione.
+
+\begin{align*}
+&\lim_{h \to 0} \frac{1}{h} \cdot (f(x+h)-f(x)) \\
+&\lim_{h \to 0} \frac{1}{h} \cdot ((x+h)^n - x^n) \\
+&\lim_{h \to 0} \frac{1}{h} \cdot \left(\binom{n}{0} x^nh^0 + \binom{n}{1} x^{n-1}h^1 + \ldots - x^n \right) \\
+&\lim_{h \to 0} n \cdot x^{n-1} + o(h) = n \cdot  x^{n-1}
+\end{align*}
+
+\end{example}
+
+\begin{example}
+Consideriamo la funzione $f(x) = x^{\frac{1}{3}}$. Essa non è derivabile in 0.
+
+\begin{center}
+\begin{tikzpicture}[scale=1]
+\draw[->] (-1.5,0) -- (2.0,0) node[right] {$x$};
+\draw[->] (0,-1) -- (0,2.0) node[above] {$y$};
+\draw [smooth,domain=-1:1] plot({\x}, {\x^(1/3)});
+\end{tikzpicture}
+\end{center}
+
+Infatti:
+\begin{equation*}
+\lim_{h \to 0} \frac{1}{h} \cdot (f(h)-f(0)) = \lim_{h \to 0} \frac{1}{h} \cdot h^{\frac{1}{3}} = \lim_{h \to 0} h^{-\frac{2}{3}} = +\infty
+\end{equation*}
+\end{example}
+
+\begin{example}
+Consideriamo una funzione così definita:
+\begin{equation*}
+f(x) = \begin{cases}
+x \cdot \sin \frac{1}{x} & x \neq 0 \\
+0 & x = 0
+\end{cases}
+\end{equation*}
+Controlliamo se è derivabile in 0:
+\begin{equation*}
+\lim_{h \to 0} \frac{1}{h} (f(h)-f(0)) = \lim_{h \to 0} \left(h \cdot \sin \frac{1}{h} \right) = \lim_{h \to 0} \sin \frac{1}{h}
+\end{equation*}
+Il limite non esiste perché il seno oscilla. Quindi la funzione è continua in 0 ma non è derivabile.
+\end{example}
+
+\begin{example}
+Consideriamo una funzione così definita:
+\begin{equation*}
+f(x) = \begin{cases}
+x^2 \cdot \sin \frac{1}{x} & x \neq 0 \\
+0 & x = 0
+\end{cases}
+\end{equation*}
+Controlliamo se è derivabile in 0:
+\begin{equation*}
+\lim_{h \to 0} \frac{1}{h} (f(h)-f(0)) = \lim_{h \to 0} \left(h^2 \cdot \sin \frac{1}{h} \right) = \lim_{h \to 0} h \cdot \sin \frac{1}{h} = 0
+\end{equation*}
+La funzione quindi è derivabile in zero.
+\end{example}
+
+\begin{definition}
+Se $f: (a, b) \to \R$ è derivabile, la derivata definisce una funzione $f': (a, b) \to \R$.
+\end{definition}
+
+Se $f'$ è a sua volta derivabile, la sua derivata si indica $f''$ ed è detta derivata seconda di $f$. 
+
+Induttivamente, la derivata $n$-esima $f^{(n)}$ è la derivata di $f^{(n-1)}$ (posto $f^{(0)} = 0$).
+
+\begin{example}
+\begin{align*}
+f(x) &= x^n \\
+f'(x) &= n \cdot x^{n-1} \\
+f''(x) &= n \cdot (n-1) \cdot x^{n-2} 
+\end{align*}
+E così via...
+\end{example}
+
+\section{Derivabilità e continuità}
+
+\begin{proposition}
+Se $f : (a, b) \to \R$ è derivabile in $x_0$, allora $f$ è continua in $x_0$.
+\end{proposition}
+
+\begin{proof}
+Essendo la funzione derivabile possiamo scrivere
+\begin{equation*}
+f'(x_0) = \lim_{h \to 0} \frac{1}{h} \cdot ((f(x_0+h)-f(x_0))
+\end{equation*}
+Consideriamo solo il limite della seconda parte e moltiplichiamo e dividiamo per $h$:
+\begin{equation*}
+\lim_{h \to 0} h \cdot \lim_{h \to 0} \frac{f(x_0+h)-f(x_0)}{h} = 0 \cdot f'(x_0) = 0
+\end{equation*}
+
+Essendo la differenza tra $f(x_0+h) - f(x_0) = 0$ allora
+\begin{equation*}
+\lim_{h \to 0} f(x_0+h) = f(x_0)
+\end{equation*}
+che è esattamente la proprietà che caratterizza la continuità.
+\end{proof}
+
+\section{Massimi e e crescenza (decrescenza)}
+
+\begin{definition}
+La funzione $f: (a,b) \to \R$ ha un \emph{massimo relativo} in $x_0$ (e $x_0$ è un \emph{punto di massimo relativo}) se esiste un intorno $V \subset (a,b)$ tale che $f(x) \le f(x_0)$ $\forall x \in V$.
+\end{definition}
+
+La definizione speculare vale ovviamente per il concetto di \emph{minimo relativo}.
+
+\begin{definition}
+La funzione $f$ è \emph{crescente} in $x_0$ se esiste un intorno $\sigma > 0, B_\sigma (x_0) \subseteq (a,b)$ tale che:
+\begin{itemize}
+\item $f(x) < f(x_0)$ per $x_0 - \sigma < x < x_0$
+\item $f(x) > f(x_0)$ per $x_0 < x < x_0 + \sigma$
+\end{itemize}
+\end{definition}
+
+La definizione speculare vale ovviamente per il concetto di funzione \emph{decrescente}.
+
+\begin{remark}
+Se $f: (a,b) \to \R$ è crescente in ogni punto, allora $f$ è crescente.
+\end{remark}
+
+\begin{proof}
+Infatti, supponiamo $f$ continua e crescente in ogni suo punto. Siano $x, y$ punti tali che $a < x < y < b$; dobbiamo dimostrare che $f(x) < f(y)$.
+
+Consideriamo una funzione $g: [x, y] \to \R$. La funzione $g$ è una restrizione di $f$ tale che $g(z) = f(z)$. Quindi la funzione $g$ è ancora continua. Per il teorema di Weierstrass, $g$ ha un massimo e un minimo assoluti.
+
+Sia $c$ il punto di minimo assoluto. Sappiamo che $f$ è crescente nel punto $c$, quindi $\exists \sigma$ tale che per $c - \sigma < z < c + \sigma$ vale $f(z) < f(c)$.
+
+Questo è possibile solo se $c = x$ perché $c$ è un punto di minimo assoluto. Quindi $x$ è un punto di minimo assoluto.
+
+Con ragionamento analogo si arriva a far vedere che $y$ è un punto di massimo assoluto per $g$. Quindi $f(y) > f(x)$ perché il massimo è naturalmente maggiore del minimo.
+\end{proof}
+
+\begin{theorem}
+Sia $f: (a,b) \to \R$ derivabile in $x_0$. Allora:
+\begin{itemize}
+\item se $f'(x_0) > 0$ allora $f$ è crescente in $x_0$;
+\item se $f'(x_0) < 0$ allora $f$ è decrescente in $x_0$;
+\item se $x_0$ è un punto di massimo o minimo relativo allora $f'(x_0)=0$.
+\end{itemize}
+\end{theorem}
+
+Dimostriamo il primo caso (il secondo è speculare al primo).
+\begin{proof}
+La derivata in $x_0$ è positiva; ricordiamo che questo significa che
+\begin{equation*}
+\lim_{h \to 0} \frac{f(x_0+h)-f(x_0)}{h} > 0
+\end{equation*}
+Per il teorema della permanenza del segno:
+\begin{equation*}
+\frac{f(x_0+h)-f(x_0)}{h} > 0 \qquad \text{per } h \in B_\sigma (0)
+\end{equation*}
+Ora:
+\begin{itemize}
+\item se $x_0 - \sigma < x < x_0$ allora $f(x) - f(x_0) < 0$
+\item se $x_0 < x < x_0 + \sigma$ allora $f(x) - f(x_0) > 0$
+\end{itemize}
+Queste due condizioni rappresentano esattamente la definizione di funzione crescente nel punto $x_0$.
+\end{proof}
+
+\begin{proof}
+Dimostriamo il terzo caso. Se $x_0$ è un punto di massimo (minimo) relativo, $f$ non può essere né crescente né decrescente in $x_0$.
+
+Per quanto abbiamo appena dimostrato:
+\begin{itemize}
+\item se fosse $f'(x_0) > 0$ la funzione sarebbe crescente, assurdo;
+\item se fosse $f'(x_0) < 0$ la funzione sarebbe decrescente, assurdo.
+\end{itemize}
+
+Quindi dev'essere per forza $f'(x_0) = 0$.
+\end{proof}
