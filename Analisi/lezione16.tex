@@ -1,0 +1,421 @@
+\chapter{Sedicesima lezione (04/12/2015)}
+
+Nella lezione precedente abbiamo enunciato e dimostrato un teorema, che prende anche il nome di ``Teorema di Fermat''. Esso asserisce che ogni estremo locale della funzione ha derivata nulla. Chiariamo meglio il concetto con due esempi.
+
+\begin{example}
+Sia $f(x) = x^2$. La sua funzione derivata è $f'(x) = 2x$, quindi la funzione $f$ è crescente per $x > 0$ e decrescente per $x < 0$. Si deduce che $f$ ha un minimo in zero ($f'(0) = 0$).
+\end{example}
+
+\begin{example}
+Sia $f(x) = x^3$. La sua funzione derivata è $f'(x) = 3x^2$. È vero che $f'(0) = 0$ ma la funzione è positiva in tutti gli altri punti ($f'(x) > 0$ $\forall x \neq 0$), quindi è crescente. 
+
+In definitiva 0 non è né un punto di massimo né di minimo relativo.
+\end{example}
+
+\section{Regole di derivazione}
+
+\begin{theorem}
+Se $f, g : (a, b) \to \R$ sono funzioni derivabili in $(a, b)$, allora:
+\begin{enumerate}
+\item $f+g$ è derivabile in $(a, b)$ e 
+\begin{equation*}
+(f+g)' = f'+g'
+\end{equation*}
+\item dato $\alpha \in \R$, $(\alpha f)$ è derivabile in $(a,b)$ e 
+\begin{equation*}
+(\alpha f)' = \alpha \cdot f'
+\end{equation*}
+\item $f\cdot g$ è derivabile in $(a, b)$ e 
+\begin{equation*}
+(fg)' = f'g + fg'
+\end{equation*}
+\item se $g(x) \neq 0$ $\forall x \in (a,b)$, allora $\frac{f}{g}$ è derivabile e
+\begin{equation*}
+\left( \frac{f}{g} \right)' = \frac{f'g - fg'}{g^2}
+\end{equation*}
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Dimostriamo la regola della somma. Dato $x \in (a,b)$, la derivata di $f+g$ in $x$ è
+\begin{equation*}
+\end{equation*}
+\begingroup
+\addtolength{\jot}{1ex}
+\begin{align*}
+& \lim_{h \to 0} \frac{(f+g)(x+h) - (f+g)(x)}{h} \\
+= &\lim_{h \to 0} \frac{f(x+h)-f(x)}{h} + \lim_{h \to 0} \frac{g(x+h)-g(x)}{h} \\
+= &f'(x) + g'(x)
+\end{align*}
+\endgroup
+\end{proof}
+
+\begin{proof}
+In modo analogo dimostriamo la regola del prodotto.
+\begingroup
+\addtolength{\jot}{1ex}
+\begin{align*}
+& \lim_{h \to 0} \frac{(fg)(x+h) - (fg)(x)}{h} \\
+= &\lim_{h \to 0} \frac{f(x+h) \cdot g(x+h) - f(x) \cdot g(x)}{h} \\
+= &\lim_{h \to 0} \left( \frac{f(x+h)-f(x)}{h} \cdot g(x) + \frac{f(x+h) \cdot g(x+h) - f(x+h) \cdot g(x)}{h} \right) \\
+= &f'(x) \cdot g(x) + \lim_{h \to 0} f(x+h) \cdot \frac{g(x+h) - g(x)}{h} \\
+= &f'(x) \cdot g(x) + \lim_{h \to 0} f(x+h) \cdot \lim_{h \to 0} \frac{g(x+h) - g(x)}{h} \\
+= & f'(x) \cdot g(x) + f(x) \cdot g'(x)
+\end{align*}
+\endgroup
+
+Nel terzo passaggio abbiamo tenuto l'equivalente di $f'(x) \cdot g(x)$ a sinistra e abbiamo scritto ``il resto'' a destra. L'ultimo passaggio invece si giustifica osservando che $f$, essendo derivabile, è continua in $x$.
+\end{proof}
+
+\begin{proof}
+In ultimo dimostriamo la regola del rapporto.
+\begingroup
+\addtolength{\jot}{1ex}
+\begin{align*}
+& \lim_{h \to 0} \frac{1}{h} \cdot \left( \frac{f(x+h)}{g(x+h)} - \frac{f(x)}{g(x)} \right) \\
+= & \lim_{h \to 0} \frac{1}{h} \cdot \left( \frac{f(x+h)g(x) - f(x)g(x+h)}{g(x) \cdot g(x+h)} \right) \\
+= & \lim_{h \to 0} \frac{\frac{1}{h} \cdot (f(x+h)-f(x)) \cdot g(x) + \frac{1}{h} \cdot (f(x)g(x) - f(x)g(x+h))}{g(x) \cdot g(x+h)} \\
+= & \frac{f'(x) \cdot g(x) - f(x) \cdot g'(x)}{g(x)^2}
+\end{align*}
+\endgroup
+\end{proof}
+
+\begin{example}
+Con quanto abbiamo dimostrato finora possiamo calcolare la derivata di una funzione come questa:
+\begin{equation*}
+f(x) = \frac{2x+1}{3x+2}
+\end{equation*}
+\begin{equation*}
+f'(x) = \frac{2(3x+2)-3(2x+1)}{(3x+2)^2} = \frac{1}{(3x+2)^2}
+\end{equation*}
+Osserviamo in particolare che la funzione è crescente.
+\end{example}
+
+\section{Derivate delle funzioni elementari}
+
+Abbiamo già dimostrato in precedenza la derivata dei polinomi nella forma $f(x) = x^\alpha$.
+
+\begin{remark}
+Se $f(x) = \sin x$, allora $f'(x) = \cos x$. Infatti:
+\begingroup
+\addtolength{\jot}{1ex}
+\begin{align*}
+& \lim_{h \to 0} \frac{\sin (x+h) - \sin x}{h} \\
+= & \lim_{h \to 0} \frac{\sin x \cos h + \cos x \sin h - \sin x}{h} \\
+= & \lim_{h \to 0} \left( \sin x \cdot \frac{\cos h - 1}{h} + \cos x \cdot \frac{\sin h}{h} \right)
+\end{align*}
+\endgroup
+
+Sappiamo che $1 - \cos h \sim \frac{1}{2} h^2$, quindi $\lim \frac{1-\cos h}{h} = 0$.
+\begin{equation*}
+= \cos x \cdot \lim_{h \to 0} \frac{\sin h}{h} = \cos x
+\end{equation*}
+\end{remark}
+
+\begin{remark}
+Se $f(x) = \cos x$, allora $f'(x) = -\sin x$. Procediamo in modo analogo a quanto fatto per il coseno.
+\begingroup
+\addtolength{\jot}{1ex}
+\begin{align*}
+& \lim_{h \to 0} \frac{\cos (x+h) - \cos x}{h} \\
+= & \lim_{h \to 0} \frac{\cos x \cos h - \sin x \sin h - \cos x}{h} \\
+= & \cos x \cdot \underbrace{\lim_{h \to 0} \frac{\cos h - 1}{h}}_{0} - \sin x \cdot \underbrace{\lim_{h \to 0} \frac{\sin h}{h}}_{1} \\
+= & - \sin x
+\end{align*}
+\endgroup
+\end{remark}
+
+\begin{remark}
+Sia $f(x) = \tan x$. Allora
+\begin{equation*}
+f'(x) = \frac{1}{\cos^2 x} = 1 + \tan^2 x
+\end{equation*}
+Osserviamo che le due notazioni sono equivalenti, infatti:
+\begin{equation*}
+\frac{1}{\cos^2 x} = \frac{\cos^2x + \sin^2x}{\cos^2x} = 1 + \tan^2x 
+\end{equation*}
+
+Conoscendo le derivate di $\sin x$ e $\cos x$, scriviamo $f(x) = \tan x = \frac{\sin x}{\cos x}$. Applichiamo la regola di derivazione del rapporto:
+\begin{equation*}
+f'(x) = \frac{\cos x \cdot \cos x - \sin x \cdot (-\sin x)}{\cos^2 x} = \frac{1}{\cos^2x}
+\end{equation*}
+\end{remark}
+
+\begin{remark}
+Se $f(x) = e^x$, allora $f'(x) = e^x$. Infatti:
+\begingroup
+\addtolength{\jot}{1ex}
+\begin{align*}
+& \lim_{h \to 0} \frac{e^{x+h} - e^x}{h} \\
+= & \lim_{h \to 0} \frac{e^x \cdot (e^h - 1)}{h} \\
+= & e^x \cdot \underbrace{\lim_{h \to 0} \frac{e^h - 1}{h}}_{1} = e^x
+\end{align*}
+\endgroup
+\end{remark}
+
+\begin{remark}
+Se $f(x) = \log x$, allora $f'(x) = \frac{1}{x}$. Infatti:
+\begingroup
+\addtolength{\jot}{1ex}
+\begin{align*}
+& \lim_{h \to 0} \frac{\log (x+h) - \log x}{h} \\
+= & \lim_{h \to 0} \frac{\log \frac{x+h}{x}}{h} \\
+= & \lim_{h \to 0} \frac{1}{h} \cdot \log \left(1 + \frac{h}{x} \right) 
+\end{align*}
+\endgroup
+Osservando che $\frac{h}{x}$ tende comunque a zero, possiamo applicare il limite notevole $\log (1 + \frac{h}{x} ) \sim \frac{h}{x}$.
+\begin{equation*}
+= \lim_{h \to 0} \frac{1}{h} \cdot \frac{h}{x} = \frac{1}{x}
+\end{equation*}
+\end{remark}
+
+\section{Derivata della composizione di funzioni}
+\begin{remark}
+Se $g$ è derivabile in $x$, allora
+\begin{equation*}
+g(x+h) - g(x) = h \cdot g'(x) + h \cdot \theta (h)
+\end{equation*}
+
+dove $\theta(0) = 0$ e $\theta$ è continua in 0. Infatti possiamo porre: 
+\begin{equation*}
+\theta (h) = \begin{cases}
+g(x) - \frac{1}{h} \cdot (g(x+h)-g(x)) & h \neq 0 \\
+0 & h = 0
+\end{cases}
+\end{equation*}
+La funzione è effettivamente continua in 0:
+\begin{equation*}
+\lim_{h \to 0} \theta (h) = g'(x) - g'(x) = 0
+\end{equation*}
+\end{remark}
+
+\begin{theorem}
+Siano $g:(c,d) \to \R$ e $f:(a,b) \to (c,d)$ due funzioni derivabili, allora $g \circ f : (a,b) \to \R$ (con $x \to g(f(x))$) è derivabile e
+\begin{equation*}
+(g \circ f)' = (g' \circ f) \cdot f'
+\end{equation*}
+\end{theorem}
+Ovvero, posto $m(x) = g(f(x))$:
+\begin{equation*}
+m'(x) = g'(f(x)) \cdot f'(x)
+\end{equation*}
+
+\begin{proof}
+Sia $x \in (a,b)$ fissato e $y = f(x)$. Usando la formula scritta in precedenza, essendo $g$ derivabile in $y$:
+\begin{equation*}
+g(y + k) - g(y) = k \cdot g'(y) + k \cdot \theta(k)
+\end{equation*}
+Vale sempre $\theta(0) = 0$ e $\theta$ continua in 0. Sia $k = f(x+h) - f(x)$ l'incremento in $y$. Quindi
+\begin{equation*}
+\lim_{h \to 0} \frac{k}{h} = f'(x)
+\end{equation*}
+perché è il limite del rapporto incrementale. Scriviamo quindi il limite del rapporto incrementale della funzione composta.
+\begingroup
+\addtolength{\jot}{1ex}
+\begin{align*}
+& \lim_{h \to 0} \frac{m(x+h) - m(x)}{h} \\
+= & \lim_{h \to 0} \frac{g(f(x+h)) - g(f(x))}{h} \\
+= & \lim_{h \to 0} \frac{1}{h} \cdot (g(y+k) - g(y)) \\
+= & \lim_{h \to 0} \frac{k}{h} \cdot \frac{g(y+k) - g(y)}{k} \\
+= & \lim_{h \to 0} \frac{k}{h} \cdot (g'(y) + \theta (k)) \\
+= & f'(x) \cdot \lim_{h \to 0} (g'(y) + \theta (k))
+\end{align*}
+\endgroup
+Sappiamo che $k(h)$ è una funzione continua in 0 perché $f$ è continua e $k(0) = 0$. Quindi $\theta(k)$ è continua in 0, quindi $\theta(k(h))$ è continua in 0. In definitiva $\lim_{h \to 0} \theta (h(k)) = 0$.
+
+Quindi, riprendendo l'ultimo passaggio svolto sopra rimane
+\begin{equation*}
+= f'(x) \cdot g'(y) = f'(x) \cdot g'(f(x))
+\end{equation*}
+\end{proof}
+
+\begin{example}
+Cerchiamo la derivata della funzione $m(x) = x^\alpha$ (con $x > 0$ e $\alpha \in \R$).
+
+La funzione $m(x) = x^\alpha$ si può scrivere come $m(x) = e^{\alpha \log x}$ e può quindi essere vista come composizione di due funzioni. Quindi $m(x) = g(f(x))$, dove $g(y) = e^y$ e $f(x) = \alpha \log x$.
+
+Sia $f$ che $g$ sono funzioni derivabili; $g'(y) = e^y$ e $f'(x) = \frac{\alpha}{x}$. Applichiamo ora la regola di derivazione delle funzioni composte:
+\begingroup
+\addtolength{\jot}{1ex}
+\begin{align*}
+m'(x) &= g'(f(x)) \cdot f'(x) \\ 
+&= e^{\alpha \log x} \cdot \frac{\alpha}{x} \\
+&= x^\alpha \cdot \frac{\alpha}{x} = \alpha \cdot x^{\alpha -1}
+\end{align*}
+\endgroup
+Osserviamo che abbiamo dimostrato la formula già nota anche per $\alpha \in \R$.
+\end{example}
+
+\section{Derivata della funzione inversa}
+
+\begin{theorem}
+Sia $f:(a,b) \to \R$ una funzione derivabile e $f'(x) > 0$ per ogni $x \in (a,b)$; allora $f$ è crescente e invertibile. L'inversa $g$ è derivabile
+\begin{equation*}
+g'(y) = \frac{1}{f'(g(y))}
+\end{equation*}
+\end{theorem}
+
+\begin{proof}
+Abbiamo già dimostrato che la funzione inversa $g$ esiste ed è continua.
+
+Fissato $x \in (a,b)$, sia $y = f(x)$. Chiamiamo $y + k = f(x+h)$, quindi $x + h = g(y+k)$. Ovvero $h = g(y+k) - g(y)$.
+
+Il rapporto incrementale è:
+\begin{equation*}
+\frac{g(y+k)-g(y)}{k} = \frac{h}{k}
+\end{equation*}
+ma $k = f(x+h)-f(x)$; quindi
+\begin{equation*}
+\frac{k}{f(x+h)-f(x)} = \theta(h)
+\end{equation*}
+
+Estendiamo $\theta(h)$ ponendo $\theta(0) = \frac{1}{f'(x)} = \lim_{h \to 0} \frac{h}{k}$. 
+
+La funzione $\theta$ è continua in 0. $h(k)$ è continua perché $g$ è continua, quindi $\theta(h(k))$ è continua in $k=0$.
+
+\begin{equation*}
+\lim_{k \to 0} \frac{g(y+k)-g(y)}{k} = \lim_{k \to 0} \theta(h(k)) = \theta(0) = \frac{1}{f'(x)}
+\end{equation*}
+
+Quindi:
+\begin{equation*}
+g'(y) = \frac{1}{f'(x)} = \frac{1}{f'(g(y))}
+\end{equation*}
+\end{proof}
+
+\begin{example}
+Consideriamo la funzione $g(x) = \log x$, che è l'inversa della funzione $f(x) = e^x$. Deriviamo attraverso la formula della funzione inversa:
+\begin{equation*}
+g'(x) = \frac{1}{e^{\log x}} = \frac{1}{x}
+\end{equation*}
+\end{example}
+
+\begin{example}
+Consideriamo la funzione $g(x) = \arctan x$, che è l'inversa della funzione $f(x) = \tan x$. La derivata di $f$ è già nota ed è $f'(x) = 1 + \tan^2 x$. Quindi:
+\begin{equation*}
+g'(x) = \frac{1}{1 + \tan^2 (\arctan x)} = \frac{1}{1 + x^2}
+\end{equation*}
+\end{example}
+
+\section{Teoremi di Rolle e di Lagrange}
+
+\begin{theorem}[\bfseries Teorema di Rolle]
+Sia $f:[a,b] \to \R$ una funzione continua e derivabile in $(a,b)$. Sia $f(a) = f(b)$. Allora $\exists x \in (a,b)$ tale che $f'(x) = 0$.
+\end{theorem}
+
+\begin{center}
+\begin{tikzpicture}
+     \draw [->] (-1,0) -- (11,0) node [right] {$x$};
+     \draw [->] (0,-1) -- (0,6) node [above] {$y$};
+     \node at (0,0) [below left] {$0$};
+     \draw  plot[smooth, tension=.7] coordinates{(1.5,-0.5) (3,3) (5,1.5)  (7.5,4) (10,-1)};
+     \node at (1.75,-0.25) {$a$};
+     \node at (9.5,-0.25) {$b$};
+     \draw[dashed] (3.2,3.05) -- (3.2,0);
+     \draw[dashed] (4.9,1.5) -- (4.9,0);
+     \draw[dashed] (7.3,4.05) -- (7.3,0);
+     \node at (3.2,-0.25) {$x_{1}$};
+     \node at (4.9,-0.25) {$x_{2}$};
+     \node at (7.3,-0.25) {$x_{3}$};
+     \draw (2.5,3.05) -- (4,3.05);
+     \draw (4,1.5) -- (6,1.5);
+     \draw (6.5,4.05) -- (8.25,4.05);
+     \node at (3.2,3.5) {$f'(x_{1})=0$};
+     \node at (4.9,2.2) {$f'(x_{2})=0$};
+     \node at (7.3,4.5) {$f'(x_{3})=0$};
+     \node at (9.5,2.5) {$y=f(x)$};
+\end{tikzpicture}
+\end{center}
+
+\begin{proof}
+Per il teorema di Weierstrass la funzione ha almeno un punto di massimo e un punto di minimo.
+\begin{itemize}
+\item Se $a$ è un punto di massimo e un punto di minimo, allora la funzione è costante. Quindi $f'(x) = 0$ per ogni $x \in (a,b)$.
+\item Altrimenti:
+\begin{itemize}
+\item Se $a$ non è un punto di massimo, allora anche $b$ non lo è (essendo $f(a) = f(b)$). Quindi deve esistere un punto di massimo $x$ in $(a,b)$ e lì $f'(x) = 0$ per il teorema di Fermat.
+\item Se $a$ non è un punto di minimo, allora anche $b$ non lo è. Quindi deve esistere un punto di minimo $x$ in $(a,b)$ e lì $f'(x) = 0$.
+\end{itemize}
+\end{itemize}
+\end{proof}
+
+\begin{theorem}[\bfseries Teorema di Lagrange o del valor medio]
+Sia $f:[a,b] \to \R$ una funzione continua e derivabile in $(a,b)$. Allora esiste $x \in (a,b)$ tale che
+\begin{equation*}
+f'(x) = \frac{f(b)-f(a)}{b-a}
+\end{equation*}
+\end{theorem}
+
+\begin{center}
+\begin{tikzpicture}[
+	tangent/.style={
+    	decoration={
+	    markings,% switch on markings
+        mark=
+	    at position #1
+	    with
+	    {
+	        \coordinate (tangent point-\pgfkeysvalueof{/pgf/decoration/mark info/sequence number}) at (0pt,0pt);
+	        \coordinate (tangent unit vector-\pgfkeysvalueof{/pgf/decoration/mark info/sequence number}) at (1,0pt);
+	        \coordinate (tangent orthogonal unit vector-\pgfkeysvalueof{/pgf/decoration/mark info/sequence number}) at (0pt,1);
+	    }
+	    },
+	postaction=decorate
+	},
+	use tangent/.style={
+	shift=(tangent point-#1),
+	x=(tangent unit vector-#1),
+	y=(tangent orthogonal unit vector-#1)
+	},
+	use tangent/.default=1
+	]
+    \draw[->] (-.5,0) -- (7,0) node(xline)[right] {$x$};
+	\draw[->] (0,-.5) -- (0,5) node(yline)[right] {$y$};
+		
+	\draw[thick, smooth, tangent=0.255, tangent=0.745] (1,2) 
+		to[out=-60, in=170] coordinate[pos=0.5] (A) (2,1)
+		to[out=10, in=190] (5,4)
+		to[out=-10, in=120] coordinate[pos=0.5] (B) (6,3) node[right] {$y=f(x)$};	
+		
+	\fill (A) circle (2pt);
+	\fill (B) circle (2pt);
+		
+	\draw[shorten <= -.5cm, shorten >= -.5cm] (A) -- (B);
+		
+	\draw[thick, use tangent] (-1,0) -- coordinate (C) (1,0);
+	\draw[thick, use tangent=2] (-1,0) -- coordinate (D) (1,0);
+		
+	\fill (C) circle (2pt);
+	\fill (D) circle (2pt);
+		
+	\draw[dashed] (A) -- (A |- xline) node[below] {$a$};
+	\draw[dashed] (B) -- (B |- xline) node[below] {$b$};
+		
+	\draw[dashed] (C) -- (C |- xline) node[below] {$x_1$};
+	\draw[dashed] (D) -- (D |- xline) node[below] {$x_2$};
+\end{tikzpicture}
+\end{center}
+
+\begin{proof}
+Consideriamo la funzione
+\begin{equation*}
+g(x) = f(x) - (x-a) \cdot \frac{f(b)-f(a)}{b-a}
+\end{equation*}
+Questa funzione soddisfa le ipotesi del teorema di Rolle, infatti:
+\begin{equation*}
+g(b) = f(b) - (b-a) \cdot \frac{f(b)-f(a)}{b-a} = f(a)
+\end{equation*} 
+e $g(a) = f(a)$ per gli stessi calcoli. Inoltre $g$ è continua in $[a,b]$ e derivabile in $(a,b)$ perché $f$ lo è.
+
+Il teorema di Rolle ci garantisce l'esistenza di almeno un $x \in (a,b)$ tale che $g'(x)=0$. Calcoliamo la derivata della funzione:
+\begin{equation*}
+g'(x) = f'(x) - \frac{f(b)-f(a)}{b-a}
+\end{equation*}
+Quindi
+\begin{equation*}
+f'(x) = \underbrace{g'(x)}_{0} + \frac{f(b)-f(a)}{b-a}
+\end{equation*}
+\begin{equation*}
+f'(x) = \frac{f(b)-f(a)}{b-a}
+\end{equation*}
+\end{proof}
