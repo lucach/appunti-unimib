@@ -1,0 +1,323 @@
+\chapter{Diciassettesima lezione (11/12/2015)}
+
+\section{Corollari del teorema di Lagrange}
+
+Nella lezione precedente è stato enunciato e dimostrato il teorema di Lagrange. Affrontiamo ora alcuni teoremi che seguono immediatamente da esso.
+
+\begin{corollary}
+Sia $I$ un intervallo aperto e $f: I \to \R$ derivabile con $f'(x) = 0$ $\forall x$. Allora $f$ è costante.
+\end{corollary}
+
+\begin{proof}
+Siano $x_1, x_2 \in I$. La restrizione di $f|_{[x_1, x_2]}$ soddisfa le ipotesi di Lagrange, essendo continua in $[x_1, x_2]$ e derivabile in $(x_1, x_2)$.
+
+Per il teorema di Lagrange esiste quindi $x$ compreso tra $x_1$ e $x_2$ dove \begin{equation*}
+f'(x) = \frac{f(x_2) - f(x_1)}{x_2 - x_1}
+\end{equation*}
+Per ipotesi $f'(x) = 0$, quindi dev'essere $f(x_2)-f(x_1)=0$ e quindi $f(x_2) = f(x_1)$. Abbiamo mostrato di fatto che, comunque presi due punti, la funzione in essi assume lo stesso valore ed è quindi costante.
+\end{proof}
+
+\begin{corollary}
+Sia $f: I \to \R$ una funzione derivabile su un intervallo aperto. Allora $f$ è non decrescente se e solo se $f'(x) \ge 0$ in ogni $x \in I$.
+\end{corollary}
+
+\begin{remark}
+Se $f'(x) > 0$ allora la funzione è crescente. Viceversa, non è detto che se la funzione è crescente in $x$ allora $f'(x) > 0$.
+\end{remark}
+
+\begin{example}
+La funzione $f(x) = x^3$ è crescente in $x = 0$ ma $f'(0) = 0$.
+\end{example}
+
+\begin{proof}
+Supponiamo $f'(x) \ge 0$ in ogni punto $x$. Siano $u, v \in I$ con $u < v$, dobbiamo dimostrare che $f(u) \le f(v)$.
+
+Applicando il teorema di Lagrange a $f|_{[u,v]}$, esiste $w$ compreso tra $u < w < v$ tale che
+\begin{equation*}
+f'(w) = \frac{f(v)-f(u)}{v-u}
+\end{equation*}
+Essendo $f'(w) \ge 0$ per ipotesi e $v - u > 0$, dev'essere $f(v)-f(u) \ge 0$. Quindi $f(v) \ge f(u)$.
+\end{proof}
+
+\section{Primitive di una funzione}
+
+\begin{definition}
+Data una funzione $f: I \to \R$ con $I$ intervallo aperto, si dice che $g: I \to \R$ è una \emph{primitiva} di $f$ se $g' = f$; posto ovviamente che $g$ sia derivabile.
+\end{definition}
+
+\begin{remark}
+Se $g$ è una primitiva di $f$ e $c$ è una costante, allora anche $g+c$ è primitiva di $f$. Infatti $(g+c)' = g'$.
+\end{remark}
+
+\begin{corollary}
+Data $f: I \to \R$ con $I$ intervallo aperto e date $g_1, g_2$ primitive di $f$; allora esiste $c \in \R$ tale che $g_1 = g_2 + c$.
+\end{corollary}
+
+\begin{proof}
+Sia $h = g_1 - g_2$. La sua derivata è $h' = {g_1}' - {g_2}' = f - f = 0$. Per il corollario 17.1 $h$, la funzione differenza, è costante. Quindi $g_1 = h + g_2 = c + g_2$.
+\end{proof}
+
+\begin{example}
+Una primitiva di $e^x$ è $e^x$, perché $(e^x)' = e^x$. Per il corollario appena enunciato, tutte le primitive sono della forma $e^x + k$ con $k \in \R$.
+\end{example}
+
+\begin{example}
+Le primitive di $\cos x$ sono $\sin x + k$ con $k \in \R$.
+\end{example}
+
+\begin{remark}
+Sia $f(x) = \frac{1}{x}$ definita su $(-\infty, 0) \cup (0, +\infty)$. Una sua primitiva è $\log |x|$, infatti:
+\begin{itemize}
+\item per $x > 0$, $g'(x) = D \log x = \frac{1}{x}$
+\item per $x < 0$, $g'(x) = D \log (-x) = -\frac{1}{-x} = \frac{1}{x}$
+\end{itemize}
+
+Date $h, k$ due costanti reali, la funzione
+\begin{equation*}
+y(x) = \begin{cases}
+g(x)+h & x > 0\\
+g(x)+k & x < 0
+\end{cases}
+\end{equation*}
+ha derivata $g'(x) = f(x)$. Quindi in questo esempio non vale il corollario perché il dominio non è un intervallo.
+\end{remark}
+
+\section{Funzioni convesse e concave}
+
+\begin{definition}
+Dato un intervallo $I$, $f: I \to \R$ si dice \emph{convessa} se $\forall x_1, x_2 \in I$ vale
+\begin{equation*}
+f(x_1 + t(x_2-x_1)) \le f(x_1) + t(f(x_2)-f(x_1))
+\end{equation*}
+per ogni $t \in [0,1]$.
+\end{definition}
+
+\begin{center}
+\begin{tikzpicture}[scale=1.5]
+\draw[->] (-2.2,0) -- (2.2,0) node[right] {$x$};
+\draw[->] (0,-0.5) -- (0,2.2) node[above] {$y$};
+\draw [smooth,domain=-2:2] plot({\x}, {0.25*\x*\x});
+\draw [smooth,domain=0:1.5] plot({\x}, {0.375*\x});
+\end{tikzpicture}
+\end{center}
+
+Di fatto questo significa che il grafico della funzione sta sotto la corda.
+
+Con definizione analoga, si dice che $f$ è \emph{strettamente convessa} se vale
+\begin{equation*}
+f(x_1 + t(x_2-x_1)) < f(x_1) + t(f(x_2)-f(x_1))
+\end{equation*}
+
+Invertendo le due disuguaglianze precedenti si ottengono intuitivamente le definizioni di funzione \emph{concava} e \emph{strettamente concava}:
+\begin{equation*}
+f(x_1 + t(x_2-x_1)) \ge f(x_1) + t(f(x_2)-f(x_1))
+\end{equation*}
+
+\begin{center}
+\begin{tikzpicture}[scale=1.5]
+\draw[->] (-2.2,0) -- (2.2,0) node[right] {$x$};
+\draw[->] (0,-0.5) -- (0,2.2) node[above] {$y$};
+\draw [smooth,domain=-1.75:1.75] plot({\x}, {-0.25*\x*\x+1});
+\draw [smooth,domain=0:1.5] plot({\x}, {-0.375*\x+1});
+\end{tikzpicture}
+\end{center}
+
+\begin{example}
+La funzione $f(x) = x^2$ è strettamente convessa.
+\begin{center}
+\begin{tikzpicture}[scale=0.5]
+\draw[->] (-3,0) -- (4.2,0) node[right] {$x$};
+\draw[->] (0,-1.5) -- (0,4.2) node[above] {$y$};
+\draw [smooth,domain=-2:2] plot({\x}, {\x*\x});
+\end{tikzpicture}
+\end{center}
+\end{example}
+
+\begin{example}
+La funzione $f(x) = |x|$ è convessa (infatti la proprietà vale anche considerando $x_1, x_2$ entrambi negativi), ma non strettamente convessa.
+\begin{center}
+\begin{tikzpicture}[scale=0.5]
+\draw[->] (-3,0) -- (4.2,0) node[right] {$x$};
+\draw[->] (0,-1.5) -- (0,4.2) node[above] {$y$};
+\draw [smooth,domain=-3:3] plot({\x}, {abs(\x)});
+\end{tikzpicture}
+\end{center}
+\end{example}
+
+Diamo ora per vero che una funzione derivabile è convessa se e solo se la sua derivata è non decrescente (dimostreremo questo poco più avanti).
+
+Se $f'$ è non decrescente, allora $g(x) = f(x)-f'(x_0)(x-x_0) + f(x_0)$ ha un minimo in $x_0$.
+
+Infatti $g'(x) = f'(x)-f'(x_0)$; quindi $g'(x) \ge 0$ per $x > x_0$ e $g'(x) \le 0$ per $x < x_0$. Quindi effettivamente esiste un minimo in $x_0$.
+
+\begin{center}
+\begin{tikzpicture}[scale=1.5]
+\draw[->] (-1.2,0) -- (2.2,0) node[right] {$x$};
+\draw[->] (0,-0.5) -- (0,2.2) node[above] {$y$};
+\draw [smooth,domain=-1:2] plot({\x}, {0.25*\x*\x+0.5});
+\draw [smooth,domain=0.1:2] plot({\x}, {0.5*\x+0.25});
+\end{tikzpicture}
+\end{center}
+
+La retta tangente ha equazione $y = f(x_0)+f'(x_0)(x-x_0)$. Consideriamo $g(x)$ come differenza tra la funzione e la retta tangente. A questo punto $g(x_0) = f(x_0) - f(x_0) = 0$, quindi $g(x) \ge 0$ $\forall x$.
+
+\begin{theorem}
+Sia $f: I \to \R$ derivabile, allora $f$ è convessa se e solo se $f'$ è non decrescente.
+\end{theorem}
+
+\begin{lemma}
+Una funzione $f: I \to \R$ è convessa se e solo se, comunque scelti $u < v < w$ in $I$, vale
+\begin{equation*}
+\phi (v,u) \le \phi(w,u) \le \phi(w,v)
+\end{equation*}
+\end{lemma}
+
+Definiamo la funzione $\phi$:
+\begin{equation*}
+\phi(v,u) = \frac{f(v)-f(u)}{v-u}
+\end{equation*}
+
+\begin{proof}
+Diamo un'idea della dimostrazione, visto che non c'è niente di profondo in essa.
+
+Sia $v = u + t(w-u)$ con $0 < t < 1$. La convessità equivale a
+\begin{align*}
+f(v) &\le f(u) + \frac{v-u}{w-u} (f(w)-f(u)) \\
+&\le f(u) \cdot \frac{w-u-(v-u)}{w-u} + \frac{v-u}{w-u} f(w)
+\end{align*}
+Quindi
+\begin{equation*}
+f(v)-f(u) \le \frac{v-u}{w-u} (f(w)-f(u))
+\end{equation*}
+Dividendo per $v-u$ otteniamo esattamente $\phi(u,v) \le \phi(w,u)$. 
+
+Per ottenere l'altra disuguaglianza procediamo nello stesso modo:
+\begin{equation*}
+f(v)-f(w) \le \frac{w-v}{w-u}f(u) + \frac{v-w}{w-u}f(w)
+\end{equation*}
+Dividendo per $v-w$, con qualche passaggio si arriva a far vedere che $\phi(w,v) \ge \phi(w,u)$.
+\end{proof}
+
+Possiamo ora procedere a dimostrare il teorema.
+\begin{proof}
+Sia $f$ una funzione convessa e siano $u < v < w$. Allora $\phi(v,u) \le \phi(w,u)$ per il lemma. Ovvero
+\begin{equation*}
+\frac{f(v)-f(u)}{v-u} \le \frac{f(w)-f(u)}{w-u}
+\end{equation*}
+
+Osservando che $f'(u) = \lim_{v \to 0^+} \frac{f(v)-f(u)}{v-u}$, possiamo riscrivere la precedente come
+\begin{equation*}
+f'(u) \le \frac{f(w)-f(u)}{w-u}
+\end{equation*}
+
+Consideriamo ora invece $\phi(w,u) \le \phi(w,v)$ e procediamo in modo analogo:
+\begin{equation*}
+\frac{f(w)-f(u)}{w-u} \le \frac{f(w)-f(v)}{w-v}
+\end{equation*}
+\begin{equation*}
+\lim_{v \to w} \frac{f(u)-f(w)}{v-w} = f'(w)
+\end{equation*}
+\begin{equation*}
+\frac{f(w)-f(u)}{w-u} \le f'(w)
+\end{equation*}
+
+Combinando i due risultati ottenuti si vede che $f'(u) \le f'(w)$. Quindi abbiamo mostrato che $f'$ è non decrescente.
+\end{proof}
+
+Mostriamo l'altra implicazione del teorema.
+\begin{proof}
+Supponiamo $f'$ non decrescente e prendiamo $u < v < w$. Per il teorema di Lagrange:
+\begin{itemize}
+\item $\exists$ $u < a < v$ tale che $f'(a) = \phi(u,v)$
+\item $\exists$ $v < b < w$ tale che $f'(b) = \phi(w,v)$
+\end{itemize}
+
+Osserviamo che $a < b$ e $f'$ è non decrescente, quindi $f'(a) \le f'(b)$ cioè $\phi(u,v)  \le \phi(w,v)$.
+
+Sia $v = (1-t)u + tw = u + t(w-u)$. Allora
+\begin{equation*}
+\frac{f(v)-f(u)}{t(w-u)} \le \frac{f(w)-f(v)}{(1-t)(w-u)}
+\end{equation*}
+Quindi
+\begin{equation*}
+(1-t)(f(v)-f(u)) \le t((f(w)-f(v))
+\end{equation*}
+Raccogliendo $f(v)$:
+\begin{align*}
+f(v) &\le t\cdot f(w) + (1-t) \cdot f(u) \\
+&\le f(u) + t(f(w)-f(u))
+\end{align*}
+Che è la definizione di convessità.
+\end{proof}
+
+\begin{corollary}
+Se $f: I \to \R$ è derivabile due volte, allora è convessa se e solo se $f''(x) \ge 0$ in ogni punto.
+\end{corollary}
+
+\begin{proof}
+Sia $g=f'$. Allora $f$ è convessa se e solo se $g$ è non decrescente. $g' =  f'' \ge 0$ se e solo se $g$ è non decrescente.
+\end{proof}
+
+\begin{example}
+Consideriamo $f(x) = \sin x$. 
+
+La sua derivata prima è $f'(x) = \cos x$ ed è positiva per $(2k\pi - \frac{\pi}{2}, 2k\pi + \frac{\pi}{2})$.
+
+La sua derivata seconda è $f''(x) - \sin x$ ed è positiva per $(2k\pi - \pi, 2k\pi)$.
+
+\begin{center}
+\begin{tikzpicture}[scale=0.5]
+\draw[->] (-8,0) -- (8.2,0) node[right] {$x$};
+\draw[->] (0,-2) -- (0,2.2) node[above] {$y$};
+\draw [smooth,domain=-7:7] plot({\x}, {sin(\x r)});
+\end{tikzpicture}
+\end{center}
+
+In $0$ e $\pi$ la funzione passa da convessa a concava (o viceversa).
+\end{example}
+
+\section{Punti di flesso e punti a tangente verticale}
+\begin{definition}
+Si dice che $x$ è un \emph{punto di flesso} per $f$ se $f$ è concava in $(x, x + \delta)$ e $f$ è convessa in $(x-\delta, x)$ o viceversa.
+\end{definition}
+
+Nei punti di flesso la tangente attraversa il grafico della funzione. Tuttavia non è vero il viceversa: nella funzione $f(x) = x^2 \cdot \sin \frac{1}{x}$, 0 non è un punto di flesso.
+
+\begin{definition}
+Si dice che $x_0$ è un \emph{punto a tangente verticale} per $f$ se
+\begin{equation*}
+\lim_{x \to x_0} \frac{f(x)-f(x_0)}{x-x_0}
+\end{equation*}
+è infinito.
+\end{definition}
+
+\begin{example}
+Consideriamo $f(x) = x^\frac{1}{3}$ e calcoliamo il limite per $x \to 0$.
+\begin{equation*}
+\lim_{x \to 0} \frac{f(x)-f(0)}{x-0} = \lim_{x \to 0} x^{-\frac{2}{3}} = +\infty
+\end{equation*}
+Calcoliamo anche la derivata seconda: $f' = \frac{1}{3} x^{-\frac{2}{3}}$ e $f'' = -\frac{2}{9} x^{-\frac{5}{3}}$. Essa è positiva per $x < 0$ e negativa per $x > 0$.
+
+Quindi in questa funzione 0 è un punto di flesso a tangente verticale.
+\end{example}
+
+Non si pensi però che sia sempre così. Consideriamo per esempio questa funzione.
+\begin{example}
+Sia $f(x) = x^\frac{1}{3} + x^2\sin\frac{1}{x}$. Calcoliamo la derivata prima in 0:
+\begin{equation*}
+f'(0) = \lim_{x \to 0} \frac{f(x)-f(0)}{x} = \lim_{x \to 0} \left(x^{-\frac{2}{3}} + x\sin\frac{1}{x}\right) = +\infty
+\end{equation*}
+
+Quindi zero è un punto a tangente verticale. Per scoprire se è anche un punto di flesso, calcoliamo la derivata seconda.
+\begin{align*}
+f' &= \frac{1}{3}x^{-\frac{2}{3}} + 2x\sin\frac{1}{x} + x^2\left(\cos\frac{1}{x}\right)\left(-\frac{1}{x^2}\right) \\
+&= \frac{1}{3}x^{-\frac{2}{3}} + 2x\sin\frac{1}{x} -\cos\frac{1}{x}
+\end{align*}
+
+\begin{align*}
+f'' &= -\frac{2}{9}x^{-\frac{5}{3}} + 2\sin\frac{1}{x} + 2x\left(\cos\frac{1}{x}\right)\left(-\frac{1}{x^2}\right) + \left(\sin\frac{1}{x}\right)\left(-\frac{1}{x^2}\right) \\
+&= \frac{1}{x^2} \left(-\frac{2}{9}x^{\frac{1}{3}} + \left(2\sin\frac{1}{x}\right)x^2 -2x\cos\frac{1}{x} - \sin\frac{1}{x} \right)
+\end{align*}
+
+Per $x$ sufficientemente piccolo, il segno dipende dal segno di $\sin\frac{1}{x}$ che però oscilla. Quindi 0 non è un punto di flesso.
+\end{example}
