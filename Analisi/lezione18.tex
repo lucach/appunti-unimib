@@ -1,0 +1,326 @@
+\chapter{Diciottesima lezione (15/12/2015)}
+
+\section{Teorema di Cauchy}
+
+\begin{theorem}[\bfseries Cauchy]
+Siano due funzioni $f, g: [a, b] \to \R$ continue e derivabili in $(a,b)$. Sia $g'(x) \neq 0$ in ogni $x \in (a,b)$. Allora esiste $x \in (a,b)$ tale che
+\begin{equation*}
+\frac{f'(x)}{g'(x)} = \frac{f(b)-f(a)}{g(b)-g(a)}
+\end{equation*}
+\end{theorem}
+
+\begin{example}
+Se $g(x) = x$ allora il teorema può essere più semplicemente riformulato come segue: esiste $x \in (a,b)$ tale che
+\begin{equation*}
+f'(x) = \frac{f(b)-f(a)}{b-a}
+\end{equation*}
+Il teorema di Cauchy è quindi una generalizzazione del teorema di Lagrange.
+\end{example}
+
+\begin{proof}
+Osserviamo innanzitutto che il denominatore $g(b)-g(a)$ è ben definito, essendo sempre diverso da 0. Per renderlo nullo dev'essere $g(b) = g(a)$, ma in quel caso esisterebbe per il teorema di Rolle un $x \in (a,b)$ tale che $g'(x) = 0$. Questo è assurdo, perché la derivata di $g(x)$ è non nulla per ipotesi.
+
+Consideriamo la funzione $\phi (x)$ che combina con opportuni coefficienti $f(x)$ e $g(x)$:
+\begin{equation*}
+\phi (x) = (g(b)-g(a)) \cdot f(x) - (f(b)-f(a)) \cdot g(x)
+\end{equation*}
+
+Calcoliamo il valore di $\phi(x)$ negli estremi $a, b$:
+\begin{align*}
+\phi(a) &= (g(b)-\cancel{g(a)}) \cdot f(a) - (f(b)-\cancel{f(a)}) \cdot g(a) \\
+\phi(b) &= (\cancel{g(b)}-g(a)) \cdot f(b) - (\cancel{f(b)}-f(a)) \cdot g(b)
+\end{align*}
+
+Osserviamo che $\phi(a) = \phi(b)$. Inoltre $\phi$ è continua in $[a,b]$ e derivabile in $(a,b)$. Quindi per il teorema di Rolle esiste $x$ dove
+\begin{equation*}
+0 = \phi'(x) = (g(b)-g(a)) \cdot f'(x) - (f(b)-f(a)) \cdot g'(x)
+\end{equation*}
+\begin{equation*}
+f'(x) = \frac{(f(b)-f(a)) \cdot g'(x)}{g(b)-g(a)}
+\end{equation*}
+\end{proof}
+
+\section{Teoremi de l'Hôpital}
+
+\begin{theorem}[\bfseries de l'Hôpital]
+Siano $f, g : (a,b) \to \R$ (è ammesso $a = -\infty$) tali che:
+\begin{enumerate}
+\item $\lim_{x \to a^+} f(x) = \lim_{x \to a^-} g(x) = 0$
+\item $f,g$ derivabili in $(a,b)$ e $g'(x) \neq 0$ $\forall x \in (a,b)$
+\item esiste $\lim_{x \to a^+} \frac{f'(x)}{g'(x)}$
+\end{enumerate}
+
+Allora esiste
+\begin{equation*}
+\lim_{x \to a^+} \frac{f(x)}{g(x)} = \lim_{x \to a^+} \frac{f'(x)}{g'(x)}
+\end{equation*}
+\end{theorem}
+
+\begin{example}
+Supponiamo di voler calcolare il seguente limite
+\begin{equation*}
+\lim_{x \to 0} \frac{e^{x^2}-1}{\cos x -1}
+\end{equation*}
+che è una forma di indeterminazione del tipo $\frac{0}{0}$. Osserviamo che entrambe le funzioni sono continue e valgono 0 in 0.
+
+Calcoliamo le derivate:
+\begin{align*}
+D (e^{x^2}-1) &= e^{x^2} \cdot 2x \\
+D (\cos x -1) &= -\sin x
+\end{align*}
+
+Per il teorema di de l'Hôpital il limite di partenza è uguale a
+\begin{equation*}
+\lim_{x \to 0} \frac{e^{x^2} \cdot 2x}{-\sin x} \sim \lim_{x \to 0} \frac{2x}{-\sin x} = -2
+\end{equation*}
+\end{example}
+
+\begin{example}
+Supponiamo di voler calcolare il seguente limite
+\begin{equation*}
+\lim_{x \to 0} \frac{\sin x + 2}{x+1}
+\end{equation*}
+Esso non è del tipo $\frac{0}{0}$ e quindi il teorema di de l'Hôpital non è applicabile.
+\end{example}
+
+\begin{proof}
+Supponiamo $a \in \R$. Sia $x \in (a,b)$: possiamo definire $f(a) = 0$ e $g(a) = 0$; in questo modo $f$ e $g$ sono definite su $[a,x) \to \R$ e sono continue.
+
+Per la seconda ipotesi le funzioni sono derivabili in $(a,b)$ e $g'(y) \neq 0$ $\forall y$.
+
+Per il teorema di Cauchy esiste $z$, compreso tra $a < z < x$, per cui 
+\begin{equation*}
+\frac{f'(z)}{g'(z)} = \frac{f(x)-f(a)}{g(x)-g(a)} = \frac{f(x)}{g(x)}
+\end{equation*}
+
+Per $x$ che tende ad $a$ anche $z$ tende ad $a$. Quindi:
+\begin{equation*}
+\lim_{x \to a^+} \frac{f(x)}{g(x)} = \lim_{z \to a} \frac{f'(z)}{g'(z)}
+\end{equation*}
+\end{proof}
+
+\begin{proof}
+Dimostriamo ora il caso in cui l'estremo sia infinito. Se $a = -\infty$ possiamo supporre senza perdita di generalità che $b < 0$.
+
+Definiamo $F(t) = f(\frac{1}{t})$ e $G(t) = g(\frac{1}{t})$. Le due funzioni $F$ e $G$ sono derivabili in $(\frac{1}{b}, 0)$.
+\begin{equation*}
+\lim_{t \to 0} F(t) = \lim_{x \to -\infty} f(x) = 0
+\end{equation*}
+\begin{equation*}
+\lim_{t \to 0} G(t) = \lim_{x \to -\infty} g(x) = 0
+\end{equation*}
+
+Calcoliamo le derivate delle funzioni $F$ e $G$:
+\begin{equation*}
+F'(t) = -\frac{1}{t^2} \cdot f'(\frac{1}{t})
+\end{equation*}
+\begin{equation*}
+G'(t) = -\frac{1}{t^2} \cdot g'(\frac{1}{t})
+\end{equation*}
+
+Essendo anche $G'(t) \neq 0$ $\forall t$, possiamo applicare de l'Hôpital a $F$ e $G$:
+\begin{equation*}
+\lim_{t \to 0^-} \frac{F(t)}{G(t)} = \lim_{t \to 0^-} \frac{F'(t)}{G'(t)} = \lim_{t \to 0^-} \frac{f'(\frac{1}{t})}{g'(\frac{1}{t})} = \lim_{x \to -\infty} \frac{f'(x)}{g'(x)}
+\end{equation*}
+
+D'altra parte il limite da cui siamo partiti nell'ultimo calcolo è
+\begin{equation*}
+\lim_{t \to 0^-} \frac{F(t)}{G(t)} = \lim_{x \to -\infty} \frac{f(x)}{g(x)}
+\end{equation*}
+\end{proof}
+
+\begin{theorem}[\bfseries de l'Hôpital II]
+Siano $f, g : (a,b) \to \R$ (è ammesso $a = -\infty$) tali che:
+\begin{enumerate}
+\item $\lim_{x \to a^+} f(x) = \lim_{x \to a^-} g(x) = +\infty$
+\item $f,g$ derivabili in $(a,b)$ e $g'(x) \neq 0$ $\forall x \in (a,b)$
+\item esiste $\lim_{x \to a^+} \frac{f'(x)}{g'(x)}$
+\end{enumerate}
+
+Allora esiste
+\begin{equation*}
+\lim_{x \to a^+} \frac{f(x)}{g(x)} = \lim_{x \to a^+} \frac{f'(x)}{g'(x)}
+\end{equation*}
+\end{theorem}
+
+\begin{remark}
+Il teorema vale indifferentemente anche per $x \to b^-$.
+\end{remark}
+
+\begin{example}
+Supponiamo di voler calcolare il seguente limite
+\begin{equation*}
+\lim_{x \to +\infty} \frac{x+\sin x}{x} \qquad \left[\frac{+\infty}{+\infty} \right]
+\end{equation*}
+Se de l'Hôpital fosse applicabile il limite sarebbe uguale a 
+\begin{equation*}
+\lim_{x \to +\infty} 1 + \cos x
+\end{equation*}
+Tuttavia questo limite non esiste perché per $x \to +\infty$ il coseno oscilla. Quindi il teorema non è applicabile.
+\end{example}
+
+\begin{example}
+Anche qualora de l'Hôpital fosse applicabile, non è sempre conveniente farlo. Consideriamo questo limite:
+\begin{equation*}
+\lim_{x \to +\infty} \frac{x^\frac{1}{2} + x^{-\frac{1}{2}}}{x^\frac{1}{2} - x^{-\frac{1}{2}}} \qquad \left[\frac{+\infty}{+\infty}\right]
+\end{equation*}
+
+Applicando il teorema il limite è uguale a 
+\begin{equation*}
+\lim_{x \to +\infty} \frac{\frac{1}{2} x^{-\frac{1}{2}} - \frac{1}{2} x^{-\frac{3}{2}}}{\frac{1}{2} x^{-\frac{1}{2}} + \frac{1}{2} x^{-\frac{3}{2}}} = \lim_{x \to +\infty} \frac{x^\frac{1}{2} - x^{-\frac{1}{2}}}{x^\frac{1}{2} + x^{-\frac{1}{2}}}
+\end{equation*}
+Non si va quindi molto lontano. Tuttavia, bastava procedere in modo diretto:
+\begin{equation*}
+\lim_{x \to +\infty} \frac{x^\frac{1}{2} + x^{-\frac{1}{2}}}{x^\frac{1}{2} - x^{-\frac{1}{2}}} \cdot \frac{x^\frac{1}{2} - x^{-\frac{1}{2}}}{x^\frac{1}{2} - x^{-\frac{1}{2}}} = \frac{x + \frac{1}{x} + 2}{x - \frac{1}{x}} \sim \frac{x}{x} = 1
+\end{equation*}
+\end{example}
+
+\section{Formula di Taylor}
+
+\textbf{N.B: Questa sezione deve essere rivista.}
+
+Sappiamo che $e^x-1 \sim x$, ovvero che $\lim_{x \to 0} \frac{e^x-1}{x} = 1$.
+
+Osserviamo che $\lim_{x \to 0} \frac{e^x-1-x}{x} = 0$ perché $e^x=1+x+o(x)$. Quindi $e^x = 1 + x + \frac{x^2}{2} + o(x^2)$.
+
+Diciamo che $f(x) = o(x^2)$ se $\lim_{x \to 0} \frac{f(x)}{x^2} = 0$.
+
+Siamo ora pronti ad enunciare la formula di Taylor. Sia $f$ derivabile in $x_0$, allora
+\begin{equation*}
+f(x) = \underbrace{f(x_0) + f'(x_0)(x-x_0)}_{P(x)} + o(x-x_0)
+\end{equation*}
+
+Nell'equazione $P(x)$ rappresenta un polinomio in $x$ di grado 1. Osserviamo che $P(x_0) = f(x_0)$ e che quindi la sua derivata $P'(x_0)$ è $f'(x_0)$.
+
+In generale scriviamo
+\begin{equation*}
+P_n (x) = a_0 + a_1 (x-x_0) + \ldots + a_n (x-x_0)
+\end{equation*}
+
+La derivata $k$-esima è
+\begin{equation*}
+D^k (x-x_0)^j = D^{k-1} \cdot D(x-{x_0}^j)
+\end{equation*}
+\begin{equation*}
+D^{k-1} (j(x-x_0)^{j-1}) = j \cdot (j-1) \ldots \cdot (j-k+1) \cdot (x-x_0)^{j-k}
+\end{equation*}
+
+Per $j \ge k$ essa vale 0, altrimenti calcolando in $x_0$ $D^k ((x-x_0)^j)(x_0)$:
+\begin{equation*}
+\begin{cases}
+j \cdot (j-1) \ldots \cdot (j-k+1) = j! & \mbox{se } j = k \\
+0 & \mbox{altrimenti}
+\end{cases}
+\end{equation*}
+
+Quindi in definitiva scriviamo che $(D^k P_n(x)) (x_0) = a_k \cdot k!$.
+
+Se $f$ è derivabile $n$ volte, esiste un unico polinomio $P_n(x)$ di grado $n$ tale che
+\begin{equation*}
+(D^k P_n(x)) (x_0) = D^k f(x_0) \qquad \qquad 0 \le k \le n
+\end{equation*}
+
+Poniamo $D^0 f = F$. Il polinomio è $P_n(x) = a_0 + a_1(x-x_0) + \ldots + a_n(x-x_0)^n$, ma d'altra parte
+\begin{equation*}
+a_k \cdot k! = \frac{D^k \cdot f(x_0)}{k!}
+\end{equation*}
+
+Quindi
+\begin{equation*}
+P_n(x) = \frac{f(x_0)}{\underbrace{0!}_{1}} + \frac{f'(x_0)}{1!}(x-x_0) + \frac{f''(x_0)}{2!} (x-x_0)^2 + \ldots
+\end{equation*}
+
+$P_n(x)$ è detto \emph{polinomio di Taylor} di $f$ di grado $n$ con centro in $x_0$. Per $x_0 = 0$ tale polinomio particolare è detto \emph{polinomio di McLaurin}.
+
+\begin{remark}
+Se $f$ è un polinomio di grado $n$, allora coincide con il suo polinomio di Taylor di grado $n$.
+\end{remark}
+
+\begin{example}
+Consideriamo la funzione $f(x) = e^x$ e calcoliamo il suo polinomio con centro in $x_0 = 0$.
+\begin{equation*}
+P_n (x) = \sum_{k=0}^n \frac{D^k e^x (0)}{k!} x^k = \sum_{k=0}^n \frac{e^0}{k!} x^k = \sum_{k=0}^n \frac{x^k}{k!}
+\end{equation*}
+
+Nel primo passaggio abbiamo sfruttato il fatto che $D e^x = e^x$, quindi $D^k e^x = e^x$.
+
+Ad esempio in questo caso $P_2(x) = 1 + x + \frac{x^2}{2}$.
+\end{example}
+
+\begin{example}
+Consideriamo la funzione $f(x) = \sin x$ e calcoliamo il suo polinomio con centro in $x_0 = 0$.
+
+Calcoliamo le prime derivate della funzione: $f'(x) = \cos x$, $f''(x) = -\sin x$, $f'''(x) = - \cos x$, $f^{4}(x) = \sin x$. Generalizziamo il comportamento:
+\begin{equation*}
+D^k \sin x (0) = \begin{cases}
+0 & k \mbox{ pari} \\
+(-1)^{\frac{k-1}{2}} & k \mbox{ dispari}
+\end{cases}
+\end{equation*}
+Quindi il suo polinomio è
+\begin{align*}
+P_n(x) &= 0 + \frac{x}{1!} + 0 - \frac{x^3}{3!} + 0 + \frac{x^5}{5!} + 0 - \frac{x^7}{7!} + \ldots \\
+&= x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \ldots
+\end{align*}
+\end{example}
+
+\begin{example}
+Consideriamo la funzione $f(x) = \cos x$ e calcoliamo il suo polinomio con centro in $x_0 = 0$.
+
+Calcoliamo le prime derivate della funzione: $f'(x) = -\sin x$, $f''(x) = -\cos x$, $f'''(x) = \sin x$, $f^{(4)}(x) = \cos x$. I valori delle derivate sono del tipo:
+\begin{equation*}
+\{D^k \cos x (0)\}_{k \in \N} = \{1, 0, -1, 0, 1, 0, \ldots \}
+\end{equation*}
+Quindi il suo polinomio è
+\begin{equation*}
+P_n(x) = 1 + 0 - \frac{x^2}{2!} + 0 + \frac{x^4}{4!} + 0 - \ldots
+\end{equation*}
+In generale possiamo scrivere la seguente formula:
+\begin{equation*}
+\sum_{k = 0}^{\frac{n}{2}} \frac{(-1)^k \cdot x^{2k}}{(2k)!}
+\end{equation*}
+
+Osserviamo in particolare che considerando il polinomio di secondo grado $P_2(x) = 1 - \frac{x^2}{2}$ si ricava un limite notevole già affrontato: $ 1-\cos x \sim \frac{1}{2}x^2$.
+\end{example}
+
+\begin{example}
+Consideriamo la funzione $f(x) = \arctan x$ e calcoliamo il suo polinomio con centro in $x_0 = 0$.
+
+Calcoliamo le prime derivate della funzione:
+\begin{align*}
+f'(x) &= \frac{1}{1+x^2} \\
+f''(x) &= - \frac{2x}{(1+x^2)^2} \\
+f'''(x) &= \frac{-2(1+x^2)^2 + 4x(1+x^2)2x}{(1+x^2)^3}
+\end{align*}
+
+Si calcola facilmente che $f(0) = 0$, $f'(0) = 1$, $f''(0) = 0$ e $f'''(0) = -2$. Il polinomio di terzo grado è quindi
+\begin{equation*}
+P_3(x) = x - \frac{2}{3!}x^3 = x - \frac{1}{3}x^3
+\end{equation*}
+Generalizzando
+\begin{equation*}
+P_n(x) = x - \frac{x^3}{3} + \frac{x^5}{5} - \frac{x^7}{7} + \ldots
+\end{equation*}
+\end{example}
+
+\begin{example}
+Consideriamo la funzione $f(x) = \log (1+x)$ e calcoliamo il suo polinomio con centro in $x_0 = 0$.
+
+Calcoliamo le prime derivate della funzione:
+\begin{align*}
+f'(x) &= \frac{1}{1+x} \\
+f''(x) &= - \frac{1}{(1+x^2)^2}
+\end{align*}
+In generale
+\begin{equation*}
+f(x) (0) = \frac{(-1)^{n-1} \cdot (n-1)^h}{(1+x)^n}
+\end{equation*}
+
+Il polinomio è quindi
+\begin{equation*}
+P_n(x) = \sum (-1)^{n-1} \cdot \frac{(n-1)^?}{n!} \cdot x^n = \sum \frac{(-1)^{n-1}}{n} \cdot x^n = x - \frac{x^2}{2} + \frac{x^3}{3} - \ldots
+\end{equation*}
+\begin{equation*}
+P_n(x) = x - \frac{x^3}{3} + \frac{x^5}{5} - \frac{x^7}{7} + \ldots
+\end{equation*}
+\end{example}
