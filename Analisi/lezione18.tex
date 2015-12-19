@@ -40,7 +40,7 @@ f'(x) = \frac{(f(b)-f(a)) \cdot g'(x)}{g(b)-g(a)}
 \end{equation*}
 \end{proof}
 
-\section{Teoremi de l'Hôpital}
+\section{Teoremi di de l'Hôpital}
 
 \begin{theorem}[\bfseries de l'Hôpital]
 Siano $f, g : (a,b) \to \R$ (è ammesso $a = -\infty$) tali che:
@@ -171,13 +171,11 @@ Applicando il teorema il limite è uguale a
 \end{equation*}
 Non si va quindi molto lontano. Tuttavia, bastava procedere in modo diretto:
 \begin{equation*}
-\lim_{x \to +\infty} \frac{x^\frac{1}{2} + x^{-\frac{1}{2}}}{x^\frac{1}{2} - x^{-\frac{1}{2}}} \cdot \frac{x^\frac{1}{2} - x^{-\frac{1}{2}}}{x^\frac{1}{2} - x^{-\frac{1}{2}}} = \frac{x + \frac{1}{x} + 2}{x - \frac{1}{x}} \sim \frac{x}{x} = 1
+\lim_{x \to +\infty} \frac{x^\frac{1}{2} + x^{-\frac{1}{2}}}{x^\frac{1}{2} - x^{-\frac{1}{2}}} \cdot \frac{x^\frac{1}{2} - x^{-\frac{1}{2}}}{x^\frac{1}{2} - x^{-\frac{1}{2}}} = \lim_{x \to +\infty} \frac{x + \frac{1}{x} + 2}{x - \frac{1}{x}} \sim \frac{x}{x} = 1
 \end{equation*}
 \end{example}
 
-\section{Formula di Taylor}
-
-\textbf{N.B: Questa sezione deve essere rivista.}
+\section{Polinomio di Taylor}
 
 Sappiamo che $e^x-1 \sim x$, ovvero che $\lim_{x \to 0} \frac{e^x-1}{x} = 1$.
 
@@ -202,7 +200,7 @@ La derivata $k$-esima è
 D^k (x-x_0)^j = D^{k-1} \cdot D(x-{x_0}^j)
 \end{equation*}
 \begin{equation*}
-D^{k-1} (j(x-x_0)^{j-1}) = j \cdot (j-1) \ldots \cdot (j-k+1) \cdot (x-x_0)^{j-k}
+D^{k-1} (j(x-x_0)^{j-1}) = j \cdot (j-1) \cdot \ldots \cdot (j-k+1) \cdot (x-x_0)^{j-k}
 \end{equation*}
 
 Per $j \ge k$ essa vale 0, altrimenti calcolando in $x_0$ $D^k ((x-x_0)^j)(x_0)$:
@@ -250,7 +248,7 @@ Ad esempio in questo caso $P_2(x) = 1 + x + \frac{x^2}{2}$.
 \begin{example}
 Consideriamo la funzione $f(x) = \sin x$ e calcoliamo il suo polinomio con centro in $x_0 = 0$.
 
-Calcoliamo le prime derivate della funzione: $f'(x) = \cos x$, $f''(x) = -\sin x$, $f'''(x) = - \cos x$, $f^{4}(x) = \sin x$. Generalizziamo il comportamento:
+Calcoliamo le prime derivate della funzione: $f'(x) = \cos x$, $f''(x) = -\sin x$, $f'''(x) = - \cos x$, $f^{(4)}(x) = \sin x$. Generalizziamo il comportamento:
 \begin{equation*}
 D^k \sin x (0) = \begin{cases}
 0 & k \mbox{ pari} \\
@@ -313,12 +311,12 @@ f''(x) &= - \frac{1}{(1+x^2)^2}
 \end{align*}
 In generale
 \begin{equation*}
-f(x) (0) = \frac{(-1)^{n-1} \cdot (n-1)^h}{(1+x)^n}
+f(x) (0) = \frac{(-1)^{n-1} \cdot (n-1)!}{(1+x)^n}
 \end{equation*}
 
 Il polinomio è quindi
 \begin{equation*}
-P_n(x) = \sum (-1)^{n-1} \cdot \frac{(n-1)^?}{n!} \cdot x^n = \sum \frac{(-1)^{n-1}}{n} \cdot x^n = x - \frac{x^2}{2} + \frac{x^3}{3} - \ldots
+P_n(x) = \sum_{n=1}^n (-1)^{n-1} \cdot \frac{(n-1)!}{n!} \cdot x^n = \sum_{n=1}^n \frac{(-1)^{n-1}}{n} \cdot x^n = x - \frac{x^2}{2} + \frac{x^3}{3} - \ldots
 \end{equation*}
 \begin{equation*}
 P_n(x) = x - \frac{x^3}{3} + \frac{x^5}{5} - \frac{x^7}{7} + \ldots
