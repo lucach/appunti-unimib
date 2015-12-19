@@ -1,0 +1,238 @@
+\chapter{Diciannovesima lezione (18/12/2015)}
+
+\section{Formula di Taylor con resto in forma di Peano}
+
+Nella precedente lezione abbiamo enunciato cos'è un polinomio di Taylor. Data una funzione $f: I \to \R$, derivabile $n-1$ volte con $f^{(n-1)}$ derivabile in $x_0$, si definisce \emph{polinomio di Taylor}
+\begin{align*}
+P_n(x) &= \sum_{k = 0}^n \frac{1}{k!} \cdot f^{(k)} (x_0) (x-x_0)^k \\
+&= f(x_0) + f'(x_0)(x-x_0) + \frac{f''(x_0)}{2!}(x-x_0)^2 + \ldots
+\end{align*}
+
+Inoltre avevamo già mostrato che il polinomio di Taylor è l'unico polinomio di grado $n$ tale che
+\begin{equation*}
+(D^k P_n(x)) (x_0) = f^k(x_0) \qquad \qquad 0 \le k \le n
+\end{equation*}
+
+\begin{theorem}[\bfseries Formula di Taylor con resto in forma di Peano]
+Sia $f: I \to \R$ una funzione derivabile $n-1$ volte con $f^{(n-1)}$ derivabile in $x_0$. Allora
+\begin{equation*}
+f(x) = P_n(x) + o((x-x_0)^n)
+\end{equation*}
+\end{theorem}
+La funzione si può quindi esprimere tramite un polinomio di Taylor e un resto $R_n(x) = f(x) - P_n(x)$. Tale resto soddisfa
+\begin{equation*}
+\lim_{x \to x_0} \frac{R_n(x)}{(x-x_0)^n} = 0
+\end{equation*}
+
+\begin{proof}
+Definiamo una funzione $\sigma$ in questo modo:
+\begin{equation*}
+\sigma(x) = \begin{cases}
+\frac{R_n(x)}{(x-x_0)^n} & x \neq x_0 \\
+0 & x = x_0
+\end{cases}
+\end{equation*}
+Per come è stata definita $\sigma(x)$ è continua in $x_0$, il che equivale a dire che il limite mostrato nel teorema vale 0. Nel resto della dimostrazione lo scopo sarà quindi mostrare la continuità di $\sigma$, attraverso una dimostrazione per induzione su $n$.
+
+Dimostriamo il caso base, ovvero per $n = 1$
+\begin{align*}
+\sigma(x) &= \frac{f(x)-P_1(x)}{x-x_0} \\
+&= \frac{f(x)-(f(x_0)+f'(x_0)(x-x_0)}{x-x_0} \\
+&= \frac{f(x)-f(x_0)}{x-x_0} - f'(x_0)
+\end{align*}
+Quindi
+\begin{equation*}
+\lim_{x \to x_0} \sigma(x) = \left(\lim_{x \to x_0} \frac{f(x)-f(x_0)}{x-x_0} \right) - f'(x_0) = f'(x_0) - f'(x_0) = 0 
+\end{equation*}
+per la definizione di derivata. Abbiamo quindi mostrato che per $n=1$ $\sigma$ è continua in 0.
+
+Per $n \ge 1$ supponiamo vera la tesi e dimostriamo che vale anche per $n+1$. Poniamo
+\begin{equation*}
+\sigma(x) = \begin{cases}
+\frac{R_{n+1}(x)}{(x-x_0)^{n+1}} & x \neq x_0 \\
+0 & x = x_0
+\end{cases}
+\end{equation*}
+
+La funzione $R_{n+1}$ è continua e derivabile in $[x_0, x_0 + \epsilon]$. Infatti
+\begin{equation*}
+\lim_{x \to {x_0}^+} R_{n+1}(x) = \lim_{x \to {x_0}^+} f(x)-P_{n+1}(x) = f(x_0) - P_{n+1}(x_0) = 0
+\end{equation*}
+
+Anche il denominatore $(x-x_0)^{n+1}$ è continuo e derivabile in $[x_0, x_0+\epsilon]$ e $\lim_{x \to x_0} (x-x_0)^{n+1} = 0$.
+
+Quindi $\sigma$ presenta una forma di indeterminazione del tipo $\frac{0}{0}$ e rispetta le ipotesi di de l'Hôpital, ovvero se esiste
+\begin{equation*}
+\lim_{x \to x_0} \frac{R_{n+1}' (x)}{D(x-x_0)^{n+1}} = \lim_{x \to x_0} \sigma(x)
+\end{equation*}
+
+La derivata del numeratore, sapendo che $R_{n+1}(x) = f(x)-P_{n+1}(x)$, è $R_{n+1}'(x) = f'(x) - P'_{n+1}(x)$. 
+
+Sappiamo anche che l'$n$-esimo polinomio di Taylor di $g = f'$ è l'unico polinomio $Q_n(x)$ di grado $n$ tale che
+\begin{equation*}
+D^k Q_n(x) = g^{(k)} (x_0) \qquad \qquad \forall \; 0 \le k \le n
+\end{equation*}
+Per definizione $g^{(k)} (x_0) = f^{(k+1)}(x_0)$; quindi se deriviamo $P'_{n+1} (x) = Q_n(x)$ perché
+\begin{equation*}
+D^k P'_{n+1} (x_0) = D^{k+1} P_{n+1} (x_0) = f^{(k+1)} (x_0)
+\end{equation*}
+
+Per ipotesi induttiva $g-Q_n(x) = o((x-x_n)^n)$, quindi $(R_{n+1})' = o((x-x_0)^n)$.
+
+La derivata del denominatore della funzione $\sigma$ è banalmente $(n+1) \cdot (x-x_0)^n$. Quindi
+\begin{equation*}
+\lim_{x \to x_0} \frac{R_n(x)}{(x-x_0)^n} = \lim_{x \to x_0} \frac{o((x-x_0)^n)}{(n+1) \cdot (x-x_0)^n} = 0
+\end{equation*}
+\end{proof}
+
+\begin{example}
+Grazie agli sviluppi di Taylor è possibile risolvere anche limiti di funzioni estremamente complicate, come ad esempio
+\begin{equation*}
+\lim_{x \to 0^+} \frac{(\sin x - x)(\cos 2 \sqrt{x} - e^{-2x})}{(1-\cos x)(x \cdot \log(1-x) + e^{x^2} - 1)} \qquad \qquad \left[\frac{0}{0}\right]
+\end{equation*}
+
+Scriviamo separatamente gli sviluppi di Taylor delle funzioni coinvolte.
+
+Sappiamo che $\sin x = x - \frac{x^3}{3!} + o(x^4)$, quindi $\sin x - x = -\frac{x^3}{6} + o(x^4)$. Segue che
+\begin{equation*}
+\frac{\sin x - x}{x^3} = -\frac{1}{6} + o(x) \implies \sin x - x \sim -\frac{1}{6}x^3
+\end{equation*}
+
+Il coseno si può esprimere come $\cos x  = 1 - \frac{x^2}{2!} + \frac{x^4}{4!} + o(x^6)$, quindi
+\begin{equation*}
+\cos 2\sqrt{x} = 1 - \frac{4x}{2!} + \frac{2^4x^2}{4!} + o(x^3)
+\end{equation*}
+
+L'esponenziale è $e^x = 1 + x + \frac{x^2}{2} + o(x^2)$, quindi $e^{-2x} = 1 - 2x + 2x^2 + o(x^2)$. Possiamo quindi sommare il secondo temine:
+\begin{align*}
+\cos 2\sqrt{x} - e^{-2x} &= \cancel{1 - 2x} + \frac{2}{3}x^2 + o(x^3) - (\cancel{1-2x}+2x^2 + o(x^2)) \\
+&= -\frac{4}{3}x^2 + o(x^2)
+\end{align*}
+Quindi $\cos 2\sqrt{x} - e^{-2x} \sim -\frac{4}{3}x^2$. Possiamo procedere con il denominatore.
+
+$\log(1+x) = x +o(x)$, quindi $\log(1-x) = -x +o(x)$ e quindi $x\log(1-x) = -x^2 +o(x^2)$.
+
+L'esponenziale, per quanto già visto in precedenza, si può esprimere come $e^{x^2} = 1 + x^2 + o(x^3)$.
+
+Sorge un problema: sommando $x\log(1-x)+e^{x^2}-1 = -x^2 + o(x^2) + x^2 + o(x^2)$ resta solo il termine $o(x^2)$ e questo non va bene. Dobbiamo per forza procedere a calcolare il termine successivo negli sviluppi di Taylor fino a trovare il primo termine che non si annulli.
+
+In questo caso basta scrivere $\log(1+x) = x-\frac{x^2}{2}+o(x^2)$, quindi $xlog(1-x) = -x^2+\frac{x^3}{3}+o(x^3)$.
+
+Poiché nello sviluppo dell'esponenziale è assente il termine $x^3$, abbiamo risolto il problema:
+\begin{equation*}
+x\log(1-x)+e^{x^2}-1 = -\frac{1}{2}x^3 + o(x^3)
+\end{equation*}
+
+Il limite di partenza si può quindi scrivere come
+\begin{equation*}
+\lim_{x \to 0^+} \frac{-\frac{x^3}{6} \cdot \left(-\frac{4}{3}x^2\right)}{\frac{1}{2}x^2 \cdot \left(-\frac{1}{2}\right)x^3} = -\frac{4}{18} \cdot 4 = -\frac{8}{9}
+\end{equation*}
+\end{example}
+
+\section{Formula di Taylor con resto in forma di Lagrange}
+
+\begin{theorem}[\bfseries Formula di Taylor con resto in forma di Lagrange]
+Sia $f: I \to \R$ derivabile $n+1$ volte, definita su $I$ intervallo aperto. Per ogni $x, x_0 \in I$ esiste $c$ compreso tra $x$ e $x_0$ tale che
+\begin{equation*}
+f(x) - P_n(x) = \frac{f^{(n+1)}(c)}{(n+1)!} \cdot (x-x_0)^{n+1}
+\end{equation*}
+\end{theorem}
+
+Lasciamo il teorema senza dimostrazione ma ne facciamo utilizzo in due esempi.
+
+\begin{example}
+Supponiamo di voler calcolare $\frac{1}{e}$ con due cifre decimali, ovviamente senza ausilio della calcolatrice.
+
+Possiamo scrivere
+\begin{equation*}
+\frac{1}{e} = \exp(-1) = P_n(-1) + \frac{1}{(n+1)!} \cdot e^c \cdot (-1)^{n+1}
+\end{equation*}
+dove $x_0 = 0$. Esplicitiamo il polinomio di Taylor della funzione esponenziale:
+\begin{equation*}
+P_n(x) = \sum_{k=0}^n \frac{1}{k!} x^k 
+\end{equation*}
+\begin{equation*}
+P_n(-1) = \sum_{k=0}^n \frac{1}{k!} (-1)^k = \sum_{k=0}^n a_k
+\end{equation*}
+
+Consideriamo la serie $\sum_{k=0}^n a_k$. Essa converge per il criterio di Leibniz: è a segni alterni, $\lim \frac{1}{k!} = 0$ e $\{\frac{1}{k!}\}$ è decrescente.
+
+Il limite è compreso quindi tra ogni coppia di somme parziali consecutive. Calcoliamo quindi i primi termini della serie: $a_0 = 1$, $a_1 = -1$, $a_2 = \frac{1}{2}$, $a_3 = -\frac{1}{6}$, $a_4 = \frac{1}{24}$ e così via...
+Possiamo quindi ora calcolare le prime somme parziali: $s_0 = 1$, $s_1 = 0$, $s_2 = \frac{1}{2}$, $s_3 = \frac{1}{3}$, $s_4 = 0,375$, $s_5 = 0,3\overline{6}$, $s_6 = 0,368...$ .
+
+Essendo $s_5 < \frac{1}{e} < s_6$, allora $\frac{1}{e} = 0,36...$ .
+\end{example}
+
+\begin{example}
+Supponiamo di voler calcolare $\log(\frac{4}{3})$. Il polinomio di Taylor di $\log(1+x)$ con centro in 0 è
+\begin{equation*}
+P_n(x) = \sum_{k=1}^n (-1)^{k-1} \frac{x^k}{k} = \sum_{k=1}^n \frac{1}{k!} \cdot D^k \log(1+x) \cdot x^k
+\end{equation*}
+
+La derivata $n$-esima della funzione $\log(1+x)$ è
+\begin{equation*}
+D^n \log(1+x) = (n-1)! \cdot (-1)^n \cdot x^{-n}
+\end{equation*}
+Quindi
+\begin{equation*}
+\log(1+x) = P_n(x) + \frac{f^{(n+1)}(c)}{(n+1)!} \cdot x^{n+1} \qquad \qquad 0 < c < x
+\end{equation*}
+
+Nel nostro caso $x = \frac{1}{3}$, quindi
+\begin{equation*}
+\frac{f^{(n+1)}(c)}{(n+1)!} = \frac{n! (-1)^{n+1} c^{-n+1}}{(n+1)!} = \frac{(-1)^{n+1} c^{-n+1}}{n+1}
+\end{equation*}
+
+Il nostro calcolo $\log(\frac{4}{3})$ è quindi equivalente a $\lim_{n \to +\infty} P_n(\frac{1}{3})$. Consideriamo la serie
+\begin{equation*}
+\sum_{k=1}^\infty \frac{(-1)^{k-1} \cdot \frac{1}{3^k}}{k}
+\end{equation*}
+Essa soddisfa Leibniz. Quindi $\log(\frac{4}{3})$ è contenuto tra somme parziali consecutive della serie.
+
+I primi termini sono $a_1 = \frac{1}{3}$, $a_2 = -\frac{1}{18}$, $a_3 = \frac{1}{108}$ e così via. Le prime somme parziali sono $s_1 = \frac{1}{3}$, $s_2 = 0,2\overline{7}$, $s_3 = 0,290...$, $s_4 = 0,287...$. 
+
+Quindi $\log(\frac{4}{3}) = 0,28...$ .
+\end{example}
+
+\begin{corollary}
+Sia $f: I \to \R$ una funzione derivabile $n$ volte con $f'(x_0) = \ldots = f^{(n-1)} (x_0) = 0$ e $f^{(n)} \neq 0$. Allora:
+\begin{itemize}
+\item se $n$ è pari e $f^{(n)} > 0$ allora $x_0$ è un punto di minimo relativo
+\item se $n$ è pari e $f^{(n)} < 0$ allora $x_0$ è un punto di massimo relativo
+\item se $n$ è dispari allora $x_0$ non è né un punto di massimo né di minimo relativo
+\end{itemize}
+\end{corollary}
+
+\begin{proof}
+Sia $f(x) = P_n(x) + R_n(x)$. Essendo nulle le prime $n-1$ derivate si può scrivere
+\begin{equation*}
+f(x) = f(x_0) + \frac{f^n(x_0)}{n!} (x-x_0)^n + R_n(x)
+\end{equation*}
+
+Definiamo $\sigma(x) = \frac{R_n(x)}{(x-x_0)^n}$. Osserviamo che $\sigma(x) = o(1)$, ovvero che $\lim_{x \to 0} \sigma (x) = 0$.
+
+Possiamo ora riscrivere $f(x)$:
+\begin{equation*}
+f(x) = f(x_0) + (x-x_0)^n \cdot \left(\frac{f^n(x_0)}{n!} +\sigma(x) \right)
+\end{equation*}
+
+Per ipotesi il termine $\frac{f^n(x_0)}{n!} \neq 0$. Poiché $\lim_{x \to x_0} \frac{f^n(x_0)}{n!} + \sigma \neq 0$, per il teorema di permanenza del segno in un intorno di $x_0$ vale che $\frac{f^n(x_0)}{n!} + \sigma(x)$ ha lo stesso segno di $f^{(n)} (x_0)$.
+
+\begin{itemize}
+\item Se $n$ è pari allora $(x-x_0)^n$ è sempre positivo per $x \neq x_0$; quindi $f(x)-f(x_0)$ è positiva in un intorno $B'_\epsilon(x_0)$ se $f^{(n)} (x_0) > 0$ e negativa altrimenti.
+
+Quindi nei due casi $x_0$ è rispettivamente un punto di minimo e massimo relativo.
+
+\item Se $n$ è dispari allora $(x-x_0)^n$ è positivo per $x>x_0$ e negativo in caso contrario. Quindi se $f^{(n)} (x_0) > 0$ allora $f(x)-f(x_0)$ è positivo per $x > x_0$ e negativo in caso contrario. Analogamente accade se la derivata $n$-esima è negativa.
+
+Quindi $x_0$ non può essere un punto di massimo o minimo relativo.
+\end{itemize}
+\end{proof}
+
+\begin{example}
+Consideriamo la funzione $f(x) = \sin x$, la cui derivata $f'(x) = \cos x$ si annulla in $\pm \frac{\pi}{2}$.
+
+La sua derivata seconda è $-\sin x$. Essa vale vale -1 in $x = \frac{pi}{2}$, che è quindi un punto di minimo relativo, e 1 in $x = -\frac{pi}{2}$, che è quindi un punto di massimo relativo. 
+
+Ciò rispetta quanto ci potevamo aspettare osservando il grafico.
+\end{example}
