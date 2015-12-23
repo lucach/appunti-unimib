@@ -1,0 +1,353 @@
+\chapter{Ventesima lezione (22/12/2015)}
+
+\section{Punti di non derivabilità}
+
+Sia $f: I \to \R$ una funzione e $x_0 \in I$. Diciamo che $f$ ha un \emph{punto a tangente verticale} in $x \in I$ se è continua in $x$ e 
+\begin{equation*}
+\lim_{h \to 0} \frac{f(x+h)-f(x)}{h} = \pm \infty
+\end{equation*}
+Si scrive $f'(x) = \pm \infty$.
+
+\begin{example}
+Consideriamo la funzione $f(x) = \sqrt[3]{x}$ e calcoliamone il rapporto incrementale in $x = 0$:
+\begin{equation*}
+\lim_{h \to 0} \frac{f(h)-f(0)}{h} = \lim_{h \to 0} \frac{\sqrt[3]{h}}{h} = +\infty
+\end{equation*}
+Quindi per la funzione $f(x) = \sqrt[3]{x}$ il punto 0 è un punto a tangente verticale.
+\end{example}
+
+\begin{definition}
+Data una funzione $f: [a, b] \to \R$ e $x \in [a, b)$ si dice \emph{derivata destra} di $f(x)$ il limite, se esiste,
+\begin{equation*}
+\lim_{h \to 0^+} \frac{f(x+h)-f(x)}{h}
+\end{equation*}
+Si scrive $f'_+(x)$.
+\end{definition}
+
+\begin{definition}
+Data una funzione $f: [a, b] \to \R$ e $x \in (a, b]$ si dice \emph{derivata sinistra} di $f(x)$ il limite, se esiste,
+\begin{equation*}
+\lim_{h \to 0^-} \frac{f(x+h)-f(x)}{h}
+\end{equation*}
+Si scrive $f'_-(x)$.
+\end{definition}
+
+\begin{proposition}
+Se $f$ è continua in $[a,b]$, derivabile in $(a,b)$ ed esiste $\lim_{x \to a^+} f'(x) = L$ finito o infinito, allora $f'_+ (a) = L$.
+
+Analogamente, se esiste  $\lim_{x \to b^-} f'(x) = L$ finito o infinito, allora $f'_- (b) = L$.
+\end{proposition}
+
+\begin{proof}
+Fissato $h > 0$ si può applicare il teorema di Lagrange alla funzione $f: [a, a+h] \to \R$. Troviamo quindi che esiste $\xi$ compreso tra $a < \xi < a +h$ tale che
+\begin{equation*}
+\frac{f(a+h)-f(a)}{h} = f'(\xi)
+\end{equation*}
+Per $h \to 0$, $\xi \to a$. Quindi $f'(\xi)$ tende ad $L$ e per definizione di derivata
+\begin{equation*}
+\lim_{h \to 0^+} \frac{f(a+h)-f(a)}{h} = L
+\end{equation*}
+\end{proof}
+
+Supponiamo $f$ continua in $x$ e $f'_+(x) = f'_-(x)$, allora $f$ è derivabile.
+
+Se invece $f$ è continua in $x$ ma $f'_+(x)$ e $f'_-(x)$ esistono diverse, allora $f$ ha un \emph{punto angoloso} in $x$.
+
+Se $f$ è continua in $x$ ma $f'_+(x) = +\infty$ e $f'_-(x) = -\infty$ (o viceversa), allora $x$ è un \emph{punto di cuspide}.
+
+\begin{example}
+Sia $f(x) = |x|$. La derivata sinistra in 0 vale -1, mentre la derivata destra vale 1. Pertanto, come ci si poteva aspettare osservando il grafico della funzione, 0 è un punto angoloso.
+\end{example}
+
+\begin{example}
+Sia $f(x) = \sqrt[3]{x^2}$. Essa è continua perché è la composizione di funzioni continue. La sua derivata è $f'(x) = \frac{2}{3}x^{-\frac{1}{3}}$.
+
+La derivata sinistra in 0 vale $-\infty$, mentre quella destra vale $+\infty$. Quindi in 0 la funzione presenta una cuspide.
+	
+\end{example}
+
+\begin{proposition}
+Se $f:[a,b] \to \R$ è una funzione derivabile in $(a,b)$, allora $f'(x)$ assume ogni valore tra $f'(a)$ e $f'(b)$.
+\end{proposition}
+
+Da questa proposizione segue che se $f$ è derivabile in $(a,b)$, allora $f'$ non ha discontinuità di prima specie. Altrimenti sarebbe
+\begin{equation*}
+\lim_{x \to c^-} f'(x) \neq \lim_{x \to c^+} f'(x)
+\end{equation*}
+
+Inoltre $f'$ non può avere nemmeno discontinuità eliminabili.
+
+\begin{example}
+Consideriamo la funzione
+\begin{equation*}
+f(x) = \begin{cases}
+x^2 \cdot \sin \frac{1}{x} & x \neq 0 \\
+0 & x = 0
+\end{cases}
+\end{equation*}
+La sua derivata, in accordo a quanto abbiamo detto sopra, ha solo una discontinuità di seconda specie in $x = 0$.
+\end{example}
+
+\section{Integrale indefinito}
+
+Parlando di derivate avevamo già espresso la definizione di \emph{primitiva}. Data una funzione $f: I \to \R$, dove $I$ è un intervallo, si dice che $F$ è una primitiva di $f$ se $F' = f$.
+
+\begin{definition}
+Si dice \emph{integrale indefinito} di $f(x)$ l'insieme di tutte le primitive di $f(x)$. Si scrive:
+\begin{equation*}
+\int f(x)\, dx
+\end{equation*}
+\end{definition}
+
+Quindi $F(x)$ è una primitiva di $f(x)$ se e solo se $F(x) \in \int f(x) \, dx$. Per notazione useremo d'ora in avanti la scrittura imprecisa $F(x) = \int f(x) \, dx$.
+
+Ricordiamo inoltre che avevamo già osservato che data una primitiva $F(x)$ tutte le primitive hanno la forma $F(x) + k$ con $k \in \R$.
+
+Scriviamo ora le derivate delle funzioni elementari.
+
+\begin{align*}
+D x^{\alpha+1} = (\alpha+1) \cdot x^\alpha &\implies \int x^\alpha \, dx = \frac{x^{\alpha+1}}{\alpha+1} \\
+D \log |x| = \frac{1}{x} &\implies \int \frac{1}{x} \, dx = \log |x| \\
+D \cos x = -\sin x &\implies \int \sin x \, dx = -\cos x \\
+D \sin x = -\cos x &\implies \int \cos x \, dx = \sin x\\
+D \tan x = \frac{1}{\cos^2 x} = 1 + \tan^2 x &\implies \int \frac{1}{\cos^2 x} \, dx = \tan x \\
+D e^x = e^x &\implies \int e^x \, dx = e^x \\
+D \arctan x = \frac{1}{1+x^2} &\implies \int \frac{1}{1+x^2} \, dx = \arctan x \\
+D \arcsin x = \frac{1}{\sqrt{1-x^2}} &\implies \int \frac{1}{\sqrt{1-x^2}}  \, dx = \arcsin x \\
+\end{align*}
+
+Ricordiamo che $\arcsin	x$ e $\arccos x$ si derivano grazie alla regola di derivazione della funzione inversa. Mostriamo ad esempio la derivata di $\arcsin x$. 
+
+Si pone $\arcsin x = y$, quindi $x = \sin y$. Ora:
+\begin{equation*}
+D(\arcsin x) = \frac{1}{D \sin y} = \frac{1}{\cos y} = \frac{1}{\sqrt{1-x^2}}
+\end{equation*}
+
+Inoltre sappiamo che la funzione coseno si può esprimere attraverso la funzione seno ($\cos x = \sin (\frac{\pi}{2} - x)$). Quindi tra le rispettive derivate ciò che cambia è solo il segno.
+
+\begin{remark}
+Se $f$ e $g$ ammettono una primitiva, allora anche la somma ammette una primitiva:
+\begin{equation*}
+\int (f(x)+g(x)) \, dx = \int f(x)\, dx + \int g(x)\, dx
+\end{equation*}
+\end{remark}
+
+Quanto scritto significa che, posto $F' = f$ e $G' = g$, allora $(F+G)' = F'+G'$.
+
+\begin{remark}
+Se $\lambda \in \R$ e $f(x)$ ha una primitiva $F(x)$, allora
+\begin{equation*}
+\int \lambda f(x) \, dx = \lambda \int f(x)\, dx
+\end{equation*}
+\end{remark}
+Ovvero, posto $F' = f$, allora $(\lambda F)' = \lambda f$.
+
+\begin{example}
+Calcoliamo l'integrale 
+\begin{align*}
+& \int (2e^x + \frac{1}{\sqrt{x}}) \, dx \\
+= & \int 2e^x \, dx + \int \frac{1}{\sqrt{x}} \, dx \\
+= & 2 \int e^x \, dx + \int \frac{1}{\sqrt{x}} \, dx \\
+= & 2e^x + \frac{x^\frac{1}{2}}{\frac{1}{2}} = 2(e^x+\sqrt{x})
+\end{align*}
+
+Si può procedere anche a una semplice verifica, derivando il risultato. Infatti $D [2(e^x+\sqrt{x})] = 2e^x + \frac{1}{2}x^{-\frac{1}{2}}$.
+\end{example}
+
+\section{Integrazione per parti}
+\begin{proposition}[\bfseries Integrazione per parti]
+Siano $f, g: I \to \R$ due funzioni. Sia $f$ derivabile; supponiamo che $g$ abbia una primitiva $G$ e $f \cdot g$ abbia una primitiva. Allora
+\begin{equation*}
+\int f(x)g(x) \, dx = f(x)G(x) - \int f'(x) G(x) \, dx
+\end{equation*}
+\end{proposition}
+
+Osserviamo che se $f(x)$ è una costante, allora l'integrazione per parti si riduce a quanto avevamo già scritto: $\int \lambda g(x) \, dx = \lambda G(x)$.
+
+\begin{proof}
+La dimostrazione fa uso della regola di derivazione del prodotto.
+\begin{align*}
+(fG)' &= f'G + fG' \\
+(fG)' &= f'G + fg
+\end{align*}
+Da cui segue immediatamente la regola di integrazione per parti.
+\end{proof}
+
+\begin{example}
+Calcoliamo l'integrale
+\begin{equation*}
+\int x e^x \, dx
+\end{equation*}
+
+Poniamo $f:x$ e $g: e^x$. Per la regola di integrazione per parti
+\begin{align*}
+\int x e^x \, dx &= xe^x - \int 1 \cdot e^x \, dx \\
+&= xe^x - e^x
+\end{align*}
+
+La verifica è banale: $D[xe^x - e^x] = e^x + xe^x - e^x = xe^x$.
+
+Ovviamente nessuno ci vieta di scambiare il ruolo alle funzioni e considerare $f: e^x$ e $g: x$, ma in questo modo otterremmo un integrale più
+difficile di quello di partenza.
+\begin{equation*}
+\int x e^x \, dx = e^x \cdot \frac{x^2}{2} - \int \frac{x^2}{2} \cdot e^x \, dx 
+\end{equation*}
+\end{example}
+
+\begin{example}
+Calcoliamo l'integrale
+\begin{equation*}
+\int \log x \, dx
+\end{equation*}
+A prima vista non sembra applicabile l'integrazione per parti, ma possiamo considerare l'integrale come
+\begin{equation*}
+\int 1 \cdot \log x \, dx
+\end{equation*}
+
+Poniamo $f(x) = \log x$, che ha derivata $\frac{1}{x}$, e $g(x) = 1$, che ha primitiva $x$. Quindi
+\begin{align*}
+\int \log x \, dx &= x\log x - \int \frac{1}{x} \cdot x \, dx \\
+&= x\log x - x
+\end{align*}
+\end{example}
+
+\begin{example}
+Calcoliamo l'integrale
+\begin{equation*}
+\int \cos^2x \, dx
+\end{equation*}
+Ovviamente in questo caso $f$ e $g$ sono entrambe $\cos x$.
+\begin{align*}
+\int \cos^2x \, dx &= \cos x \cdot \sin x - \int (-\sin x) \sin x \, dx \\
+&= \sin x \cdot \cos x + \int \sin^2x \, dx \\
+&= \sin x \cdot \cos x + \int (1-\cos^2x) \, dx \\
+&= \sin x \cdot \cos x + x - \int \cos^2x \, dx
+\end{align*}
+
+Siamo ritornati all'integrale di partenza. Quindi possiamo scrivere
+\begin{align*}
+2 \int \cos^2x = \sin x\cos x + x \\
+\int \cos^2x = \frac{\sin x\cos x + x}{2}
+\end{align*}
+
+Verifichiamo il risultato derivandolo:
+\begin{equation*}
+D\left[\frac{\sin x\cos x + x}{2}\right]= \frac{1}{2} \cos^2 x - \frac{1}{2} \sin^2 x + \frac{1}{2} = \cos^2 x
+\end{equation*}
+\end{example}
+
+\section{Sostituzione di variabile}
+\begin{theorem}
+Sia $f: I \to \R$ e $g: J \to \R$ derivabile; con $I$ e $J$ intervalli tali che abbia senso la scrittura $f(g(x))$. Se $f(x)$ ha una primitiva $F(x)$ allora
+\begin{equation*}
+F(g(t)) = \int f(g(t)) \cdot g'(t) \, dt
+\end{equation*}
+
+In altri termini, posto $x = g(t)$:
+\begin{align*}
+\int f(x) \, dx &= \int f(g(t)) \cdot g'(t) \, dt \\
+&= \int f(x) \cdot g'(t) \, dt
+\end{align*}
+\end{theorem}
+
+\begin{proof}
+La dimostrazione è semplice, grazie alla derivata della funzione composta:
+\begin{equation*}
+\frac{d}{dt} F(g(t)) = F'(g(t)) \cdot g'(t) = f(g(t)) \cdot g'(t)
+\end{equation*}
+\end{proof}
+
+\begin{example}
+Calcoliamo tramite sostituzione l'integrale
+\begin{equation*}
+\int \tan t \, dt = \int \frac{\sin t}{\cos t} \, dt
+\end{equation*}
+
+Poniamo $x = g(t) = \cos t$, la cui derivata è $-\sin t$. Quindi
+\begin{align*}
+\int \frac{\sin t}{\cos t} \, dt &= \int -D(\cos t) \cdot \frac{1}{\cos t} \, dt \\
+&= \int f(g(t)) \cdot g'(t) \, dt \\
+&= \int f(x) \, dx \\
+&= \int -\frac{1}{x} \, dx = -\log x
+\end{align*}
+
+Quindi
+\begin{equation*}
+\int \tan x \, dx = - \log|\cos t|
+\end{equation*}
+\end{example}
+
+\begin{example}
+Calcoliamo tramite sostituzione l'integrale
+\begin{equation*}
+\int \frac{1}{t\log t} \, dt
+\end{equation*}
+
+Poniamo $x = g(t) = \log t$, la cui derivata è $\frac{1}{t}$. Sappiamo che
+\begin{equation*}
+\frac{1}{t \log t} = \frac{1}{x} \cdot g'(x)
+\end{equation*}
+Quindi
+\begin{align*}
+\int \frac{1}{t\log t} \, dt &= \int \frac{1}{g(t)} \cdot g'(t) \, dt \\
+&= \int \frac{1}{x} \, dx \\
+&= \log |x| = \log |\log t|
+\end{align*}
+
+Impropriamente, potremmo visualizzare ciò che abbiamo fatto con
+\begin{equation*}
+\int \frac{1}{t\log t} \, dt = \int \frac{1}{x} \, \frac{dx}{\cancel{dt}} \cdot \cancel{dt} = \int \frac{1}{x} \, dx
+\end{equation*}
+\end{example}
+
+\begin{example}
+Calcoliamo tramite sostituzione l'integrale
+\begin{equation*}
+\int \frac{1}{e^x + e^{-x}} \, dx
+\end{equation*}
+
+Sostituendo $u = e^x$ resta
+\begin{align*}
+\int \frac{1}{e^x + e^{-x}} \, dx &= \int \frac{1}{u+\frac{1}{u}} \, \frac{\frac{du}{dx}}{\frac{du}{dx}} \cdot dx \\
+&= \int \frac{1}{u+\frac{1}{u}} \, \frac{1}{\frac{du}{dx}} \cdot \frac{du}{\cancel{dx}} \cdot \cancel{dx} \\
+&= \int \frac{1}{u+\frac{1}{u}} \cdot \frac{1}{u} \, du \\
+&= \int \frac{1}{u^2 + 1} \, du \\
+&= \arctan u = \arctan e^x
+\end{align*}
+\end{example}
+
+\begin{example}
+Con una sostituzione notevole riusciamo a calcolare integrali del tipo
+\begin{equation*}
+\int \frac{P(\sin x, \cos x)}{Q(\sin x, \cos x)} \, dx
+\end{equation*}
+dove $P, Q$ sono polinomi.
+
+La sostituzione interessante è che, posto $t = \tan \frac{x}{2}$, si ha che
+\begin{equation*}
+\sin x = \frac{2t}{1+t^2} \qquad \qquad \cos x = \frac{1-t^2}{1+t^2}
+\end{equation*}
+
+Queste formule si ricavano da quelle di bisezione. Ad esempio per il seno:
+\begin{align*}
+\sin x &= 2 \sin \frac{x}{2} \cos \frac{x}{2} \\
+&= \frac{2\tan \frac{x}{2}}{\frac{1}{cos^2 \frac{x}{2}}} \\
+&= \frac{2\tan \frac{x}{2}}{1+tan^2 \frac{x}{2}} = \frac{2t}{1+t^2}
+\end{align*}
+
+Proviamo a calcolare l'integrale $\int \frac{1}{\sin x} \, dx$:
+\begin{equation*}
+\int \frac{1}{\sin x} \, dx = \int \frac{1+t^2}{2t} \, \frac{\frac{dt}{dx}}{\frac{dt}{dx}} \cdot dx
+\end{equation*}
+
+Calcoliamo $\frac{dt}{dx}$:
+\begin{equation*}
+\frac{dt}{dx} = D\left[\tan\frac{x}{2}\right] = \frac{1}{2} \left(1 + \tan^2\frac{x}{2} \right) = \frac{1}{2} (1+t^2)
+\end{equation*}
+
+Quindi, riprendendo l'integrale
+\begin{align*}
+&= \int \frac{1+t^2}{2t} \cdot \frac{1}{\frac{1}{2}(1+t^2)} \, dt \\
+&= \int \frac{1}{t} \, dt = \log |t| = \log \left\lvert\tan \frac{x}{2}\right\rvert 
+\end{align*}
+\end{example}
