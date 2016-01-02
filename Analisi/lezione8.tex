@@ -25,7 +25,7 @@ La serie armonica diverge; la serie armonica generalizzata converge per $\alpha 
 \end{theorem}
 
 \begin{proof}
-La serie armonica è una serie a termini positivi, quindi o converge o diverge. Confrontiamo i primi termini una successione che chiamiamo $\{z_j\}$ costruita in modo che ogni termine sia maggiore di quello della serie armonica. Scriviamo nella prima riga i termini della serie armonica e nella seconda quelli di $\{z_j\}$:
+La serie armonica è una serie a termini positivi, quindi o converge o diverge. Confrontiamo i primi termini una successione che chiamiamo $\{z_j\}$ costruita in modo che ogni termine sia minore di quello della serie armonica. Scriviamo nella prima riga i termini della serie armonica e nella seconda quelli di $\{z_j\}$:
 \begin{equation*}
 x_1 = \frac{1}{1} \quad x_2 = \frac{1}{2} \quad x_3 = \frac{1}{3} \quad x_4 = \frac{1}{4} \quad x_5 = \frac{1}{5} \quad \ldots 
 \end{equation*}
@@ -195,9 +195,9 @@ Studiamo le due affermazioni:
 \item 
 Se $L < 1$, sia $L < h < 1$. Allora so che $\sqrt[j]{x_j} < h$ definitivamente. Elevando alla $j$ entrambi i membri si trova che $x_j < h^j$ definitivamente.
 
-Essendo $h < 1$ allora $\sum_{j=0}^\infty$ converge. Allora per confronto converge anche $\sum_{j=0}^\infty x_j$.
+Essendo $h < 1$ allora $\sum_{j=0}^\infty h^j$ converge. Allora per confronto converge anche $\sum_{j=0}^\infty x_j$.
 
-\item Se $L > 1$ allora posso dire direttamente che  $\sqrt[j]{x_j} > 1$ definitivamente. Elevando alla $j$ entrambi i membri si trova che $x_j < 1$ definitivamente.
+\item Se $L > 1$ allora posso dire direttamente che  $\sqrt[j]{x_j} > 1$ definitivamente. Elevando alla $j$ entrambi i membri si trova che $x_j > 1$ definitivamente.
 
 Osserviamo che $\sum x_j > \sum 1$. Poiché $\sum 1$ diverge ($\lim 1 \neq 0$ e $1 + 1 + \ldots = +\infty$), allora anche $\sum x_j$ diverge.
 
@@ -211,7 +211,7 @@ Date due serie a termini positivi $\sum_{j=0}^\infty x_j$ e $\sum_{j=0}^\infty y
 \end{definition}
 
 \begin{theorem}[\bfseries Criterio del confronto asintotico]
-Due serie a termini positivi asintoticamente equivalenti posso essere o entrambe convergenti o entrambe divergenti.
+Due serie a termini positivi asintoticamente equivalenti possono essere o entrambe convergenti o entrambe divergenti.
 \end{theorem}
 
 \begin{example}

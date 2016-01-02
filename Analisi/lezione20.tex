@@ -103,7 +103,7 @@ Quindi $F(x)$ è una primitiva di $f(x)$ se e solo se $F(x) \in \int f(x) \, dx$
 
 Ricordiamo inoltre che avevamo già osservato che data una primitiva $F(x)$ tutte le primitive hanno la forma $F(x) + k$ con $k \in \R$.
 
-Scriviamo ora le derivate delle funzioni elementari.
+Scriviamo ora le derivate delle funzioni elementari, da cui seguono le rispettive primitive.
 
 \begin{align*}
 D x^{\alpha+1} = (\alpha+1) \cdot x^\alpha &\implies \int x^\alpha \, dx = \frac{x^{\alpha+1}}{\alpha+1} \\
@@ -206,7 +206,7 @@ A prima vista non sembra applicabile l'integrazione per parti, ma possiamo consi
 
 Poniamo $f(x) = \log x$, che ha derivata $\frac{1}{x}$, e $g(x) = 1$, che ha primitiva $x$. Quindi
 \begin{align*}
-\int \log x \, dx &= x\log x - \int \frac{1}{x} \cdot x \, dx \\
+\int \log x \, dx &= x\log x - \int \frac{1}{\cancel{x}} \cdot \cancel{x} \, dx \\
 &= x\log x - x
 \end{align*}
 \end{example}
