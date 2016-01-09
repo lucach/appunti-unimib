@@ -315,39 +315,3 @@ Sostituendo $u = e^x$ resta
 &= \arctan u = \arctan e^x
 \end{align*}
 \end{example}
-
-\begin{example}
-Con una sostituzione notevole riusciamo a calcolare integrali del tipo
-\begin{equation*}
-\int \frac{P(\sin x, \cos x)}{Q(\sin x, \cos x)} \, dx
-\end{equation*}
-dove $P, Q$ sono polinomi.
-
-La sostituzione interessante è che, posto $t = \tan \frac{x}{2}$, si ha che
-\begin{equation*}
-\sin x = \frac{2t}{1+t^2} \qquad \qquad \cos x = \frac{1-t^2}{1+t^2}
-\end{equation*}
-
-Queste formule si ricavano da quelle di bisezione. Ad esempio per il seno:
-\begin{align*}
-\sin x &= 2 \sin \frac{x}{2} \cos \frac{x}{2} \\
-&= \frac{2\tan \frac{x}{2}}{\frac{1}{cos^2 \frac{x}{2}}} \\
-&= \frac{2\tan \frac{x}{2}}{1+tan^2 \frac{x}{2}} = \frac{2t}{1+t^2}
-\end{align*}
-
-Proviamo a calcolare l'integrale $\int \frac{1}{\sin x} \, dx$:
-\begin{equation*}
-\int \frac{1}{\sin x} \, dx = \int \frac{1+t^2}{2t} \, \frac{\frac{dt}{dx}}{\frac{dt}{dx}} \cdot dx
-\end{equation*}
-
-Calcoliamo $\frac{dt}{dx}$:
-\begin{equation*}
-\frac{dt}{dx} = D\left[\tan\frac{x}{2}\right] = \frac{1}{2} \left(1 + \tan^2\frac{x}{2} \right) = \frac{1}{2} (1+t^2)
-\end{equation*}
-
-Quindi, riprendendo l'integrale
-\begin{align*}
-&= \int \frac{1+t^2}{2t} \cdot \frac{1}{\frac{1}{2}(1+t^2)} \, dt \\
-&= \int \frac{1}{t} \, dt = \log |t| = \log \left\lvert\tan \frac{x}{2}\right\rvert 
-\end{align*}
-\end{example}

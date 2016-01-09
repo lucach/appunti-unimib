@@ -1,0 +1,359 @@
+\chapter{Ventunesima lezione (08/01/2016)}
+
+\section{Divisione tra polinomi e polinomi irriducibili}
+
+\begin{definition}
+Dati due polinomi $P(x)$, $Q(x)$ diciamo che $Q(x)$ è un \emph{divisore} di $P(x)$ se
+\begin{equation*}
+P(x) = Q(x) \cdot M(x)
+\end{equation*}
+dove $M(x)$ è un polinomio.
+\end{definition}
+
+\begin{definition}
+Si dice che $P(x)$ e $Q(x)$ sono \emph{primi tra loro} se tutti i divisori comuni hanno grado zero.
+\end{definition}
+
+\begin{definition}
+Si dice che $P(x)$ è \emph{riducibile} se è il prodotto di due polinomi di grado positivo. È \emph{irriducibile} altrimenti.
+\end{definition}
+
+\begin{remark}
+I polinomi irriducibili sono tutti di grado 1 o 2.
+\end{remark}
+
+\begin{example}
+Il polinomio $(x-1)$ è irriducibile. Anche il polinomio $(x^2+x+1)$, avendo $\Delta < 0$, non ha radici reali e quindi è irriducibile.
+\end{example}
+
+Ogni polinomio si può scrivere nel seguente modo:
+\begin{equation*}
+P(x) = {q_1}^{d_1} \cdot \ldots \cdot {q_k}^{d_k}
+\end{equation*}
+dove $q_1, \ldots, q_k$ sono polinomi irriducibili e $d_1, \ldots, d_k$ sono numeri naturali.
+
+\section{Integrale di una funzione razionale fratta}
+Traendo vantaggio da quanto detto finora, vogliamo calcolare 
+\begin{equation*}
+\int \frac{P(x)}{Q(x)} \, dx
+\end{equation*}
+dati due polinomi $P(x)$ e $Q(x)$, supponendo di poter calcolare la scomposizione di $Q(x)$ in fattori irriducibili.
+
+Possiamo supporre che $P(x)$ e $Q(x)$ siano primi tra loro, eliminando i fattori comuni. Banalmente:
+\begin{equation*}
+\frac{(x-1)\cancel{(x+1)}}{(x+1)^{\cancel{2}}} = \frac{x-1}{x+1}
+\end{equation*}
+
+Se $P(x)$ ha grado maggiore o uguale a quello di $Q(x)$, allora la divisione euclidea permette di scrivere il polinomio come prodotto tra due polinomi e un resto $r(x)$ di grado sicuramente minore di $Q(x)$.
+\begin{equation*}
+P(x) = Q(x) \cdot q(x) + r(x)
+\end{equation*}
+Quindi
+\begin{equation*}
+\int \frac{P(x)}{Q(x)} \, dx = \int q(x) \, dx + \int \frac{r(x)}{Q(x)} \, dx
+\end{equation*}
+
+\begin{example}
+Calcoliamo l'integrale
+\begin{equation*}
+\int \frac{x^3-1}{x^2-1}
+\end{equation*}
+
+Osserviamo che il numeratore è direttamente scomponibile come differenza di cubi, ma ai fini didattici scegliamo di eseguire comunque la divisione polinomiale. Dividiamo il numeratore per $x-1$:
+
+\begin{center}
+\polylongdiv[style=B]{x^3-1}{x-1}
+\end{center}
+
+Quindi $(x^3-1) = (x-1)(x^2+x+1)$. Ora
+
+\begin{equation*}
+\int \frac{(x-1)(x^2+x+1)}{(x-1)(x+1)} \, dx = \int \frac{x^2+x+1}{x+1} \, dx
+\end{equation*}
+
+Eseguiamo nuovamente la divisione polinomiale:
+\begin{center}
+\polylongdiv[style=B]{x^2+x+1}{x+1}
+\end{center}
+
+L'integrale si può ora riscrivere come
+
+\begin{equation*}
+\int \frac{x^2+x+1}{x+1} \, dx = \int \frac{x(x+1)+1}{x+1} \, dx = \int \left(x + \frac{1}{x+1} \right) \, dx = \frac{x^2}{2} + \log|x+1|
+\end{equation*}
+\end{example}
+
+Per proseguire con ulteriori tipologie di funzioni razionali fratte abbiamo bisogno della seguente proposizione.
+
+\begin{proposition}
+Dati $P(x)$, $Q(x)$ polinomi primi tra loro, con $P(x)$ di grado minore di $Q(x)$. Sia $Q(x) = {q_1}^{d_1} \cdot \ldots \cdot {q_k}^{d_k}$ la scomposizione di $Q(x)$ in fattori irriducibili.
+
+Allora esistono polinomi $p_1, \ldots, p_k$ tali che 
+\begin{equation*}
+\frac{P(x)}{Q(x)} = \frac{P_1}{{q_1}^{d_1}} + \ldots + \frac{P_k}{{q_k}^{d_k}}
+\end{equation*}
+
+Il fatto interessante è che per ogni termine $P_j$ ha grado minore di ${q_j}^{d_j}$.
+\end{proposition}
+
+\begin{example}
+Consideriamo la frazione
+\begin{equation*}
+\frac{1}{x^2-3x+2}
+\end{equation*}
+il cui denominatore si scompone facilmente come $(x-2)(x+1)$. Per la proposizione appena enunciata sappiamo che
+\begin{equation*}
+\frac{1}{x^2-3x+2} = \frac{P_1}{x-2} + \frac{P_2}{x-1}
+\end{equation*}
+Essendo i denominatori di grado 1, abbiamo che $P_1$ e $P_2$ $\in \R$. Per calcolarli applichiamo il principio di identità dei polinomi.
+\begin{align*}
+1 &= P_1(x-1) + P_2(x-2) \\
+&= x(P_1+P_2) - P_1 -2P_2
+\end{align*}
+Quindi
+\begin{equation*}
+\begin{cases}
+P_1 + P_2 = 0 \\
+-P_1 -2P_2 = 1
+\end{cases}
+\end{equation*}
+
+Da cui segue immediatamente $P_1 = 1$ e $P_2 = -1$. Quindi ora sappiamo che
+\begin{equation*}
+\frac{1}{x^2-3x+2} = \frac{1}{x-2} - \frac{1}{x-1}
+\end{equation*}
+
+L'integrale di questa funzione è quindi
+\begin{equation*}
+\int \frac{1}{x^2-3x+2} \, dx = \log |x-2| - \log |x-1|
+\end{equation*}
+\end{example}
+
+\section{Frazioni con denominatore $(x-a)^n$}
+Se il numeratore $P(x)$ ha grado $k < n$, allora
+\begin{equation*}
+P(x) = A_0 + A_1 (x-a) + \ldots + A_k (x-a)^k
+\end{equation*}
+
+Quindi
+\begin{equation*}
+\frac{P(x)}{(x-a)^n} = \frac{A_0}{(x-a)^n} + \frac{A_1}{(x-a)^{n-1}} + \ldots + \frac{A_k}{(x-a)^{n-k}}
+\end{equation*}
+
+L'integrale è quindi risolvibile (nei casi $n-j \neq 1$) come
+\begin{equation*}
+\int \frac{A_j}{(x-a)^{n-j}} \, dx = \frac{A_j (x-a)^{-(n-j)+1}}{-(n \cdot j) + 1}
+\end{equation*}
+
+\begin{example}
+Consideriamo l'integrale
+\begin{equation*}
+\int \frac{x}{(x+1)^2} \, dx
+\end{equation*}
+
+Per quanto abbiamo detto sappiamo che
+\begin{equation*}
+\frac{x}{(x+1)^2} = \frac{A_0}{(x+1)^2} + \frac{A_1}{(x+1)}
+\end{equation*}
+
+Quindi $x = A_0 + (x+1)A_1$, da cui segue $A_1 = 1$ e $A_0 = -1$. Passando all'integrale:
+
+\begin{equation*}
+\int \frac{x}{(x+1)^2} \, dx = \int \left[ - \frac{1}{(x+1)^2} + \frac{1}{x+1} \right] \, dx = \frac{1}{x+1} + \log|x+1|
+\end{equation*}
+\end{example}
+
+\begin{example}
+Consideriamo l'integrale
+\begin{equation*}
+\int \frac{x}{x^3+x^2-x-1} \, dx
+\end{equation*}
+
+Poiché il denominatore ha coefficienti interi e il coefficiente di grado massimo è 1, possiamo cercare le radici del polinomio tra i divisori di -1. In questo caso sia $x = 1$ che $x = -1$ sono radici del polinomio. Eseguiamo la divisione polinomiale.
+
+\begin{center}
+\polylongdiv[style=B]{x^3+x^2-x-1}{x-1}
+\end{center}
+
+Quindi $x^3 + x^2 - x - 1 = (x-1)(x^2+2x+1) = (x-1)(x+1)^2$. Possiamo quindi scrivere
+\begin{equation*}
+\frac{x}{x^3+x^2-x-1} = \frac{A}{x-1} + \frac{B}{x+1} + \frac{C}{(x+1)^2}
+\end{equation*}
+
+Con qualche passaggio si trova $A = \frac{1}{4}$, $B = -\frac{1}{4}$ e $C = \frac{1}{2}$. Passando all'integrale:
+
+\begin{align*}
+\int \frac{x}{x^3+x^2-x-1} \, dx &= \int \left[\frac{1}{4(x-1)} - \frac{1}{4(x+1)} + \frac{1}{2(x+1)^2} \right] \, dx \\
+&= \frac{1}{4} \log |x-1| - \frac{1}{4} \log |x+1| - \frac{1}{2(x+1)}
+\end{align*}
+\end{example}
+
+\begin{remark}
+Per calcolare $\int \frac{P(x)}{Q(x)} \, dx$, con $k = $ grado di $Q(x) > 1$, ci si può ridurre al caso in cui il grado di $P(x)$ è minore di $k-1$.
+
+Si divide per $Q'(x)$ (derivata di $Q(x)$):
+\begin{equation*}
+P(x) = \alpha Q'(x) + r(x)
+\end{equation*}
+
+Per costruzione sappiamo sicuramente che il grado del resto $r(x)$ è minore di $k-1$. L'integrale diventa quindi
+\begin{align*}
+\int \frac{P(x)}{Q(x)} \, dx &= \int \left[\frac{\alpha Q'(x)}{Q(x)} + \frac{r(x)}{Q(x)} \right] \, dx \\
+&= \alpha \log |Q(x)| + \int \frac{r(x)}{Q(x)} \, dx
+\end{align*}
+\end{remark}
+
+\begin{example}
+Consideriamo l'integrale
+\begin{equation*}
+\int \frac{x}{x^2+1} \, dx
+\end{equation*}
+
+In questo caso $Q'(x) = 2x$. Facciamo in modo di ottenere la derivata al numeratore:
+\begin{equation*}
+\frac{1}{2} \int \frac{2x}{x^2+1} \, dx = \frac{1}{2} \log |x^2+1|
+\end{equation*}
+\end{example}
+
+\begin{example}
+Consideriamo l'integrale
+\begin{equation*}
+\int \frac{x+1}{x^2+2} \, dx
+\end{equation*}
+
+Il denominatore $x^2+2$ è irriducibile e $Q'(x) = 2x$. Possiamo quindi scriverlo come
+\begin{equation*}
+\frac{1}{2} \int \frac{2x}{x^2+2} \, dx + \int \frac{1}{x^2+2} \, dx = \frac{1}{2} \log |x^2+2| + \frac{1}{\sqrt{2}} \arctan \frac{x}{\sqrt{2}}
+\end{equation*}
+\end{example}
+
+Nell'ultimo esempio abbiamo risolto un integrale della forma $\frac{1}{x^2+a^2}$. Mostriamo da dove deriva la formula di integrazione.
+\begin{equation*}
+\int \frac{1}{x^2+a^2} \, dx
+\end{equation*}
+
+Si effettua la sostituzione $u = \frac{x}{a}$. Quindi:
+\begin{align*}
+&= \int \frac{1}{a^2(1+u^2)} \, \frac{\frac{du}{dx}}{\frac{du}{dx}} \cdot dx \\
+&= \int \frac{1}{a(1+u^2)} \, du \\
+&= \frac{1}{a} \arctan \frac{x}{a}
+\end{align*}
+
+\begin{remark}
+In generale se il denominatore è irriducibile di secondo grado possiamo procedere così, grazie al complemento al quadrato:
+\begin{equation*}
+x^2+bx+c = \left(x+\frac{b}{2} \right)^2 + \left(c-\frac{b^2}{4} \right)
+\end{equation*}
+
+Essendo il polinomio di partenza irriducibile, il suo $\Delta < 0$; quindi $b^2 - 4c < 0$. 
+
+Poniamo $y = x + \frac{b}{2}$ e calcoliamo l'integrale
+\begin{equation*}
+\int \frac{1}{x^2+bx+c} \, dx = \int \frac{1}{y^2 + (c-\frac{b^2}{4})} \, dy
+\end{equation*}
+
+Posto $a = \sqrt{c-\frac{b^2}{4}}$ si ottiene un integrale nella forma che abbiamo visto in precedenza:
+\begin{equation*}
+\int \frac{1}{y^2+a^2} \, dy = \frac{1}{a} \arctan \frac{y}{a}
+\end{equation*}
+\end{remark}
+
+\begin{example}
+Consideriamo l'integrale
+\begin{equation*}
+\int \frac{1}{x^2+x+1} \, dx
+\end{equation*}
+
+il cui denominatore è un polinomio irriducibile. Scriviamolo come
+\begin{equation*}
+\int \frac{1}{(x+\frac{1}{2})^2 + \frac{3}{4}} \, dx
+\end{equation*}
+\end{example}
+
+Sia $x+\frac{1}{2} = y$, allora l'integrale torna nella forma nota:
+\begin{equation*}
+\int \frac{1}{y^2+\frac{3}{4}} \, dy = \frac{1}{\sqrt{\frac{3}{4}}} \arctan \frac{y}{\sqrt{\frac{3}{4}}} = \frac{2}{\sqrt{3}} \arctan \frac{2}{\sqrt{3}} \left(x + \frac{1}{2}\right)
+\end{equation*}
+
+\section{Funzioni razionali fratte per sostituzione}
+
+Dati due polinomi $P(t)$, $Q(t)$, consideriamo ad esempio l'integrale
+\begin{equation*}
+\int \frac{P(e^x)}{Q(e^x)} \, dx
+\end{equation*}
+Si può procedere per sostituzione $e^x = t$, osservando che $\frac{dt}{dx} = e^x = t$. Quindi:
+\begin{equation*}
+\int \frac{P(t)}{Q(t)} \, \frac{\frac{dt}{dx}}{\frac{dt}{dx}} \cdot dx = \int \frac{P(t)}{tQ(t)} \, \frac{dt}{dx} \cdot dx = 
+\int \frac{P(t)}{tQ(t)} \, dt
+\end{equation*}
+
+\begin{example}
+Consideriamo l'integrale
+\begin{equation*}
+\int \frac{1}{1+e^x} \, dx
+\end{equation*}
+Applichiamo la sostituzione $t = e^x$:
+\begin{align*}
+&= \int \frac{1}{e^x(1+e^x)} \cdot e^x \, dx = \int \frac{1}{t(1+t)} \frac{dt}{dx} \cdot dx \\
+&= \int \frac{1}{t(1+t)} \, dt = \frac{1}{t} \, dt - \frac{1}{1+t} \, dt \\ 
+&= \log |t| - \log |1+t| = x - \log(e^x+1)
+\end{align*}
+\end{example}
+
+Dati due polinomi $P(u,v)$ e $Q(u,v)$, con una sostituzione notevole riusciamo a calcolare integrali del tipo
+\begin{equation*}
+\int \frac{P(\sin x, \cos x)}{Q(\sin x, \cos x)} \, dx
+\end{equation*}
+dove $P, Q$ sono polinomi.
+
+La sostituzione interessante è che, posto $t = \tan \frac{x}{2}$, si ha che
+\begin{equation*}
+\sin x = \frac{2t}{1+t^2} \qquad \qquad \cos x = \frac{1-t^2}{1+t^2}
+\end{equation*}
+
+Queste formule si ricavano da quelle di bisezione. Ad esempio per il seno:
+\begin{align*}
+\sin x &= 2 \sin \frac{x}{2} \cos \frac{x}{2} \\
+&= \frac{2\tan \frac{x}{2}}{\frac{1}{cos^2 \frac{x}{2}}} \\
+&= \frac{2\tan \frac{x}{2}}{1+tan^2 \frac{x}{2}} = \frac{2t}{1+t^2}
+\end{align*}
+
+\begin{example}
+Proviamo a calcolare l'integrale $\int \frac{1}{\sin x} \, dx$:
+\begin{equation*}
+\int \frac{1}{\sin x} \, dx = \int \frac{1+t^2}{2t} \, \frac{\frac{dt}{dx}}{\frac{dt}{dx}} \cdot dx
+\end{equation*}
+
+Calcoliamo $\frac{dt}{dx}$:
+\begin{equation*}
+\frac{dt}{dx} = D\left[\tan\frac{x}{2}\right] = \frac{1}{2} \left(1 + \tan^2\frac{x}{2} \right) = \frac{1}{2} (1+t^2)
+\end{equation*}
+
+Quindi, riprendendo l'integrale
+\begin{align*}
+&= \int \frac{1+t^2}{2t} \cdot \frac{1}{\frac{1}{2}(1+t^2)} \, dt \\
+&= \int \frac{1}{t} \, dt = \log |t| = \log \left\lvert\tan \frac{x}{2}\right\rvert 
+\end{align*}
+\end{example}
+
+Se i polinomi $P$ e $Q$ dipendono solo da $u^2$ e $v^2$ conviene porre $t = \tan x$. In questo caso le sostituzioni sono:
+\begin{equation*}
+\sin^2 x = \frac{t^2}{1+t^2} \qquad \qquad \cos^2 x = \frac{1}{1+t^2}
+\end{equation*}
+
+Il termine differenziale è invece
+\begin{equation*}
+\frac{dt}{dx} = 1 + \tan^2 x = 1 + t^2
+\end{equation*}
+
+\begin{example}
+Consideriamo l'integrale
+\begin{equation*}
+\int \frac{1}{\cos^4x} \, dx
+\end{equation*}
+Applichiamo la sostituzione $t=\tan x$:
+\begin{align*}
+&\int \frac{1}{\frac{1}{(1+t^2)^2}} \, \frac{\frac{dt}{dx}}{\frac{dt}{dx}} \cdot dx = \int (1+t^2)^2 \cdot \frac{1}{1+t^2} \, dt = \int (1+t^2) \, dt \\
+&= t + \frac{t^3}{3} = \tan x + \frac{\tan^3 x}{3}
+\end{align*}
+\end{example}
