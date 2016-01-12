@@ -1,0 +1,301 @@
+\chapter{Ventiduesima lezione (12/01/2016)}
+
+\section{Area e integrale definito}
+
+In questa lezione introdurremo il concetto di integrale definito, che serve a calcolare aree. Prima di tutto però andiamo a definire le proprietà che soddisfa l'area di una regione piana:
+\begin{enumerate}
+\item L'area è un numero reale maggiore o uguale a zero;
+\item L'area di un rettangolo è base per altezza;
+\item Figure congruenti (ovvero ottenute per traslazione e rotazione) hanno la stessa area;
+\item Se una regione viene suddivisa in due parti, l'area complessiva è la somma dell'area delle due parti.
+\end{enumerate}
+
+Da queste proprietà segue che se $A \subseteq B$ allora $area(A) \le area(B)$, visto che $B = A \cup (B \backslash A)$.
+
+Grazie alle proprietà possiamo calcolare direttamente l'area per ogni regione che si scompone in rettangoli. Data una regione $A$ e due regioni scomponibili in rettangoli $R$, $R'$ (con $R \subset A \subset R'$), allora $area(R) \le area(A) \le area(R')$.
+
+Se per ogni $n$ troviamo $R_n, {R_n}'$ scomponibili in rettangoli $R_n \subset A \subset {R_n}'$ e $\lim area(R_n) = \lim area({R_n}')$, allora dev'essere anche $area(A) = \lim area(R_n)$. Questa è, in effetti, la caratterizzazione dell'area.
+
+Le aree che a noi interessano sono del tipo
+\begin{equation*}
+\set{(x,y)| a \le x \le b, \, 0 \le y \le f(x)}
+\end{equation*}
+
+\begin{center}
+\begin{tikzpicture}
+% a macro for the axes, the curve and the two vertical lines
+\def\basic{%
+\draw[->] (-0.3,0) -- (5,0) node[right] {$x$} coordinate (x axis);
+\draw[->] (0,-0.3) -- (0,3) node[above] {$y$};
+\draw [name path=curve] (0.5,2) .. controls (1.5,2.8) and (3.5,1) .. (4.5,2);
+\path [name path=line 1] (1,0) -- (1,3);
+\path [name path=line 2] (4,0) -- (4,3);
+\path [name intersections={of=curve and line 1, by={a}}];
+\path [name intersections={of=curve and line 2, by={b}}];
+\draw (1,0) node[below] {$a$} -- (a);
+\draw (4,0) node[below] {$b$} -- (b);
+}
+
+% the initial drawing
+\basic
+\node[above=10pt] at (b) {$y=f(x)$};
+\end{tikzpicture}
+\end{center}
+
+Tale area, se esiste, si indica con
+\begin{equation*}
+\int_a^b f(x) \, dx
+\end{equation*}
+ed è detto \emph{integrale definito} di $f$ da $a$ a $b$.
+
+\begin{definition}
+Una \emph{partizione} dell'intervallo $[a,b]$ è un insieme finito di punti $P = \{x_0, \ldots, x_n\}$ con $a = x_0 < x_1 < \ldots < x_{n-1} < x_n = b$.
+\end{definition}
+
+Se $f$ è una funzione $[a,b] \to \R$ limitata e $P$ è una partizione di $[a,b]$, la somma inferiore di $f$ relativa a $P = \{x_0, \ldots, x_n\}$ è
+\begin{equation*}
+s(f,P) = \sum_{i=1}^n \underbrace{(x_i-x_{i-1})}_{base} \cdot \underbrace{m_i}_{altezza}
+\end{equation*}
+dove
+\begin{equation*}
+m_i = \inf_{x_{i-1} \le x \le x_i} f(x)
+\end{equation*}
+
+Tale $\inf$ esiste sempre perché la funzione $f$ è limitata. Analogamente definiamo la somma superiore
+\begin{equation*}
+s(f,P) = \sum_{i=1}^n (x_i-x_{i-1}) \cdot M_i
+\end{equation*}
+dove
+\begin{equation*}
+M_i = \sup_{x_{i-1} \le x \le x_i} f(x)
+\end{equation*}
+
+Data una partizione $P$ di $[a,b]$ si dice che $P'$ è un \emph{raffinamento} di $P$ se è una partizione di $[a,b]$ e $P \subseteq P'$.
+
+\begin{proposition}
+Sia $f:[a,b] \to \R$ limitata. Se $P$ è una partizione di $[a,b]$ e $P'$ un suo raffinamento, allora
+\begin{equation*}
+s(f,P) \le s(f, P') \qquad \text{ e } \qquad S(f,P) \ge S(f,P')
+\end{equation*}
+
+Al variare di $P$ tra le partizioni di $[a,b]$ vale
+\begin{equation*}
+(b-a) \inf f \le \sup_P s(f,P) \le \inf_P S(f,P) \le (b-a) \sup f
+\end{equation*}
+\end{proposition}
+
+\begin{proof}
+Consideriamo la più semplice partizione $P=\{a,b\}$ e il suo più semplice raffinamento $P'=\{x_0, x_1, x_2\}$.
+
+Per definizione di somma inferiore:
+\begin{align*}
+s(f,P) &= (b-a) \cdot \inf f \\
+s(f,P') &= (x_1-x_0) \cdot \inf_{x_0 \le x \le x_1} f + (x_2-x_1) \cdot \inf_{x_1 \le x \le x_2} f
+\end{align*}
+Ciascuna delle due somme è maggiore di $\inf f(x)$. Quindi:
+\begin{align*}
+s(f,P) &\ge (x_1-x_0) \cdot \inf_{x_0 \le x \le x_1} f + (x_2-x_1) \cdot \inf_{x_1 \le x \le x_2} f \\
+&\ge (x_2 - x_0) \cdot \inf f \\
+&\ge (b-a) \cdot \inf f
+\end{align*}
+
+Quindi $s(f,P') \ge s(f,P)$. 
+
+Allo stesso modo si dimostra che se $P'$ è ottenuto da $P$ aggiungendo un punto allora $s(f,P') \ge s(f,P)$. Per induzione sul numero di elementi in $P'\backslash P$ si ha $s(f,P) \le s(f,P')$ per $P'$ raffinamento di $P$.
+
+In particolare, ogni partizione $P$ è un raffinamento di $\{a,b\}$. Quindi:
+\begin{align*}
+s(f,\{a,b\}) \le s(f,P) \\
+(b-a) \cdot \inf f \le s(f,P)
+\end{align*}
+\end{proof}
+
+\begin{proof}
+Per dimostrare la seconda parte della disuguaglianza
+\begin{equation*}
+\sup_P s(f,P) \le \inf_P S(f,P)
+\end{equation*}
+dimostriamo la disuguaglianza (che marchiamo come $(*)$): prese partizioni qualunque $P$, $P'$, vale
+\begin{equation*}
+s(f,P) \le S(f,P')
+\end{equation*}
+
+Infatti, prendiamo $P'' = P \cup P'$ che è sicuramente un raffinamento di $P$ e $P'$. Per quanto abbiamo già dimostrato vale $s(f,P) \le s(f,P'')$. Per definizione
+\begin{align*}
+s(f, P'') &= \sum_{i=1}^n (x_i-x_{i-1}) \cdot m_i \\
+S(f, P'') &= \sum_{i=1}^n (x_i-x_{i-1}) \cdot M_i
+\end{align*}
+
+Certamente $m_i \le M_i$, quindi $s(f,P'') \le S(f,P'')$. Essendo $S(f,P'') \le S(f, P')$ allora
+\begin{equation*}
+s(f,P) \le s(f,P'') \le S(f,P'') \le S(f,P')
+\end{equation*}
+da cui segue $(*)$. Passando al $\sup$ da $(*)$ si ha che, per ogni $P'$, $\sup_P s(f,P) \le S(f,P')$. Passando all'$\inf$ resta la disuguaglianza cercata:
+\begin{equation*}
+\sup_P s(f,P) \le \inf_{P'} S(f,P')
+\end{equation*}
+\end{proof}
+
+\section{Funzioni integrabili}
+\begin{definition}
+Una funzione $f(x)$ limitata definita su $[a,b]$ si dice \emph{integrabile} se
+\begin{equation*}
+\sup_P s(f,P) = \inf_P S(f,P)
+\end{equation*}
+In questo caso si dice che
+\begin{equation*}
+\sup_P s(f,P) = \int_a^b f(x) \, dx
+\end{equation*}
+\end{definition}
+
+\begin{example}
+Sia $f:[0,1] \to \R$ così definita:
+\begin{equation*}
+f(x) = \begin{cases}
+1 & x \in \Q \\
+0 & x \notin \Q
+\end{cases}
+\end{equation*}
+
+Essa è limitata. Presa $P$ una partizione qualunque $\{x_0, \ldots, x_n\}$, scriviamo esplicitamente la somma inferiore e superiore.
+\begin{equation*}
+s(f,P) = \sum_{i=1}^n (x_i-x_{i-1}) \cdot m_i
+\end{equation*}
+ma
+\begin{equation*}
+m_i = \inf_{x_{i-1} \le x \le x_i} f(x) = 0
+\end{equation*}
+\begin{equation*}
+S(f,P) = \sum_{i=1}^n (x_i-x_{i-1}) \cdot M_i = b-a = 1-0 = 1
+\end{equation*}
+Essendo le due somme diverse, in questo caso la funzione non è integrabile.
+\end{example}
+
+\begin{proposition}
+Sia $f:[a,b] \to \R$ limitata. Allora $f$ è integrabile se e solo se per ogni $\epsilon$ esiste $P_\epsilon$ tale che
+\begin{equation*}
+S(f,P_\epsilon) -s(f,P_\epsilon) < \epsilon
+\end{equation*}
+\end{proposition}
+
+\begin{proof}
+Fissato $\epsilon$, sia $P_\epsilon$ tale che $S(f,P_\epsilon) - s(f,P_\epsilon) < \epsilon$. Allora
+\begin{equation*}
+\inf_P S(f,P) \le S(f,P_\epsilon) < s(f,P_\epsilon) + \epsilon \le \sup_P s(f,P) + \epsilon
+\end{equation*}
+Per la catena di disuguaglianze, per ogni $\epsilon$
+\begin{equation*}
+\sup s(f,P) \le \inf S(f,P) \le \sup s(f,P) + \epsilon
+\end{equation*}
+Quindi dev'essere $\sup s(f,P) = \inf s(f,P)$, quindi la funzione è integrabile.
+\end{proof}
+
+\begin{proof}
+Dimostriamo il viceversa. Se la funzione è integrabile
+\begin{equation*}
+\int_a^b f(x) \, dx = \sup_P s(f,P)
+\end{equation*}
+Quindi sicuramente esiste una partizione $P$ tale che
+\begin{equation*}
+s(f,P) \ge \int_a^b f(x) \, dx - \frac{\epsilon}{2}
+\end{equation*}
+
+Analogamente esiste una partizione $P'$ tale che
+\begin{equation*}
+S(f,P') \le \int_a^b f(x) \, dx + \frac{\epsilon}{2}
+\end{equation*}
+
+Sia $P'' = P \cup P'$. Ora $S(f,P'') \le S(f,P')$ e $s(f,P'') > s(f,P)$. Facendo la differenza
+\begin{equation*}
+S(f,P'') - s(f,P'') \le S(f,P') - s(f,P) \le \int_a^b f(x) \, dx + \frac{\epsilon}{2} + \left (-\int_a^b f(x) \, dx + \frac{\epsilon}{2}\right) = \epsilon
+\end{equation*}
+
+Abbiamo quindi fatto vedere che $\forall \epsilon$ esiste $P_\epsilon = P''$ tale che $S(f, P_\epsilon) - s(f,P_\epsilon) < \epsilon$.
+\end{proof}
+
+\begin{theorem}
+Sia $f:[a,b] \to \R$ monotona, allora $f$ è integrabile.
+\end{theorem}
+
+\begin{proof}
+Supponiamo senza perdita di generalità $f$ non decrescente, allora $\forall x$ vale $f(a) \le f(x) \le f(b)$; quindi la funzione è limitata.
+
+Sia $P_n$ la partizione $\{x_0, \ldots, x_n\}$ e chiamiamo 
+\begin{equation*}
+x_i - x_{i-1} = \delta = \frac{b-a}{n}
+\end{equation*}
+Esprimiamo la somma inferiore:
+\begin{equation*}
+s(f,P_n) = \sum_{i=1}^n (x_i - x_{i-1}) \cdot m_i
+\end{equation*}
+Ricordiamo che
+\begin{equation*}
+m_i = \inf_{x_{x-1}\le x \le x_i} f(x)
+\end{equation*}
+ma essendo $f$ non decrescente, $m_i = f(x_{i-1})$. Quindi
+\begin{align*}
+s(f,P_n) &= \sum_{i=1}^n (x_i - x_{i-1}) \cdot f(x_{i-1}) \\
+&= \sum_{i=1}^n \delta \cdot f(x_{i-1})
+\end{align*}
+
+Analogamente si ragiona per la somma superiore e si osserva che il $\sup$ in questo caso coincide con $f(x_i)$, sempre perché $f$ è non decrescente. Quindi
+\begin{equation*}
+S(f,P_n) = \sum_{i=1}^n \delta \cdot f(x_i)
+\end{equation*}
+
+Calcoliamo quindi la differenza tra le due somme in questo caso particolare:
+\begin{align*}
+S(f,P_n) - s(f,P_n) &= \sum_{i=1}^n \delta \cdot f(x_i) - \sum_{i=1}^n \delta \cdot f(x_{i-1}) \\
+&= \delta [f(x_1) + \ldots + f(x_n)] - \delta[f(x_0) + \ldots + f(x_{n-1})] \\
+&= \delta [f(x_n) - f(x_0)] \\
+&= \frac{b-a}{n} \cdot [f(b)-f(a)]
+\end{align*}
+
+Quindi
+\begin{equation*}
+\lim_{n \to +\infty} S(f,P_n) - s(f,P_n) = 0
+\end{equation*}
+
+Per definizione di limite, $\forall \epsilon > 0$ esiste $P_n$ tale che $S(f,P_n) - s(f,P_n) < \epsilon$. Quindi la funzione è integrabile.
+\end{proof}
+
+\begin{example}
+Consideriamo $f:[0,1] \to \R$ così definita:
+\begin{equation*}
+f(x) = \begin{cases}
+\frac{1}{[\frac{1}{x}]} & x > 0 \\
+0 & x = 0
+\end{cases}
+\end{equation*}
+
+Essendo $\frac{1}{x} \ge 1$, anche la parte intera è maggiore o uguale a $1$ e quindi $f(x) \le 1$ è limitata.
+
+Essendo $\frac{1}{x}$ una funzione monotona decrescente, anche la sua parte intera è monotona non crescente, così come $f(x)$.
+
+Questa funzione ha infiniti punti di discontinuità ed è quindi integrabile per il teorema.
+\end{example}
+
+\begin{theorem}
+Sia $f:[a,b] \to \R$ continua, allora è integrabile.
+\end{theorem}
+
+Lasciamo il teorema senza dimostrazione.
+
+\begin{proposition}
+Sia $f:[a,b] \to \R$ e $c \in [a,b]$. La funzione è integrabile su $[a,b]$ se e solo se è integrabile su $[a,c]$ e $[c,b]$; vale
+\begin{equation*}
+\int_a^b f(x) \, dx = \int_a^c f(x) \, dx + \int_c^b f(x) \, dx
+\end{equation*}
+\end{proposition}
+
+\begin{definition}
+Se $b \le a$ allora
+\begin{equation*}
+\int^a_b f(x) \, dx = - \int_b^a f(x) \, dx
+\end{equation*}
+
+In particolare se $a = b$ allora
+\begin{equation*}
+\int_a^a f(x) \, dx = 0
+\end{equation*}
+\end{definition}
