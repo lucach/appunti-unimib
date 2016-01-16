@@ -1,0 +1,279 @@
+\chapter{Ventitreesima lezione (15/01/2016)}
+
+\section{Funzioni integrabili (cont.)}
+
+\begin{proposition}
+Sia $f:[a,b] \to \R$ e $c \in [a,b]$. La funzione $f$ è integrabile su $[a,b]$ se e solo se è integrabile su $[a,c]$ e $[c,b]$; vale
+\begin{equation*}
+\int_a^b f(x) \, dx = \int_a^c f(x) \, dx + \int_c^b f(x) \, dx
+\end{equation*}
+\end{proposition}
+
+\begin{definition}
+Se $b \le a$ allora
+\begin{equation*}
+\int^a_b f(x) \, dx = - \int_b^a f(x) \, dx
+\end{equation*}
+
+In particolare se $a = b$ allora
+\begin{equation*}
+\int_a^a f(x) \, dx = 0
+\end{equation*}
+\end{definition}
+
+Dimostriamo separatamente le due implicazioni della proposizione.
+
+\begin{proof}
+Supponiamo $f$ integrabile e fissiamo $\epsilon > 0$. Per la caratterizzazione delle funzioni integrabili esiste una partizione $P$ tale che 
+\begin{equation*}
+S(f,P) - s(f,P) < \epsilon
+\end{equation*}
+Aggiungendo un punto, la differenza diventa più piccola. Quindi possiamo supporre $c \in P$.
+
+Consideriamo una nuova partizione $P' = P \cap [a,c]$, che comprende solo i punti nell'intervallo $[a,c]$. Ora:
+\begin{align*}
+S(f,P')-s(f,P') &\le S(f,P)-s(f,P) \\
+\sum_{i=1}^k (x_i-x_{i-1})[\sup f(x) - \inf f(x)] &\le \sum_{i=1}^n (x_i-x_{i-1})[\sup f(x) - \inf f(x)]
+\end{align*}
+
+Quindi esiste $P'$ partizione di $[a,c]$ tale che $S(f,P')-s(f,P')<\epsilon$. Abbiamo dimostrato quindi che la restrizione di $f|_{[a,c]} : [a,c] \to \R$ è integrabile. In modo analogo si dimostra che $f$ è anche integrabile su $[c,b]$.
+\end{proof}
+
+\begin{proof}
+Viceversa, supponiamo $f$ integrabile su $[a,c]$ e $[c,b]$. Fissato $\epsilon > 0$, prendiamo $P$ partizione di $[a,c]$ tale che $S(f,P)-s(f,P) < \epsilon$ e prendiamo $P'$ partizione di $[c,b]$ con analoga proprietà.
+
+Consideriamo la partizione $P'' = P \cup P'$ e scriviamone esplicitamente somma superiore e inferiore:
+\begin{align*}
+S(f,P'') &= S(f,P) + S(f,P') \\
+s(f,P'') &= s(f,P) + s(f,P') 
+\end{align*}
+La differenza tra $S(f,P'')$ e $S(f,P')$ è quindi minore di $2\epsilon$; quindi la funzione è integrabile su tutto l'intervallo $[a,b]$.
+
+Osserviamo che
+\begin{equation*}
+s(f,P'') \le \int_a^b f(x) \, dx \le S(f,P'')
+\end{equation*}
+\begin{equation*}
+s(f,P'') = s(f,P)+s(f,P') \le \int_a^c f(x) \, dx + \int_c^b f(x) \, dx \le S(f,P) + S(f,P') = S(f,P'')
+\end{equation*}
+
+Quindi sia $\int_a^b f(x) \, dx$ che $\int_a^c f(x) \, dx + \int_c^b f(x) \, dx$ appartengono all'intervallo $[s(f,P''), S(f,P'')]$.
+
+Quindi
+\begin{equation*}
+\left\lvert \int_a^b f(x) \, dx \right\rvert - \left\lvert \int_a^c f(x) \, dx + \int_c^b f(x) \, dx \right\rvert < 2\epsilon
+\end{equation*}
+Poiché questo vale per ogni $\epsilon > 0$ allora
+\begin{equation*}
+\int_a^b f(x) \, dx = \int_a^c f(x) \, dx + \int_c^b f(x) \, dx
+\end{equation*}
+\end{proof}
+
+\begin{proposition}
+Se $f, g:[a,b] \to \R$ sono funzioni integrabili, allora $f+g$ è una funzione integrabile e
+\begin{equation*}
+\int_a^b (f(x)+g(x)) \, dx = \int_a^b f(x) \, dx + \int_a^b g(x) \, dx
+\end{equation*}
+
+Se $\lambda \in \R$, allora $\lambda f(x)$ è una funzione integrabile e
+\begin{equation*}
+\int_a^b \lambda f(x) \, dx = \lambda \int_a^b f(x) \, dx
+\end{equation*}
+\end{proposition}
+
+Lasciamo la proposizione senza dimostrazione, mentre dimostriamo la successiva che risulta essere più interessante.
+
+\begin{proposition}
+Se $f: [a,b] \to \R$ è una funzione integrabile, allora $|f(x)|$ è integrabile e
+\begin{equation*}
+\left\lvert \int_a^b f(x) \, dx \right\rvert \le \int_a^b |f(x)| \, dx
+\end{equation*}
+\end{proposition}
+
+\begin{proof}
+Sia $P = \{x_0, \ldots, x_n\}$ una partizione. Su ogni intervallo $[x_{i-1}, x_i]$ poniamo $m_i = \inf f(x)$, $M_i = \sup f(x)$, $m_i' = \inf |f(x)|$ e $M_i' = \sup |f(x)|$.
+
+Dimostriamo che vale sempre $M_i' - m_i' \le M_i - m_i$. Infatti:
+\begin{itemize}
+\item se $0 \le m_i \le M_i$ allora $f(x) = |f(x)|$ nell'intervallo. In questo caso $m_i = m_i'$ e $M_i' = Mi$, quindi la disuguaglianza sopra è ovvia.
+\item se $m_i \le M_i \le 0$ allora $-f(x) = |f(x)|$ nell'intervallo. Quindi $m_i = -M_i$ e $M_i = -m_i'$. Quindi $M_i' - m_i' = -m_i + M_i$.
+\item se $m_i \le 0 \le M_i$ allora $m_i' \ge 0$ e $M_i' = \max\{M_i, -m_i\}$. Quindi $M_i' - m_i' \le M_i' \le M_i - m_i$.
+\end{itemize}
+
+In conclusione, se $P$ è una partizione per cui $S(f,P)-s(f,P) < \epsilon$, ricordando la definizione di somma superiore e inferiore possiamo scrivere
+\begin{equation*}
+S(|f|,P)-s(|f|,P) = \sum_{i=1}^n (x_i - x_{i-1}) (M_i' - m_i') < \epsilon
+\end{equation*}
+Quindi $|f(x)|$ è integrabile.
+\end{proof}
+
+\begin{proof}
+Per dimostrare che
+\begin{equation*}
+\left\lvert \int_a^b f(x) \, dx \right\rvert \le \int_a^b |f(x)| \, dx
+\end{equation*}
+osserviamo che se $g(x) \ge 0$ allora $\int_a^b g(x) \, dx \ge 0$ perché $\int_a^b g(x) \, dx \ge (b-a) \inf g(x)$.
+
+\begin{itemize}
+\item Se $f(x) \le |f(x)|$ allora $\int_a^b [|f(x)| - f(x)] \, dx \ge 0$. Quindi
+\begin{equation*}
+\int_a^b |f(x)| \, dx - \int_a^b f(x) \ge 0 \implies \int_a^b f(x) \, dx \le \int_a^b |f(x)| \, dx
+\end{equation*}
+\item Se $-f(x) \le |f(x)|$ allora $\int_a^b -f(x) \, dx \le \int_a^b |f(x)| \, dx$
+\end{itemize}
+
+Poiché valgono le due precedenti allora possiamo concludere
+\begin{equation*}
+\left\lvert \int_a^b f(x) \, dx \right\rvert \le \int_a^b |f(x)| \, dx
+\end{equation*}
+\end{proof}
+
+\section{Teorema della media integrale}
+
+\begin{theorem}[\bfseries Della media integrale]
+Sia $f:[a,b] \to \R$ una funzione continua, allora esiste $c \in [a,b]$ tale che
+\begin{equation*}
+\int_a^b f(x) \, dx = f(c) \cdot (b-a)
+\end{equation*}
+\end{theorem}
+
+\begin{proof}
+La funzione è continua per ipotesi e quindi è integrabile. Per Weierstrass essa ammette un massimo $M$ e un minimo $m$.
+Per la caratterizzazione dell'integrale definito possiamo scrivere
+\begin{equation*}
+(b-a) \cdot \inf f(x) \le \int_a^b f(x) \, dx \le (b-a) \cdot \sup f(x)
+\end{equation*}
+Consideriamo $\inf$ e $\sup$ in questo caso particolare e dividiamo per $b-a$:
+\begin{equation*}
+(b-a) \cdot m \le \int_a^b f(x) \, dx \le (b-a) \cdot M
+\end{equation*}
+\begin{equation*}
+m \le \frac{\int_a^b f(x) \, dx}{b-a} \le M
+\end{equation*}
+Per il teorema dei valori intermedi la funzione continua $f$ assume tutti i valori tra il massimo e il minimo. Quindi deve esistere un $c \in [a,b]$ per cui
+\begin{equation*}
+f(c) = \frac{\int_a^b f(x) \, dx}{b-a}
+\end{equation*}
+\end{proof}
+
+\section{Teorema fondamentale del calcolo I}
+
+\begin{definition}
+Data una funzione $f:[a,b] \to \R$ integrabile, definiamo \emph{funzione integrale} $F:[a,b] \to \R$
+\begin{equation*}
+F(x) = \int_a^x f(t) \, dt
+\end{equation*}
+\end{definition}
+
+\begin{remark}
+La funzione integrale si può considerare anche per $x_0 \in [a,b]$ e risulterebbe
+\begin{equation*}
+\int_{x_0}^x f(t) \, dt = \int_{x_0}^a f(t) \, dt + \int_a^x f(t) \, dt
+\end{equation*}
+Tuttavia l'integrale da $x_0$ ad $a$ non dipende da $x$, quindi per semplicità consideriamo sempre la funzione integrale che parte da $a$.
+\end{remark}
+
+\begin{theorem}[\bfseries Teorema fondamentale del calcolo I]
+Se $f:[a,b] \to \R$ è una funzione integrabile, la funzione integrale $F(x)$ è continua.
+\end{theorem}
+
+\begin{proof}
+Essendo integrabile, la funzione $f$ è limitata. Quindi esiste $H \ge 0$ tale che, per ogni $x$,
+\begin{equation*}
+|f(x)| \le H
+\end{equation*}
+Consideriamo $F(y)-F(x)$:
+\begin{align*}
+F(y)-F(x) &= \int_a^y f(t) \, dt - \int_a^x f(t) \, dt \\
+&= \int_a^y f(t) \, dt + \int_x^a f(t) \, dt = \int_x^y f(t) \, dt
+\end{align*}
+
+Ora:
+\begin{equation*}
+|F(y)-F(x)| = \left\lvert \int_x^y f(t) \, dt \right\rvert \le \int_x^y |f(t)| \, dt \le \int_x^y H \, dt = (y-x) \cdot H
+\end{equation*}
+Quanto abbiamo scritto vale ovviamente se $x \le y$. In questo caso
+\begin{equation*}
+\lim_{y \to x^+} (y-x) \cdot H = 0
+\end{equation*}
+Sappiamo quindi che
+\begin{equation*}
+0 \le |F(y) - F(x)| \le (y-x) \cdot H 
+\end{equation*}
+Quindi, per il teorema del confronto abbiamo che
+\begin{equation*}
+\lim_{y \to x^+} |F(y)-F(x)| = 0
+\end{equation*}
+
+Se fosse invece $x \ge y$, possiamo scambiarli nella penultima equazione e resta
+\begin{equation*}
+0 \le |F(x) - F(y)| \le (x-y) \cdot H 
+\end{equation*}
+da cui segue che
+\begin{equation*}
+\lim_{y \to x^-} (x-y) \cdot H = 0
+\end{equation*}
+e quindi che
+\begin{equation*}
+\lim_{y \to x^-} |F(y)-F(x)| = 0
+\end{equation*}
+
+In conclusione, unendo i due limiti, trovo che
+\begin{equation*}
+\lim_{y \to x} |F(y)-F(x)| = 0
+\end{equation*}
+che è esattamente la definizione di continuità.
+\end{proof}
+
+\begin{example}
+Consideriamo la funzione $f: [-1,1] \to \R$ così definita
+\begin{equation*}
+f(x) = \begin{cases}
+2 & x < 0 \\
+3 & x \ge 0
+\end{cases}
+\end{equation*}
+
+Tale funzione è integrabile perché è monotona e limitata. Scriviamo la funzione integrale $F(x) = \int_{-1}^x f(t) \, dt$:
+\begin{itemize}
+\item se $x < 0$
+\begin{equation*}
+\int_{-1}^x f(t) \, dt = (x-(-1)) \cdot 2 = 2(x+1)
+\end{equation*}
+\item se $x = 0$ sappiamo che $F$ è continua per il teorema fondamentale del calcolo I; quindi
+\begin{equation*}
+F(0) = \lim_{x \to 0^-} F(x) = 2
+\end{equation*}
+\item se $x > 0$
+\begin{align*}
+\int_{-1}^x f(t) \, dt &= \int_{-1}^0 f(t) \, dt + \int_0^x f(t) \, dt \\
+&= F(0) + \int_0^x 3 \, dt = 2 + 3x
+\end{align*}
+\end{itemize}
+
+Riassumendo
+\begin{equation*}
+F(x) = \begin{cases}
+2(x+1) & x \le 0 \\
+2+3x & x > 0
+\end{cases}
+\end{equation*}
+La funzione integrale è ora continua ma non derivabile.
+\end{example}
+
+\section{Teorema fondamentale del calcolo II}
+
+\begin{theorem}[\bfseries Teorema fondamentale del calcolo II]
+Se $f:[a,b] \to \R$ è una funzione continua, allora la funzione integrale $F(x)$ è derivabile e la sua derivata è $F'(x) = f(x)$ per $a \le x \le b$.
+\end{theorem}
+
+Osserviamo che abbiamo considerato derivabile la funzione anche negli estremi di definizione del dominio. Questo è lecito considerando la seguente definizione.
+\begin{definition}
+Data $f:[a,b] \to \R$, diciamo che $f$ è derivabile in $a$ se esiste
+\begin{equation*}
+\lim_{h \to 0^+} \frac{f(a+h)-f(a)}{h} = f'(a)
+\end{equation*}
+detta ``derivata destra di $f$ in $a$''. Simmetrica definizione vale per la derivata sinistra.
+\end{definition}
+
+Osserviamo inoltre che affermare che tutte le funzioni continue sono integrabili è ben diverso dal saperlo fare nella pratica: spesso tale compito è arduo, se non addirittura impossibile nei reali.
