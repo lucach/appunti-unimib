@@ -1,0 +1,196 @@
+\chapter{Ventiquattresima lezione (19/01/2016)}
+
+\section{Teorema fondamentale del calcolo II}
+
+\begin{theorem}[\bfseries Teorema fondamentale del calcolo II]
+Sia $f:[a,b] \to \R$ una funzione continua, allora la funzione integrale $F(x)$ è derivabile e la sua derivata è $F'(x) = f(x)$ per ogni $x \in [a,b]$.
+\end{theorem}
+
+Osserviamo che abbiamo considerato derivabile la funzione anche negli estremi di definizione del dominio. Questo è lecito considerando la seguente definizione.
+\begin{definition}
+Data $f:[a,b] \to \R$, diciamo che $f$ è derivabile in $a$ se esiste
+\begin{equation*}
+\lim_{h \to 0^+} \frac{f(a+h)-f(a)}{h} = f'(a)
+\end{equation*}
+detta ``derivata destra di $f$ in $a$''. Simmetrica definizione vale per la derivata sinistra.
+\end{definition}
+
+Osserviamo inoltre che affermare che tutte le funzioni continue sono integrabili è ben diverso dal saperlo fare nella pratica: spesso tale compito è arduo, se non addirittura impossibile nei reali.
+
+\begin{proof}
+La funzione integrale esiste, perché $f(x)$ è continua e quindi integrabile.
+
+Sia $x \in [a,b]$ e sia $h$ tale che $x+h \in [a,b]$. Scriviamo il rapporto incrementale in $x$:
+\begin{equation*}
+\frac{F(x+h)-F(x)}{h}
+\end{equation*}
+\begin{equation*}
+= \frac{1}{h} \left( \int_a^{x+h} f(t) \, dt - \int_a^x f(t) \, dt \right) = \frac{1}{h} \int_x^{x+h} f(t) \, dt
+\end{equation*}
+Per il teorema della media integrale esiste $y$ compreso tra $x$ e $x+h$ tale che
+\begin{equation*}
+f(y) \cdot (x+h-x) = \int_x^{x+h} f(t) \, dt
+\end{equation*}
+Quindi il rapporto incrementale è $f(y) \cdot \frac{h}{h} = f(y)$. Inoltre
+\begin{equation*}
+\lim_{h \to 0} y = x
+\end{equation*}
+Quindi
+\begin{equation*}
+\lim_{h \to 0} \frac{F(x+h)-F(x)}{h} = f(x)
+\end{equation*}
+Ciò significa che $F(x)$ è derivabile e la sua derivata è $f(x)$.
+\end{proof}
+
+\section{Teorema fondamentale del calcolo III}
+
+\begin{theorem}[\bfseries Teorema fondamentale del calcolo III]
+Sia $f:[a,b] \to \R$ una funzione continua. Sia $G$ una primitiva di $f$. Allora presi due valori $x,y \in [a,b]$
+\begin{equation*}
+\int_x^y f(t) \, dt = G(y) - G(x)
+\end{equation*}
+\end{theorem}
+
+\begin{proof}
+Consideriamo una funzione ausiliaria
+\begin{equation*}
+H(y) = G(y) - \int_x^y f(t) \, dt
+\end{equation*}
+Sappiamo che $G(y)$, essendo una primitiva, è derivabile e $G'(y) = F(y)$. Inoltre sappiamo che $\int_x^y f(t) \, dt$ è una funzione derivabile di $y$ e la sua derivata è $f(y)$ (per il teorema fondamentale del calcolo II).
+
+Consideriamo la derivata di $H(y)$:
+\begin{equation*}
+H'(y) = f(y) - f(y) = 0
+\end{equation*}
+Poiché $H$ ha derivata zero in $[a,b]$, allora è costante in $[a,b]$. In particolare si ha che $H(y) = H(x)$. Si ha che
+\begin{equation*}
+H(x) = G(x) - \int_x^x f(t) \, dt = G(x)
+\end{equation*}
+e anche che
+\begin{equation*}
+G(x) = H(y) = G(y) - \int_x^y f(t) \, dt
+\end{equation*}
+Quindi
+\begin{equation*}
+\int_x^y f(t) \, dt = G(y) - G(x)
+\end{equation*}
+\end{proof}
+
+Per notazione comoda spesso si scrive $[G(t)]_x^y$ per indicare $G(y)-G(x)$.
+
+\begin{example}
+Consideriamo l'integrale
+\begin{equation*}
+\int_0^1 xe^x \, dx
+\end{equation*}
+La funzione $xe^x$ è continua e quindi è applicabile il teorema fondamentale del calcolo III. Calcoliamo l'integrale indefinito (per parti):
+\begin{equation*}
+\int xe^x \, dx = xe^x - \int e^x \, dx = xe^x - e^x
+\end{equation*}
+Quindi
+\begin{equation*}
+\int_0^1 xe^x \, dx = [xe^x - e^x]_0^1 = (e-e)-(0-1) = 1
+\end{equation*}
+\end{example}
+
+\begin{remark}
+Se la funzione non è continua, allora il teorema fondamentale del calcolo III non è applicabile e non possiamo usare il metodo dell'esercizio precedente.
+\end{remark}
+
+\begin{example}
+Consideriamo la funzione
+\begin{equation*}
+f(x) = \begin{cases}
+1 & -1 \le x < 0 \\
+2 & 0 \le x \le 1
+\end{cases}
+\end{equation*}
+Essa è monotona limitata e quindi è integrabile. Calcoliamo la sua funzione integrale $F(x) = \int_{-1}^x f(t) \, dt$:
+\begin{itemize}
+\item per $x < 0$, $F(x) = x + 1$
+\item per $x = 0$, $F(x) = 1$
+\item per $x > 0$, $F(x) = F(0) + \int_0^x 2 \, dt = 1 + 2x$
+\end{itemize}
+Quindi
+\begin{equation*}
+F(x) = \begin{cases}
+x + 1 & -1 \le x \le 0 \\
+1 + 2x & x > 0
+\end{cases}
+\end{equation*}
+
+La funzione $F(x)$ non è derivabile, in quanto la derivata destra e sinistra in 0 sono diverse; quindi non ha primitiva. 
+
+Inoltre $f$ non ha primitive. Se infatti $G(x)$ fosse una primitiva di $f$ allora dovrebbe essere
+\begin{equation*}
+G'(x) = \begin{cases}
+1 & x < 0 \\
+2 & x > 0
+\end{cases}
+\end{equation*}
+
+Consideriamo $H(x) = G(x) - \frac{3}{2}x$. La sua derivata è
+\begin{equation*}
+H'(x) = \begin{cases}
+-\frac{1}{2} & x < 0 \\
+\frac{1}{2} & x > 0
+\end{cases}
+\end{equation*}
+
+Quindi $H(x)$ decresce in $(-1, 0)$ e cresce in $[0, 1)$; quindi ha un minimo in $x = 0$. Allora per il teorema di Fermat dev'essere $H'(0) = 0$. Quindi:
+\begin{equation*}
+G'(0) - \frac{3}{2} = 0
+\end{equation*}
+il che è assurdo, perché $G'(0) = f(0) = 2$.
+\end{example}
+
+\section{Integrazione di funzioni non continue}
+
+\begin{theorem}
+Se $f:[a,b] \to \R$ è una funzione limitata con un numero finito di punti di discontinuità, allora $f$ è integrabile.
+\end{theorem}
+
+\begin{proof}
+La dimostrazione è per induzione su $n$, ovvero il numero di punti di discontinuità.
+
+Se $n = 0$ allora la funzione è continua e quindi è integrabile.
+
+Se $n > 0$, supponiamo vera la tesi per una funzione con al più $n-1$ punti di discontinuità. 
+
+Prendiamo una funzione $f:[a,b] \to \R$ con $n$ punti di discontinuità. Sia $c$ un punto di discontinuità. Dobbiamo mostrare che per ogni $\epsilon > 0$ esiste $P_\epsilon$ partizione di $[a,b]$ tale che $S(f, P_\epsilon)-s(f,P_\epsilon) < \epsilon$.
+
+Sia $M = \sup f$ e $m = \inf f$. Prendo $\delta > 0$ tale che $\delta \cdot (M - m) < \epsilon$.
+
+Sia $P_\epsilon$ una partizione tale che l'intervallo $[x_k, x_{k+1}]$ che contiene $c$ abbia diametro minore $\delta$. Ovvero $x_k \le c \le x_{k+1}$ e $x_{k+1}-x_k < \delta$. Inoltre, se $c \neq a, b$ possiamo supporre $x_k < c < x_{k+1}$.
+
+La funzione $f:[a, x_k] \to \R$ ha al più $n-1$ punti di discontinuità, quindi è applicabile l'ipotesi induttiva e quindi è integrabile. Lo stesso vale per $f:[x_{k+1}, b] \to \R$.
+
+Essendo $f:[a, x_k]$ integrabile, posso supporre
+\begin{equation*}
+\sum_{i=1}^k (x_i - x_{i-1}) M_i - \sum_{i=1}^k (x_i - x_{i-1}) m_i < \epsilon
+\end{equation*}
+dove $M_i$ e $m_i$ sono rispettivamente il $\sup$ e l'$\inf$ degli intervalli. Analogamente posso supporre
+\begin{equation*}
+\sum_{i=k+2}^n (x_i - x_{i-1}) M_i - \sum_{i=k+2}^n (x_i - x_{i-1}) m_i < \epsilon
+\end{equation*}
+
+Unendo le due disuguaglianze si ha che
+\begin{equation*}
+S(f,P_\epsilon)-s(f,P_\epsilon) = \sum_{i=1}^n (M_i-m_i)(x_i-x_{i-1})
+\end{equation*}
+\begin{equation*}
+= \sum_{i=1}^k (M_i-m_i)(x_i-x_{i-1}) + (M_{k+1}-m_{k+1})(x_{k+1}-x_k) + \sum_{i=k+2}^n (M_i-m_i)(x_i-x_{i-1})
+\end{equation*}
+L'ultima uguaglianza è minore di $\epsilon + \epsilon + \epsilon$.
+
+Giustifichiamo perché il termine intermedio è minore di $\epsilon$. Osserviamo che 
+\begin{equation*}
+(M_{k+1}-m_{k+1})(x_{k+1}-x_k) \le (M-m)(x_{k+1}-x_k)
+\end{equation*}
+perché $M_{k+1} \le M$ e $m_{k+1} \ge m$. Essendo $x_{k+1}-x_k < \delta = \frac{\epsilon}{M-m}$, allora
+\begin{equation*}
+(M-m)(x_{k+1}-x_k) \le (M-m) \cdot \delta = \epsilon
+\end{equation*}
+
+In conclusione, avendo mostrato che la differenza tra somma superiore e inferiore è minore di $3\epsilon$, $f$ è integrabile.
+\end{proof}
