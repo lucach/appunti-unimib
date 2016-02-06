@@ -74,16 +74,16 @@ Per ogni $k \in \Z$ con $k \ge 0$ definiamo la funzione $a_k : \mathcal{A} \righ
 
 Osserviamo che $\set{a_0(z) | z \in X}$ è limitato superiormente perché $M$ è un suo maggiorante. Ad esempio se $X = \{1.2, 2.3, 3.4 \}$ allora $\set{a_0(z) | z \in X} = \{1, 2, 3\}$ e quindi $M = 4$.
 
-Sia $q_0 = max \set{a_p(z) | z \in X}$. Considerando ancora l'esempio sopra, in questo caso $q_0 = 3$.
+Sia $q_0 = \max \set{a_p(z) | z \in X}$. Considerando ancora l'esempio sopra, in questo caso $q_0 = 3$.
 
 Se $k > 0$: $\set{a_k(z) | z \in X} \subseteq \{0, \dots, 9\}$.
 
-$q_k = max \set{a_k(z) | z \in X \text{ tale che } a_0(z)=q_0, a_1(z)=q_1, \dots, a_{k-1}(z) = q_{k-1}}$.
+$q_k = \max \set{a_k(z) | z \in X \text{ tale che } a_0(z)=q_0, a_1(z)=q_1, \dots, a_{k-1}(z) = q_{k-1}}$.
 
 Sia $y = q_0, q_1, \dots$ un maggiorante.
-Sia $z = p_0, \dots, p_k$ di X; sia $j = min \set{p_j \neq q_j}$ con $z \neq y$.
+Sia $z = p_0, \dots, p_k$ di X; sia $j = \min \set{p_j \neq q_j}$ con $z \neq y$.
 \begin{equation*}
-q_j = max \underbrace{\set{a_j(z) | z \in X a_0(z) = q_0, \dots, a_{j-1}(z) = q_{j-1}}}_{C}
+q_j = \max \underbrace{\set{a_j(z) | z \in X a_0(z) = q_0, \dots, a_{j-1}(z) = q_{j-1}}}_{C}
 \end{equation*}
 
 Notiamo che $C$ contiene $z$. Ciò implica che $\underbrace{a_j(z)}_{p_j} \le q_j$, ma per la definizione precedente $p_j \neq q_j$. 
