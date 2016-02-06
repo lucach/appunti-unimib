@@ -303,9 +303,9 @@ Poiché $(1+\epsilon)^{n-(N+1)}$ diverge a $+\infty$, per il teorema del confron
 
 Come prima vale:
 \begin{equation*}
-0 < x_n < (1+\epsilon)^{n-(N+1)} \cdot x_{N+1} \qquad \forall n>N
+0 < x_n < (1-\epsilon)^{n-(N+1)} \cdot x_{N+1} \qquad \forall n>N
 \end{equation*}
 
-Per il criterio del confronto, essendo $\lim (1+\epsilon)^{n-(N+1)} \cdot x_{N+1} = 0$, allora $\lim x_n = 0$. Inoltre, $x_{n+1} < x_n \cdot (1 - \epsilon) < x_n$; quindi la successione è definitivamente decrescente.
+Per il criterio del confronto, essendo $\lim (1-\epsilon)^{n-(N+1)} \cdot x_{N+1} = 0$, allora $\lim x_n = 0$. Inoltre, $x_{n+1} < x_n \cdot (1 - \epsilon) < x_n$; quindi la successione è definitivamente decrescente.
 \end{itemize}
 \end{proof}
